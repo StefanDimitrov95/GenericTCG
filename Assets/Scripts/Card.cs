@@ -23,7 +23,7 @@ namespace Assets.Scripts
             this.Title = title;
             this.Type = type;
             this.Slug = slug;
-            this.Sprite = Resources.Load<Sprite>("Images/Cards/Cards_new/" + Slug);
+            this.Sprite = Resources.Load<Sprite>("Images/Cards/" + Slug);
         }
         public override string ToString()
         {
