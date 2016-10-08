@@ -1,0 +1,42 @@
+[
+  {
+    "id":1,
+    "title":"Eskel",
+    "type":"MonsterCard",
+    "slug":"eskel",
+    "attackValue":5,
+    "class":"Melee"
+  },
+  {
+    "id":2,
+    "title":"Geralt",
+    "type":"MonsterCard",
+    "slug":"geralt",
+    "attackValue":5,
+    "class":"Melee"
+  },
+  {
+    "id":3,
+    "title":"Ice Giant",
+    "type":"MonsterCard",
+    "slug":"ice_giant",
+    "attackValue":5,
+    "class":"Melee"
+  },
+  {
+    "id":4,
+    "title":"Lambert",
+    "type":"MonsterCard",
+    "slug":"lambert",
+    "attackValue":5,
+    "class":"Melee"
+  },
+  {
+    "id":5,
+    "title":"Dijkstra",
+    "type":"MonsterCard",
+    "slug":"dijkstra",
+    "attackValue":5,
+    "class":"Melee"
+  }
+]
