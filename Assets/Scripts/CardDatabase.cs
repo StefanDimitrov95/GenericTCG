@@ -15,8 +15,8 @@ public class CardDatabase : MonoBehaviour {
         cardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/Libs/Cards.json"));
 
         ConstructCardDatabase();
-        Debug.Log(database[0].ToString());
-        Debug.Log(database[1].ToString());
+        //Debug.Log(database[0].ToString());
+        //Debug.Log(database[1].ToString());
     }
 
     public Card FetchCardById(int id)

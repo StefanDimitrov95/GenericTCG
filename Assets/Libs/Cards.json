@@ -32,11 +32,27 @@
     "class":"Melee"
   },
   {
-    "id":5,
-    "title":"Dijkstra",
-    "type":"MonsterCard",
-    "slug":"dijkstra",
-    "attackValue":5,
-    "class":"Melee"
+    "id": 5,
+    "title": "Dijkstra",
+    "type": "MonsterCard",
+    "slug": "dijkstra",
+    "attackValue": 5,
+    "class": "Melee"
+  },
+  {
+    "id": 6,
+    "title": "Dandelion",
+    "type": "MonsterCard",
+    "slug": "dandelion",
+    "attackValue": 5,
+    "class": "Melee"
+  },
+  {
+    "id": 7,
+    "title": "Dagon",
+    "type": "MonsterCard",
+    "slug": "dagon",
+    "attackValue": 5,
+    "class": "Melee"
   }
 ]

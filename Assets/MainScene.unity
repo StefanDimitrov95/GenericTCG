@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692528, g: 0.4967872, b: 0.5750856, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.4967872, b: 0.57508564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bc195591879cc440a64e4cd663aaee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cards: []
+  database: {fileID: 0}
 --- !u!1 &821797767
 GameObject:
   m_ObjectHideFlags: 0
@@ -787,8 +787,8 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 50.9}
-  m_SizeDelta: {x: 0, y: -101.8}
+  m_AnchoredPosition: {x: 0, y: 50.65001}
+  m_SizeDelta: {x: 0, y: -101.3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1732525944
 MonoBehaviour:
@@ -833,8 +833,8 @@ GameObject:
   - 224: {fileID: 2090564661}
   - 222: {fileID: 2090564663}
   - 114: {fileID: 2090564662}
-  - 114: {fileID: 2090564664}
   - 114: {fileID: 2090564665}
+  - 114: {fileID: 2090564664}
   m_Layer: 5
   m_Name: Hand
   m_TagString: Untagged
@@ -857,7 +857,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0, y: 51.3}
+  m_AnchoredPosition: {x: 127.80003, y: 51.30002}
   m_SizeDelta: {x: 586, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090564662
@@ -905,12 +905,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Padding:
-    m_Left: 0
-    m_Right: 0
+    m_Left: 30
+    m_Right: 30
     m_Top: 0
     m_Bottom: 0
   m_ChildAlignment: 4
-  m_Spacing: 0
+  m_Spacing: -10
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
 --- !u!114 &2090564665
