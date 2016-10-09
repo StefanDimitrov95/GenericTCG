@@ -21,7 +21,7 @@
     "type":"MonsterCard",
     "slug":"ice_giant",
     "attackValue":5,
-    "class":"Melee"
+    "class":"Siege"
   },
   {
     "id":4,
@@ -37,7 +37,7 @@
     "type": "MonsterCard",
     "slug": "dijkstra",
     "attackValue": 5,
-    "class": "Melee"
+    "class": "Siege"
   },
   {
     "id": 6,
@@ -45,7 +45,7 @@
     "type": "MonsterCard",
     "slug": "dandelion",
     "attackValue": 5,
-    "class": "Melee"
+    "class": "Ranged"
   },
   {
     "id": 7,

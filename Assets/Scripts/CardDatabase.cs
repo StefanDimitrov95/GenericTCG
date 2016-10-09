@@ -7,16 +7,13 @@ using Assets.Scripts;
 
 public class CardDatabase : MonoBehaviour {
 
-    private List<Card> database = new List<Card>();
+    public List<Card> database { get; set; }
     private JsonData cardData;
 
     void Start()
     {
         cardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/Libs/Cards.json"));
-
-        ConstructCardDatabase();
-        //Debug.Log(database[0].ToString());
-        //Debug.Log(database[1].ToString());
+        ConstructCardDatabase();        
     }
 
     public Card FetchCardById(int id)
@@ -31,7 +28,8 @@ public class CardDatabase : MonoBehaviour {
         return null;
     }
     void ConstructCardDatabase()
-    {       
+    {
+        database = new List<Card>();
         for (int i = 0; i < cardData.Count; i++)
         {
             if (cardData[i]["type"].ToString() == "MagicCard")
@@ -44,8 +42,7 @@ public class CardDatabase : MonoBehaviour {
                 Class cardClass = (Class) System.Enum.Parse(typeof(Class), cardData[i]["class"].ToString(), true);
                 //Add monster card to database
                 database.Add(new MonsterCard((int)cardData[i]["id"], cardData[i]["title"].ToString(), "MonsterCard", cardData[i]["slug"].ToString(),(int)cardData[i]["attackValue"], cardClass));
-            }
-            //database.Add(new Card((int)cardData[i]["id"], cardData[i]["title"].ToString(), (int)cardData[i]["attack"]));
+            }          
         }
     }
 }

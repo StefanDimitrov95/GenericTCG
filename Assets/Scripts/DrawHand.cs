@@ -1,44 +1,54 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using System.Linq;
 
-public class DrawHand : MonoBehaviour {
+public class DrawHand : MonoBehaviour
+{
 
-	const int drawAmount =7;
+    const int drawAmount = 7;
+    public List<Card> cardHand = new List<Card>();
+    public CardDatabase cardDeck;
 
-	public List<Card> cards = new List<Card>();
-    public CardDatabase database;
-	// Use this for initialization
-	void Start () {
-        database = GetComponent<CardDatabase>();
-
-		for (int i = 1; i <= drawAmount; i++)
-		{
-            Card cardToAdd = database.FetchCardById(i);
-            if (cardToAdd == null)
-            {
-                break;
-            }
-            Debug.Log(cardToAdd.ToString());
-            cards.Add(cardToAdd);
+    // Use this for initialization
+    void Start()
+    {
+        cardDeck = GetComponent<CardDatabase>();
+        cardDeck.database.Sort((x, y) => Random.value < 0.5f ? -1 : 1);
+        cardHand = cardDeck.database.Take(drawAmount).ToList();
+        foreach (Card card in cardHand)
+        {
+            Debug.Log(card.ToString());
             GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
             cardObj.transform.SetParent(GameObject.Find("Hand").transform);
-            cardObj.GetComponent<Image>().sprite = cardToAdd.Sprite;
-            cardObj.name = cardToAdd.Title;
-            //cards.Add(Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject);
-            //cards[i].transform.SetParent(GameObject.Find("Hand").transform);
+            cardObj.GetComponent<Image>().sprite = card.Sprite;
+            cardObj.name = card.Title;
+            cardObj.GetComponent<Draggable>().currentCard = card;
         }
+        //for (int i = 1; i <= drawAmount; i++)
+        //{
+        //    Card cardToAdd = database.FetchCardById(i);
+        //    if (cardToAdd == null)
+        //    {
+        //        break;
+        //    }
+        //    //Debug.Log(cardToAdd.ToString());
+        //    cards.Add(cardToAdd);
+        //    GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
+        //    cardObj.transform.SetParent(GameObject.Find("Hand").transform);
+        //    cardObj.GetComponent<Image>().sprite = cardToAdd.Sprite;
+        //    cardObj.name = cardToAdd.Title;
+        //    cardObj.GetComponent<Draggable>().currentCard = cardToAdd;
+        //}
+    }
 
-	}
-	
-	void AddCard(int id)
-	{
-		
-	}
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    //update is called once per frame
+    void Update()
+    {
+
+    }
+
+
 }

@@ -2,11 +2,18 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using System;
+using Assets.Scripts;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     public Transform parentToReturnTo;
     public bool cardPlayed = false;
+    public Card currentCard;
+
+    void  Start()
+    {
+        Debug.Log(currentCard.ToString());     
+    }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
@@ -26,7 +33,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         Debug.Log("OnEndDrag");
         this.transform.SetParent(parentToReturnTo);
-
+       
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         if (cardPlayed)
