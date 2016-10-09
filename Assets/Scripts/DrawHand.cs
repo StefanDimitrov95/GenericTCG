@@ -27,21 +27,6 @@ public class DrawHand : MonoBehaviour
             cardObj.name = card.Title;
             cardObj.GetComponent<Draggable>().currentCard = card;
         }
-        //for (int i = 1; i <= drawAmount; i++)
-        //{
-        //    Card cardToAdd = database.FetchCardById(i);
-        //    if (cardToAdd == null)
-        //    {
-        //        break;
-        //    }
-        //    //Debug.Log(cardToAdd.ToString());
-        //    cards.Add(cardToAdd);
-        //    GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
-        //    cardObj.transform.SetParent(GameObject.Find("Hand").transform);
-        //    cardObj.GetComponent<Image>().sprite = cardToAdd.Sprite;
-        //    cardObj.name = cardToAdd.Title;
-        //    cardObj.GetComponent<Draggable>().currentCard = cardToAdd;
-        //}
     }
 
     //update is called once per frame
