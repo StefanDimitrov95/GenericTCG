@@ -4,20 +4,22 @@ using UnityEngine.EventSystems;
 using System;
 using Assets.Scripts;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
     public Transform parentToReturnTo;
     public bool cardPlayed = false;
     public Card currentCard;
 
-    void  Start()
+    static readonly Vector3 popUpVector = new Vector3(0.5F, 0.5F);
+
+    void Start()
     {
-        Debug.Log(currentCard.ToString());     
+        Debug.Log(currentCard.ToString());
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        Debug.Log("OnBeginDrag");
+        this.transform.localScale += popUpVector;
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(parentToReturnTo.parent);
 
@@ -31,14 +33,24 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Debug.Log("OnEndDrag");
+        this.transform.localScale -= new Vector3(0.5F, 0.5F);
         this.transform.SetParent(parentToReturnTo);
-       
+
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         if (cardPlayed)
         {
             Destroy(this);
         }
+    }
+
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        this.transform.localScale += popUpVector;
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        this.transform.localScale -= popUpVector;
     }
 }
