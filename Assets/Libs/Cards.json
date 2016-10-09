@@ -54,5 +54,13 @@
     "slug": "dagon",
     "attackValue": 5,
     "class": "Melee"
+  },
+  {
+    "id": 8,
+    "title": "Wyvern",
+    "type": "MonsterCard",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "class": "Ranged"
   }
 ]

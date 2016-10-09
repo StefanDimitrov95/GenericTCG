@@ -60,5 +60,6 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         {            
             d.cardPlayed = true;
         }
+        d.GetComponent<RectTransform>().sizeDelta= new Vector2 (5,5);
     }
 }
