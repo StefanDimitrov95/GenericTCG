@@ -56,7 +56,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         this.transform.localScale -= new Vector3(0.5F, 0.5F);
         this.transform.SetParent(parentToReturnTo);
-        
+
+        Sprite oldPanel = toRow.GetComponent<DropZone>().oldPanel;
+        toRow.GetComponent<Image>().sprite = oldPanel;
+
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         if (cardPlayed)
@@ -71,7 +74,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {
+    {        
         this.transform.localScale -= popUpVector;
     }
 }
