@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,11 +11,25 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public bool cardPlayed = false;
     public Card currentCard;
 
+    private GameObject toRow; 
+
     static readonly Vector3 popUpVector = new Vector3(0.5F, 0.5F);
 
     void Start()
     {
         Debug.Log(currentCard.ToString());
+        if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Melee)
+        {
+            toRow = GameObject.Find("MeleeRow");
+        }
+        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Ranged)
+        {
+            toRow = GameObject.Find("RangedRow");
+        }
+        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Siege)
+        {
+            toRow = GameObject.Find("SiegeRow");
+        }
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -22,6 +37,12 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         this.transform.localScale += popUpVector;
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(parentToReturnTo.parent);
+
+        if (currentCard.Type == "MonsterCard")
+        {
+            Sprite newPanel = toRow.GetComponent<DropZone>().newPanel;
+            toRow.GetComponent<Image>().sprite = newPanel;
+        }     
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
@@ -35,7 +56,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         this.transform.localScale -= new Vector3(0.5F, 0.5F);
         this.transform.SetParent(parentToReturnTo);
-
+        
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         if (cardPlayed)

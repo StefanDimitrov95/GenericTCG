@@ -3,28 +3,36 @@ using System.Collections;
 using UnityEngine.EventSystems;
 using System;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
     private Class rowClass;
+    public Sprite oldPanel;
+    public Sprite newPanel;
 
     void Start()
-    {       
+    {
+        oldPanel = this.GetComponent<Image>().sprite;
+        
         switch (this.name)
         {
             case "MeleeRow":
                 {
                     rowClass = Class.Melee;
+                    newPanel = Resources.Load<Sprite>("UI/MeleeRow_selected");
                     break;
                 }
             case "RangedRow":
                 {
                     rowClass = Class.Ranged;
+                    newPanel = Resources.Load<Sprite>("UI/RangedRow_selected");
                     break;
                 }
             case "SiegeRow":
                 {
                     rowClass = Class.Siege;
+                    newPanel = Resources.Load<Sprite>("UI/SiegeRow_selected");
                     break;
                 }
             default:
@@ -40,6 +48,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     }
     public void OnDrop(PointerEventData eventData)
     {
+        this.GetComponent<Image>().sprite = oldPanel;
         Debug.Log("Dropped");
         Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
         
@@ -60,6 +69,5 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         {            
             d.cardPlayed = true;
         }
-        d.GetComponent<RectTransform>().sizeDelta= new Vector2 (5,5);
     }
 }
