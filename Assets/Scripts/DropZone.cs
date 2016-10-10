@@ -7,37 +7,44 @@ using UnityEngine.UI;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
-    private Class rowClass;
     public Sprite oldPanel;
     public Sprite newPanel;
+    public GameObject textBoxOfRow;
+    public GameObject mainTextBox;
+
+    private Class rowClass;
+    private int rowAttackValue = 0;
 
     void Start()
     {
         oldPanel = this.GetComponent<Image>().sprite;
-        
+        mainTextBox = GameObject.Find("AllRowsValue");
         switch (this.name)
         {
             case "MeleeRow":
                 {
                     rowClass = Class.Melee;
                     newPanel = Resources.Load<Sprite>("UI/MeleeRow_selected");
+                    textBoxOfRow = GameObject.Find("MeleeRowValue");
                     break;
                 }
             case "RangedRow":
                 {
                     rowClass = Class.Ranged;
                     newPanel = Resources.Load<Sprite>("UI/RangedRow_selected");
+                    textBoxOfRow = GameObject.Find("RangedRowValue");
                     break;
                 }
             case "SiegeRow":
                 {
                     rowClass = Class.Siege;
                     newPanel = Resources.Load<Sprite>("UI/SiegeRow_selected");
+                    textBoxOfRow = GameObject.Find("SiegeRowValue");
                     break;
                 }
             default:
                 break;
-        }
+        }      
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -50,24 +57,44 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     {
         this.GetComponent<Image>().sprite = oldPanel;
         Debug.Log("Dropped");
-        Draggable d = eventData.pointerDrag.GetComponent<Draggable>();
-        
-        if (d.currentCard.Type == "MonsterCard" && (d.currentCard as  MonsterCard).CardClass == this.rowClass)
+        Draggable draggedCard = eventData.pointerDrag.GetComponent<Draggable>();
+
+        CardEffectOnDrop(draggedCard);
+        DestroyingCard(draggedCard);
+    }
+
+    void CardEffectOnDrop(Draggable draggedCard)
+    {
+        if (draggedCard.currentCard.Type == "MonsterCard"
+            && (draggedCard.currentCard as MonsterCard).CardClass == this.rowClass
+            && draggedCard != null)
         {
-            if (d != null)
-            {
-                d.parentToReturnTo = this.transform;
-            }
+            draggedCard.parentToReturnTo = this.transform;
+            UpdateRowValue(draggedCard);
         }
 
-        if (d.currentCard.Type == "MagicCard")
+        if (draggedCard.currentCard.Type == "MagicCard")
         {
             //To be implemented 
-        }
+        }       
+    }
 
-        if (d.parentToReturnTo.gameObject != GameObject.Find("Hand").gameObject && d.parentToReturnTo.gameObject == GameObject.Find(this.name).gameObject )
-        {            
-            d.cardPlayed = true;
+    void UpdateRowValue(Draggable draggedCard)
+    {
+        int draggedCardAttackValue = (draggedCard.currentCard as MonsterCard).AttackValue;
+        rowAttackValue += draggedCardAttackValue;
+        textBoxOfRow.GetComponent<Text>().text = rowAttackValue.ToString();
+        int totalAttackValue = int.Parse(mainTextBox.GetComponent<Text>().text);
+        totalAttackValue += draggedCardAttackValue;
+        mainTextBox.GetComponent<Text>().text = totalAttackValue.ToString();
+    }
+
+    void DestroyingCard(Draggable draggedCard)
+    {
+        if (draggedCard.parentToReturnTo.gameObject != GameObject.Find("Hand").gameObject
+            && draggedCard.parentToReturnTo.gameObject == GameObject.Find(this.name).gameObject)
+        {
+            draggedCard.cardPlayed = true;
         }
     }
 }

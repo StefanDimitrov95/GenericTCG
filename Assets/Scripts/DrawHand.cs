@@ -20,7 +20,7 @@ public class DrawHand : MonoBehaviour
         cardHand = cardDeck.database.Take(drawAmount).ToList();
         foreach (Card card in cardHand)
         {
-            Debug.Log(card.ToString());
+            //Debug.Log(card.ToString());
             GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
             cardObj.transform.SetParent(GameObject.Find("Hand").transform);
             cardObj.GetComponent<Image>().sprite = card.Sprite;
