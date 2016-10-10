@@ -12,13 +12,15 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public Card currentCard;
 
     private GameObject toRow;
+    private Tooltip tooltip;
     private GameObject placeholder;
 
     static readonly Vector3 cardPopUpScale = new Vector3(0.5F, 0.5F);
 
     void Start()
     {
-        Debug.Log(currentCard.ToString());
+        tooltip = GameObject.Find("Deck").GetComponent<Tooltip>();
+        //Debug.Log(currentCard.ToString());
         if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Melee)
         {
             toRow = GameObject.Find("MeleeRow");
@@ -86,10 +88,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public void OnPointerEnter(PointerEventData eventData)
     {
         this.transform.localScale += cardPopUpScale;
+
+        tooltip.Activate(currentCard);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {        
         this.transform.localScale -= cardPopUpScale;
+        tooltip.Deactivate();   
     }
 }

@@ -4,6 +4,7 @@ using UnityEngine.EventSystems;
 using System;
 using Assets.Scripts;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
 {
@@ -14,6 +15,8 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     private Class rowClass;
     private int rowAttackValue = 0;
+    private List<GameObject> cardsOnPanel= new List<GameObject>(7);
+    private int children = 0;
 
     void Start()
     {
@@ -42,6 +45,15 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
                     textBoxOfRow = GameObject.Find("SiegeRowValue");
                     break;
                 }
+            case "Hand":
+                {
+                    foreach (Transform child in this.transform)
+                    {                        
+                        cardsOnPanel.Add(child.gameObject);
+                        children++;
+                    }
+                    break;
+                }
             default:
                 break;
         }      
@@ -60,7 +72,20 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         Draggable draggedCard = eventData.pointerDrag.GetComponent<Draggable>();
 
         CardEffectOnDrop(draggedCard);
-        DestroyingCard(draggedCard);
+        AddDroppedCardToPanel(draggedCard);
+        DestroyCard(draggedCard);
+    }
+
+    void AddDroppedCardToPanel(Draggable draggedCard)
+    {
+        cardsOnPanel.Add(draggedCard.gameObject);
+        children++;
+        if (children > 7)
+        {
+            this.GetComponent<GridLayoutGroup>().spacing -= new Vector2(10,0);
+        }
+        Debug.Log(children);
+        
     }
 
     void CardEffectOnDrop(Draggable draggedCard)
@@ -92,7 +117,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         }     
     }
 
-    void DestroyingCard(Draggable draggedCard)
+    void DestroyCard(Draggable draggedCard)
     {
         if (draggedCard.parentToReturnTo.gameObject != GameObject.Find("Hand").gameObject
             && draggedCard.parentToReturnTo.gameObject == GameObject.Find(this.name).gameObject)
