@@ -12,12 +12,14 @@ public class DrawHand : MonoBehaviour
     public List<Card> cardHand = new List<Card>();
     public CardDatabase cardDeck;
 
-    // Use this for initialization
     void Start()
     {
         cardDeck = GetComponent<CardDatabase>();
         cardDeck.database.Sort((x, y) => Random.value < 0.5f ? -1 : 1);
         cardHand = cardDeck.database.Take(drawAmount).ToList();
+        cardDeck.database.RemoveAll(x => cardHand.Any(y => y.ID == x.ID));
+        this.GetComponent<Text>().text = cardDeck.database.Count.ToString();
+
         foreach (Card card in cardHand)
         {
             Debug.Log(card.ToString());
@@ -28,12 +30,4 @@ public class DrawHand : MonoBehaviour
             cardObj.GetComponent<Draggable>().currentCard = card;
         }
     }
-
-    //update is called once per frame
-    void Update()
-    {
-
-    }
-
-
 }
