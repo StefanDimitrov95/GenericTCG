@@ -11,9 +11,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public bool cardPlayed = false;
     public Card currentCard;
 
-    private GameObject toRow; 
+    private GameObject toRow;
+    private GameObject placeholder;
 
-    static readonly Vector3 popUpVector = new Vector3(0.5F, 0.5F);
+    static readonly Vector3 cardPopUpScale = new Vector3(0.5F, 0.5F);
 
     void Start()
     {
@@ -34,7 +35,16 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        this.transform.localScale += popUpVector;
+        placeholder = new GameObject();
+        placeholder.transform.SetParent(this.transform.parent);
+
+        LayoutElement le = placeholder.AddComponent<LayoutElement>();
+        le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
+        le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
+
+
+        placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
+        this.transform.localScale += cardPopUpScale;
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(parentToReturnTo.parent);
 
@@ -54,7 +64,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.localScale -= new Vector3(0.5F, 0.5F);
+        this.transform.localScale -= cardPopUpScale;
         this.transform.SetParent(parentToReturnTo);
 
         Sprite oldPanel = toRow.GetComponent<DropZone>().oldPanel;
@@ -62,19 +72,24 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
+        this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
+
+        Destroy(placeholder);
+        
         if (cardPlayed)
         {
             Destroy(this);
         }
+
     }
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        this.transform.localScale += popUpVector;
+        this.transform.localScale += cardPopUpScale;
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {        
-        this.transform.localScale -= popUpVector;
+        this.transform.localScale -= cardPopUpScale;
     }
 }
