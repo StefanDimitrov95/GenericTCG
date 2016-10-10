@@ -81,12 +81,15 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     void UpdateRowValue(Draggable draggedCard)
     {
-        int draggedCardAttackValue = (draggedCard.currentCard as MonsterCard).AttackValue;
-        rowAttackValue += draggedCardAttackValue;
-        textBoxOfRow.GetComponent<Text>().text = rowAttackValue.ToString();
-        int totalAttackValue = int.Parse(mainTextBox.GetComponent<Text>().text);
-        totalAttackValue += draggedCardAttackValue;
-        mainTextBox.GetComponent<Text>().text = totalAttackValue.ToString();
+        if (draggedCard.parentToReturnTo.gameObject != GameObject.Find("Hand"))
+        {
+            int draggedCardAttackValue = (draggedCard.currentCard as MonsterCard).AttackValue;
+            rowAttackValue += draggedCardAttackValue;
+            textBoxOfRow.GetComponent<Text>().text = rowAttackValue.ToString();
+            int totalAttackValue = int.Parse(mainTextBox.GetComponent<Text>().text);
+            totalAttackValue += draggedCardAttackValue;
+            mainTextBox.GetComponent<Text>().text = totalAttackValue.ToString();
+        }     
     }
 
     void DestroyingCard(Draggable draggedCard)

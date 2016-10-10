@@ -25,6 +25,7 @@ GameObject:
   - 225: {fileID: 225000013414114302}
   - 114: {fileID: 114000012013290282}
   - 212: {fileID: 212000011636006304}
+  - 114: {fileID: 114000012012747808}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -32,6 +33,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114000012012747808
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012227484250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1573420865, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 1}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!114 &114000012013290282
 MonoBehaviour:
   m_ObjectHideFlags: 1
