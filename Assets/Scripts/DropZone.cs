@@ -7,11 +7,10 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
-{
-    public Sprite oldPanel;
-    public Sprite newPanel;
+{    
     public GameObject textBoxOfRow;
     public GameObject mainTextBox;
+    public Animator animator;
 
     private Class rowClass;
     private int rowAttackValue = 0;
@@ -20,43 +19,15 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
 
     void Start()
     {
-        oldPanel = this.GetComponent<Image>().sprite;
-        mainTextBox = GameObject.Find("AllRowsValue");
-        switch (this.name)
+        if (this.name != "Hand")
         {
-            case "MeleeRow":
-                {
-                    rowClass = Class.Melee;
-                    newPanel = Resources.Load<Sprite>("UI/MeleeRow_selected");
-                    textBoxOfRow = GameObject.Find("MeleeRowValue");
-                    break;
-                }
-            case "RangedRow":
-                {
-                    rowClass = Class.Ranged;
-                    newPanel = Resources.Load<Sprite>("UI/RangedRow_selected");
-                    textBoxOfRow = GameObject.Find("RangedRowValue");
-                    break;
-                }
-            case "SiegeRow":
-                {
-                    rowClass = Class.Siege;
-                    newPanel = Resources.Load<Sprite>("UI/SiegeRow_selected");
-                    textBoxOfRow = GameObject.Find("SiegeRowValue");
-                    break;
-                }
-            case "Hand":
-                {
-                    foreach (Transform child in this.transform)
-                    {                        
-                        cardsOnPanel.Add(child.gameObject);
-                        children++;
-                    }
-                    break;
-                }
-            default:
-                break;
-        }      
+            animator = this.GetComponent<Animator>();
+            animator.enabled = false;
+        }
+               
+        mainTextBox = GameObject.Find("AllRowsValue");
+
+        InitializeFiedData();
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -67,25 +38,11 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     }
     public void OnDrop(PointerEventData eventData)
     {
-        this.GetComponent<Image>().sprite = oldPanel;
         Debug.Log("Dropped");
         Draggable draggedCard = eventData.pointerDrag.GetComponent<Draggable>();
 
         CardEffectOnDrop(draggedCard);
-        AddDroppedCardToPanel(draggedCard);
         DestroyCard(draggedCard);
-    }
-
-    void AddDroppedCardToPanel(Draggable draggedCard)
-    {
-        cardsOnPanel.Add(draggedCard.gameObject);
-        children++;
-        if (children > 7)
-        {
-            this.GetComponent<GridLayoutGroup>().spacing -= new Vector2(10,0);
-        }
-        Debug.Log(children);
-        
     }
 
     void CardEffectOnDrop(Draggable draggedCard)
@@ -123,6 +80,41 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             && draggedCard.parentToReturnTo.gameObject == GameObject.Find(this.name).gameObject)
         {
             draggedCard.cardPlayed = true;
+        }
+    }
+    void InitializeFiedData()
+    {
+        switch (this.name)
+        {
+            case "MeleeRow":
+                {
+                    rowClass = Class.Melee;
+                    textBoxOfRow = GameObject.Find("MeleeRowValue");
+                    break;
+                }
+            case "RangedRow":
+                {
+                    rowClass = Class.Ranged;
+                    textBoxOfRow = GameObject.Find("RangedRowValue");
+                    break;
+                }
+            case "SiegeRow":
+                {
+                    rowClass = Class.Siege;
+                    textBoxOfRow = GameObject.Find("SiegeRowValue");
+                    break;
+                }
+            case "Hand":
+                {
+                    foreach (Transform child in this.transform)
+                    {
+                        cardsOnPanel.Add(child.gameObject);
+                        children++;
+                    }
+                    break;
+                }
+            default:
+                break;
         }
     }
 }

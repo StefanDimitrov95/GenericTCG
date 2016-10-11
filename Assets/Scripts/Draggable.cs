@@ -21,18 +21,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         tooltip = GameObject.Find("Deck").GetComponent<Tooltip>();
         //Debug.Log(currentCard.ToString());
-        if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Melee)
-        {
-            toRow = GameObject.Find("MeleeRow");
-        }
-        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Ranged)
-        {
-            toRow = GameObject.Find("RangedRow");
-        }
-        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Siege)
-        {
-            toRow = GameObject.Find("SiegeRow");
-        }
+        FindToRowField();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -50,11 +39,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(parentToReturnTo.parent);
 
-        if (currentCard.Type == "MonsterCard")
-        {
-            Sprite newPanel = toRow.GetComponent<DropZone>().newPanel;
-            toRow.GetComponent<Image>().sprite = newPanel;
-        }     
+        AnimateRowOnBeginDrag();
 
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
@@ -69,15 +54,14 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
         this.transform.localScale -= cardPopUpScale;
         this.transform.SetParent(parentToReturnTo);
 
-        Sprite oldPanel = toRow.GetComponent<DropZone>().oldPanel;
-        toRow.GetComponent<Image>().sprite = oldPanel;
-
         GetComponent<CanvasGroup>().blocksRaycasts = true;
 
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
 
         Destroy(placeholder);
         
+        AnimateRowOnEndDrag();
+
         if (cardPlayed)
         {
             Destroy(this);
@@ -96,5 +80,35 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {        
         this.transform.localScale -= cardPopUpScale;
         tooltip.Deactivate();   
+    }
+
+    private void AnimateRowOnBeginDrag()
+    {
+        if (currentCard.Type == "MonsterCard")
+        {
+            toRow.GetComponent<DropZone>().animator.enabled = true;
+            toRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
+        }       
+    }
+
+    private void AnimateRowOnEndDrag()
+    {
+        toRow.GetComponent<DropZone>().animator.Play("OnEndDrag");
+    }
+
+    private void FindToRowField()
+    {
+        if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Melee)
+        {
+            toRow = GameObject.Find("MeleeRow");
+        }
+        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Ranged)
+        {
+            toRow = GameObject.Find("RangedRow");
+        }
+        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Siege)
+        {
+            toRow = GameObject.Find("SiegeRow");
+        }
     }
 }
