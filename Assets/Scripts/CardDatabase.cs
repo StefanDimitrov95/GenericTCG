@@ -39,9 +39,10 @@ public class CardDatabase : MonoBehaviour {
             }
             else if (cardData[i]["type"].ToString() == "MonsterCard")
             {
+                MonsterPerk cardPerk = (MonsterPerk)System.Enum.Parse(typeof(MonsterPerk), cardData[i]["cardPerk"].ToString(), true);
                 Class cardClass = (Class) System.Enum.Parse(typeof(Class), cardData[i]["class"].ToString(), true);
                 //Add monster card to database
-                database.Add(new MonsterCard((int)cardData[i]["id"], cardData[i]["title"].ToString(), "MonsterCard", cardData[i]["slug"].ToString(),(int)cardData[i]["attackValue"], cardClass));
+                database.Add(new MonsterCard((int)cardData[i]["id"], cardData[i]["title"].ToString(), "MonsterCard", cardData[i]["slug"].ToString(),(int)cardData[i]["attackValue"], cardClass, cardPerk));
             }          
         }
     }

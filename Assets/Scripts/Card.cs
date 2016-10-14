@@ -17,7 +17,9 @@ namespace Assets.Scripts
         public string Slug { get; set; }
 
         public Sprite Sprite { get; set; }
-       
+
+        public GameObject ToRow { get; set; }
+
         public Card(int id, string title, string type, string slug)
         {
             this.ID = id;
@@ -28,7 +30,7 @@ namespace Assets.Scripts
         }
         public override string ToString()
         {
-            return string.Format("{0} , {1} , {2}, {3}", ID, Title, Type, Slug);
+            return string.Format("{0} , {1} , {2}, {3}, {4}", ID, Title, Type, Slug, ToRow);
         }
     }
 }

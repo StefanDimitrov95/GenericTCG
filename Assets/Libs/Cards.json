@@ -5,7 +5,8 @@
     "type":"MonsterCard",
     "slug":"eskel",
     "attackValue":5,
-    "class":"Melee"
+    "class": "Melee",
+    "cardPerk": "Normal"
   },
   {
     "id":2,
@@ -13,7 +14,8 @@
     "type":"MonsterCard",
     "slug":"geralt",
     "attackValue":5,
-    "class":"Melee"
+    "class": "Melee",
+    "cardPerk": "Normal"
   },
   {
     "id":3,
@@ -21,7 +23,8 @@
     "type":"MonsterCard",
     "slug":"ice_giant",
     "attackValue":5,
-    "class":"Siege"
+    "class": "EnemySiege",
+     "cardPerk": "Spy"
   },
   {
     "id":4,
@@ -29,7 +32,8 @@
     "type":"MonsterCard",
     "slug":"lambert",
     "attackValue":5,
-    "class":"Melee"
+    "class": "EnemyMelee",
+    "cardPerk": "Spy"
   },
   {
     "id": 5,
@@ -37,7 +41,8 @@
     "type": "MonsterCard",
     "slug": "dijkstra",
     "attackValue": 5,
-    "class": "Siege"
+    "class": "Siege",
+    "cardPerk": "Normal"
   },
   {
     "id": 6,
@@ -45,7 +50,8 @@
     "type": "MonsterCard",
     "slug": "dandelion",
     "attackValue": 5,
-    "class": "Ranged"
+    "class": "Ranged",
+    "cardPerk": "Normal"
   },
   {
     "id": 7,
@@ -53,7 +59,8 @@
     "type": "MonsterCard",
     "slug": "dagon",
     "attackValue": 5,
-    "class": "Melee"
+    "class": "Melee",
+    "cardPerk": "Normal"
   },
   {
     "id": 8,
@@ -61,6 +68,7 @@
     "type": "MonsterCard",
     "slug": "wyvern",
     "attackValue": 3,
-    "class": "Ranged"
+    "class": "Ranged",
+    "cardPerk": "Normal"
   }
 ]

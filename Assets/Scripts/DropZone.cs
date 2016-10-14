@@ -7,27 +7,20 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler
-{    
-    public GameObject textBoxOfRow;
-    public GameObject mainTextBox;
+{
+    public Row currentRow;
+    //public GameObject mainTextBox;
     public Animator animator;
-
-    private Class rowClass;
-    private int rowAttackValue = 0;
-    private List<GameObject> cardsOnPanel= new List<GameObject>(7);
-    private int children = 0;
 
     void Start()
     {
+        currentRow = new Row(this.name);
         if (this.name != "Hand")
         {
             animator = this.GetComponent<Animator>();
             animator.enabled = false;
-        }
-               
-        mainTextBox = GameObject.Find("AllRowsValue");
-
-        InitializeFiedData();
+        }               
+        //mainTextBox = GameObject.Find("AllRowsValue");  
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -48,7 +41,7 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     void CardEffectOnDrop(Draggable draggedCard)
     {
         if (draggedCard.currentCard.Type == "MonsterCard"
-            && (draggedCard.currentCard as MonsterCard).CardClass == this.rowClass
+            && (draggedCard.currentCard as MonsterCard).CardClass == this.currentRow.RowClass
             && draggedCard != null)
         {
             draggedCard.parentToReturnTo = this.transform;
@@ -65,12 +58,10 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     {
         if (draggedCard.parentToReturnTo.gameObject != GameObject.Find("Hand"))
         {
-            int draggedCardAttackValue = (draggedCard.currentCard as MonsterCard).AttackValue;
-            rowAttackValue += draggedCardAttackValue;
-            textBoxOfRow.GetComponent<Text>().text = rowAttackValue.ToString();
-            int totalAttackValue = int.Parse(mainTextBox.GetComponent<Text>().text);
-            totalAttackValue += draggedCardAttackValue;
-            mainTextBox.GetComponent<Text>().text = totalAttackValue.ToString();
+            currentRow.UpdateAttackValueOfRow(draggedCard.currentCard);
+            //int totalAttackValue = int.Parse(mainTextBox.GetComponent<Text>().text);
+            //totalAttackValue += draggedCardAttackValue;
+            //mainTextBox.GetComponent<Text>().text = totalAttackValue.ToString();
         }     
     }
 
@@ -82,39 +73,5 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
             draggedCard.cardPlayed = true;
         }
     }
-    void InitializeFiedData()
-    {
-        switch (this.name)
-        {
-            case "MeleeRow":
-                {
-                    rowClass = Class.Melee;
-                    textBoxOfRow = GameObject.Find("MeleeRowValue");
-                    break;
-                }
-            case "RangedRow":
-                {
-                    rowClass = Class.Ranged;
-                    textBoxOfRow = GameObject.Find("RangedRowValue");
-                    break;
-                }
-            case "SiegeRow":
-                {
-                    rowClass = Class.Siege;
-                    textBoxOfRow = GameObject.Find("SiegeRowValue");
-                    break;
-                }
-            case "Hand":
-                {
-                    foreach (Transform child in this.transform)
-                    {
-                        cardsOnPanel.Add(child.gameObject);
-                        children++;
-                    }
-                    break;
-                }
-            default:
-                break;
-        }
-    }
+    
 }

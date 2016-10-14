@@ -9,6 +9,9 @@ namespace Assets.Scripts
     {
         Melee,
         Ranged,
-        Siege
+        Siege,
+        EnemyMelee,
+        EnemyRanged,
+        EnemySiege
     }
 }

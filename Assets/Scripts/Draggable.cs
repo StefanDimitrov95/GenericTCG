@@ -11,7 +11,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public bool cardPlayed = false;
     public Card currentCard;
 
-    private GameObject toRow;
     private Tooltip tooltip;
     private GameObject placeholder;
 
@@ -20,8 +19,8 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     void Start()
     {
         tooltip = GameObject.Find("Deck").GetComponent<Tooltip>();
-        //Debug.Log(currentCard.ToString());
-        FindToRowField();
+        Debug.Log(currentCard.ToString());
+        //FindToRowField();
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -35,7 +34,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
 
         placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
-        this.transform.localScale += cardPopUpScale;
+
+        UpscaleCard();
+
         parentToReturnTo = this.transform.parent;
         this.transform.SetParent(parentToReturnTo.parent);
 
@@ -51,11 +52,10 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        this.transform.localScale -= cardPopUpScale;
+        DownscaleCard();
+
         this.transform.SetParent(parentToReturnTo);
-
         GetComponent<CanvasGroup>().blocksRaycasts = true;
-
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
 
         Destroy(placeholder);
@@ -71,14 +71,13 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        this.transform.localScale += cardPopUpScale;
-
+        UpscaleCard();
         tooltip.Activate(currentCard);
     }
 
     public void OnPointerExit(PointerEventData eventData)
-    {        
-        this.transform.localScale -= cardPopUpScale;
+    {
+        DownscaleCard();
         tooltip.Deactivate();   
     }
 
@@ -86,29 +85,23 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         if (currentCard.Type == "MonsterCard")
         {
-            toRow.GetComponent<DropZone>().animator.enabled = true;
-            toRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
+           currentCard.ToRow.GetComponent<DropZone>().animator.enabled = true;
+           currentCard.ToRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
         }       
     }
 
     private void AnimateRowOnEndDrag()
     {
-        toRow.GetComponent<DropZone>().animator.Play("OnEndDrag");
+        currentCard.ToRow.GetComponent<DropZone>().animator.Play("OnEndDrag");
+    }
+  
+    public void UpscaleCard()
+    {
+        this.transform.localScale += cardPopUpScale;
     }
 
-    private void FindToRowField()
+    public void DownscaleCard()
     {
-        if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Melee)
-        {
-            toRow = GameObject.Find("MeleeRow");
-        }
-        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Ranged)
-        {
-            toRow = GameObject.Find("RangedRow");
-        }
-        else if (currentCard.Type == "MonsterCard" && (currentCard as MonsterCard).CardClass == Class.Siege)
-        {
-            toRow = GameObject.Find("SiegeRow");
-        }
+        this.transform.localScale -= cardPopUpScale;
     }
 }
