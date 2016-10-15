@@ -31,16 +31,7 @@ public class DrawHand : MonoBehaviour
     {
         cardDeck = GameObject.Find("Deck").GetComponent<CardDatabase>();
         List<Card> cardsToDraw = new List<Card>();
-        int remainingCardsInDeck = this.cardDeck.database.Count;
-
-        if (remainingCardsInDeck >= amountOfCardsToDraw)
-        {
-            cardsToDraw = cardDeck.database.Take(amountOfCardsToDraw).ToList();
-        }
-        else
-        {
-            cardsToDraw = cardDeck.database.Take(amountOfCardsToDraw - remainingCardsInDeck).ToList();
-        }
+        cardsToDraw = cardDeck.database.Take(amountOfCardsToDraw).ToList();
         cardHand.AddRange(cardsToDraw);
         cardDeck.database.RemoveAll(x => cardsToDraw.Any(y => y.ID == x.ID));
 
@@ -48,6 +39,7 @@ public class DrawHand : MonoBehaviour
         {
             InstanciateCardToHand(card);
         }
+
         UpdateDeckLabel();
     }
 
