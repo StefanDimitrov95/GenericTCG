@@ -46,6 +46,12 @@ public class DropZone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
         {
             draggedCard.parentToReturnTo = this.transform;
             UpdateRowValue(draggedCard);
+
+            if (draggedCard.currentCard.ToRow.transform.name.StartsWith("Enemy"))
+            {
+                DrawHand hnd = GameObject.Find("Deck").GetComponent<DrawHand>();
+                hnd.DrawExtraCards(2);
+            }
         }
 
         if (draggedCard.currentCard.Type == "MagicCard")

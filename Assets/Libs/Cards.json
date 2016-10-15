@@ -70,5 +70,23 @@
     "attackValue": 3,
     "class": "Ranged",
     "cardPerk": "Normal"
+  },
+  {
+    "id": 9,
+    "title": "Wyvern",
+    "type": "MonsterCard",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "class": "Ranged",
+    "cardPerk": "Normal"
+  },
+  {
+    "id": 10,
+    "title": "Wyvern",
+    "type": "MonsterCard",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "class": "Ranged",
+    "cardPerk": "Normal"
   }
 ]
