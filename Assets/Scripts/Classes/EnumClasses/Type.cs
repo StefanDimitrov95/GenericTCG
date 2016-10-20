@@ -5,13 +5,11 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    public enum Class
+    public enum CardType
     {
-        Melee,
-        Ranged,
-        Siege,
-        EnemyMelee,
-        EnemyRanged,
-        EnemySiege
+        Special,
+        CloseCombat,
+        RangedCombat,
+        SiegeCombat
     }
 }

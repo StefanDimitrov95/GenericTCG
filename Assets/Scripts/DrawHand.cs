@@ -50,6 +50,7 @@ public class DrawHand : MonoBehaviour
         cardObj.GetComponent<Image>().sprite = cardToBeInstanciated.Sprite;
         cardObj.name = cardToBeInstanciated.Title;
         cardObj.GetComponent<Draggable>().currentCard = cardToBeInstanciated;
+        cardObj.GetComponent<PointerHandler>().currentCard = cardToBeInstanciated;
     }
 
     private void UpdateDeckLabel()

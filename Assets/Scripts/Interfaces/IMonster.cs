@@ -4,6 +4,6 @@
     {
         int AttackValue { get; set; }
 
-        Class CardClass { get; set; }
+        //Class CardClass { get; set; }
     }
 }
