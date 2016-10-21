@@ -16,9 +16,9 @@ namespace Assets.Scripts.Classes
 
         public override void OnDropEffect()
         {                                
-            for (int i = 0; i < ToRow.currentRow.cardsOnRow.Count; i++)
+            for (int i = 0; i < ToRow.currentRow.CardsOnRow.Count; i++)
             {
-               (ToRow.currentRow.cardsOnRow[i] as UnitCard).AttackValue++;
+               (ToRow.currentRow.CardsOnRow[i] as UnitCard).AttackValue++;
             }
 
             AddCardToRow(this);

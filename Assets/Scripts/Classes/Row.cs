@@ -19,14 +19,14 @@ namespace Assets.Scripts
 
         public GameObject TextBoxOfRow { get; set; }
 
-        public List<Card> cardsOnRow { get; set; }
+        public List<Card> CardsOnRow { get; set; }
 
-        public List<MonsterAbility> abilityEffectOnRow;
+        public List<MonsterAbility> AbilityEffectOnRow;
 
         public Row(string name)
         {
-            abilityEffectOnRow = new List<MonsterAbility>();
-            cardsOnRow = new List<Card>();
+            AbilityEffectOnRow = new List<MonsterAbility>();
+            CardsOnRow = new List<Card>();
             RowAttackValue = 0;
             switch (name)
             {
@@ -103,7 +103,7 @@ namespace Assets.Scripts
         {
             int totalPowerOfRow = 0;
 
-            foreach (UnitCard unitCard in cardsOnRow)
+            foreach (UnitCard unitCard in CardsOnRow)
             {
                 totalPowerOfRow += unitCard.AttackValue;
             }
@@ -118,7 +118,7 @@ namespace Assets.Scripts
         
         public void AddMoraleBoostToRow()
         {
-            abilityEffectOnRow.Add(MonsterAbility.MoraleBoost);
+            AbilityEffectOnRow.Add(MonsterAbility.MoraleBoost);
         }  
     }
 }

@@ -12,6 +12,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public Card currentCard;
    
     private GameObject placeholder;
+    private PlayerHand hand;
 
     void Start()
     {       
@@ -58,6 +59,9 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
         if (cardPlayed)
         {
+            hand = GameObject.Find("Hand").GetComponent<PlayerHand>();
+            hand.CardsInHand.Remove(currentCard);
+            hand.UpdateHandLabel();
             Destroy(this);
         }
 

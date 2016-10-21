@@ -1,8 +1,10 @@
 ﻿
+using Assets.Scripts.Classes;
+using UnityEngine;
+
 namespace Assets.Scripts
 {
-    using Assets.Scripts.Classes;
-    using UnityEngine;
+
     
     public abstract class Card : ICard
     {

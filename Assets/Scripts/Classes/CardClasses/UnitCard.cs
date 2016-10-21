@@ -1,10 +1,9 @@
-﻿
+﻿using Assets.Scripts.Classes;
+using Assets.Scripts.Classes.EnumClasses;
+using UnityEngine;
 
 namespace Assets.Scripts
 {
-    using Assets.Scripts.Classes;
-    using Assets.Scripts.Classes.EnumClasses;
-    using UnityEngine;
 
     public abstract class UnitCard : Card, IMonster
     {
@@ -41,15 +40,15 @@ namespace Assets.Scripts
             }
         }
 
-        protected void  AddCardToRow(Card card)
+        protected void AddCardToRow(Card card)
         {
-            ToRow.currentRow.cardsOnRow.Add(card);
-            Debug.Log(ToRow.currentRow.CurrentRow.name + " has " + ToRow.currentRow.cardsOnRow.Count + " cards");
+            ToRow.currentRow.CardsOnRow.Add(card);
+            Debug.Log(ToRow.currentRow.CurrentRow.name + " has " + ToRow.currentRow.CardsOnRow.Count + " cards");
         }
 
         protected void UpdateAttackForMoraleBoost()
         {
-            this.AttackValue += ToRow.currentRow.abilityEffectOnRow.Count;
+            this.AttackValue += ToRow.currentRow.AbilityEffectOnRow.Count;
         }
     }
 }

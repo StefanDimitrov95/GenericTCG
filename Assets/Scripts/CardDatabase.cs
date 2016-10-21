@@ -9,37 +9,37 @@ using Assets.Scripts.Classes.EnumClasses;
 
 public class CardDatabase : MonoBehaviour {
 
-    public List<Card> database { get; set; }
-    private JsonData cardData;
-    private UnitCardFactory unitCardFactory;
+    public List<Card> Database { get; set; }
+    private JsonData CardData;
+    private UnitCardFactory UnitCardFactory;
 
     void Start()
     {
-        cardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/Cards.json"));
+        CardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/Cards.json"));
         ConstructCardDatabase();        
     }
 
     public Card FetchCardById(int id)
     {
-        for (int i = 0; i < database.Count; i++)
+        for (int i = 0; i < Database.Count; i++)
         {
-            if (database[i].ID == id)
+            if (Database[i].ID == id)
             {
-                return database[i];
+                return Database[i];
             }
         }
         return null;
     }
     void ConstructCardDatabase()
     {
-        database = new List<Card>();
-        for (int i = 0; i < cardData.Count; i++)
+        Database = new List<Card>();
+        for (int i = 0; i < CardData.Count; i++)
         {
-            int id = (int)cardData[i]["id"];
-            string title = cardData[i]["title"].ToString();
-            Faction faction = (Faction)System.Enum.Parse(typeof(Faction), cardData[i]["faction"].ToString(), true);
-            CardType cardType = (CardType)System.Enum.Parse(typeof(CardType), cardData[i]["type"].ToString(), true);
-            string slug = cardData[i]["slug"].ToString();
+            int id = (int)CardData[i]["id"];
+            string title = CardData[i]["title"].ToString();
+            Faction faction = (Faction)System.Enum.Parse(typeof(Faction), CardData[i]["faction"].ToString(), true);
+            CardType cardType = (CardType)System.Enum.Parse(typeof(CardType), CardData[i]["type"].ToString(), true);
+            string slug = CardData[i]["slug"].ToString();
 
             if (cardType == CardType.Special)
             {
@@ -48,11 +48,11 @@ public class CardDatabase : MonoBehaviour {
             }
             else 
             {
-                int attackValue = (int)cardData[i]["attackValue"];
-                MonsterAbility cardAbility = (MonsterAbility)System.Enum.Parse(typeof(MonsterAbility), cardData[i]["ability"].ToString(), true);
-                unitCardFactory = new UnitCardFactory();
+                int attackValue = (int)CardData[i]["attackValue"];
+                MonsterAbility cardAbility = (MonsterAbility)System.Enum.Parse(typeof(MonsterAbility), CardData[i]["ability"].ToString(), true);
+                UnitCardFactory = new UnitCardFactory();
                 //Add monster card to database
-                database.Add(unitCardFactory.CreateUnitCard(id, title, cardType, faction, slug, attackValue, cardAbility));
+                Database.Add(UnitCardFactory.CreateUnitCard(id, title, cardType, faction, slug, attackValue, cardAbility));
             }          
         }
     }

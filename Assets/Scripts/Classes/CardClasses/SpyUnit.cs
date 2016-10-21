@@ -30,7 +30,7 @@ namespace Assets.Scripts.Classes
 
         public override void OnDropEffect()
         {
-            DrawHand hnd = GameObject.Find("Deck").GetComponent<DrawHand>();
+            PlayerHand hnd = GameObject.Find("Hand").GetComponent<PlayerHand>();
             hnd.DrawExtraCards(2);
 
             UpdateAttackForMoraleBoost();
