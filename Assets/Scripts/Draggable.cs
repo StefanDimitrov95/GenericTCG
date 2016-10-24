@@ -10,24 +10,31 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     public Transform parentToReturnTo;
     public bool cardPlayed = false;
     public Card currentCard;
-   
+    public bool isBeingDragged = false;
+
     private GameObject placeholder;
     private PlayerHand hand;
 
     void Start()
-    {       
+    {
         //Debug.Log(currentCard.ToString());
+    }
+
+    public void ReturnCardToHand()
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        OnEndDrag(eventData);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
     {
+        isBeingDragged = true;
         placeholder = new GameObject();
         placeholder.transform.SetParent(this.transform.parent);
 
         LayoutElement le = placeholder.AddComponent<LayoutElement>();
         le.preferredWidth = this.GetComponent<LayoutElement>().preferredWidth;
         le.preferredHeight = this.GetComponent<LayoutElement>().preferredHeight;
-
 
         placeholder.transform.SetSiblingIndex(this.transform.GetSiblingIndex());
 
@@ -47,14 +54,20 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     }
 
     public void OnEndDrag(PointerEventData eventData)
-    {       
+    {
+        if (placeholder == null || !isBeingDragged)
+        {
+            return;
+        }
+
         CardScaling.DownscaleCard(this);
+        isBeingDragged = false;
+
         this.transform.SetParent(parentToReturnTo);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
         this.transform.SetSiblingIndex(placeholder.transform.GetSiblingIndex());
 
         Destroy(placeholder);
-        
         AnimateRowOnEndDrag();
 
         if (cardPlayed)
@@ -64,23 +77,22 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             hand.UpdateHandLabel();
             Destroy(this);
         }
-
     }
 
     private void AnimateRowOnBeginDrag()
     {
         if (currentCard.Type != CardType.Special)
         {
-           currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.enabled = true;
-           currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
-        }       
+            currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.enabled = true;
+            currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
+        }
     }
 
     private void AnimateRowOnEndDrag()
     {
         currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.Play("OnEndDrag");
     }
-  
-    
-  
+
+
+
 }

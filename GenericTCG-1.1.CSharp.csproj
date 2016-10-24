@@ -68,29 +68,32 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BattleStatesLogic\PlayerTurn.cs" />
     <Compile Include="Assets\Scripts\CardDatabase.cs" />
     <Compile Include="Assets\Scripts\CardScaling.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Card.cs" />
-    <Compile Include="Assets\Scripts\Classes\EnumClasses\Faction.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\MagicCard.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\UnitCard.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\MoraleBoostUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\NormalUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\EnumClasses\MonsterAbility.cs" />
-    <Compile Include="Assets\Scripts\Classes\Row.cs" />
-    <Compile Include="Assets\Scripts\Classes\EnumClasses\RowClass.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\SpyUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\UnitCard.cs" />
+    <Compile Include="Assets\Scripts\Classes\EnumClasses\BattleState.cs" />
+    <Compile Include="Assets\Scripts\Classes\EnumClasses\Faction.cs" />
+    <Compile Include="Assets\Scripts\Classes\EnumClasses\MonsterAbility.cs" />
+    <Compile Include="Assets\Scripts\Classes\EnumClasses\RowClass.cs" />
     <Compile Include="Assets\Scripts\Classes\EnumClasses\Type.cs" />
+    <Compile Include="Assets\Scripts\Classes\Row.cs" />
     <Compile Include="Assets\Scripts\Classes\UnitCardFactory.cs" />
     <Compile Include="Assets\Scripts\Draggable.cs" />
-    <Compile Include="Assets\Scripts\DrawHand.cs" />
     <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ICard.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMagic.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMonster.cs" />
+    <Compile Include="Assets\Scripts\PlayerDeck.cs" />
+    <Compile Include="Assets\Scripts\PlayerHand.cs" />
     <Compile Include="Assets\Scripts\PointerHandler.cs" />
     <Compile Include="Assets\Scripts\Tooltip.cs" />
+    <Compile Include="Assets\Scripts\TurnBasedStateMachine.cs" />
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

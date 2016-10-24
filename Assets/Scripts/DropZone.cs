@@ -24,13 +24,16 @@ public class DropZone : MonoBehaviour, IDropHandler
     {
         Debug.Log("Dropped");
         Draggable draggedCard = eventData.pointerDrag.GetComponent<Draggable>();
-
+        if (draggedCard.gameObject.transform.parent == GameObject.Find("Hand").transform)
+        {
+            return;
+        }
         CardEffectOnDrop(draggedCard);
         DestroyCard(draggedCard);
     }
 
     void CardEffectOnDrop(Draggable draggedCard)
-    {
+    {       
         string draggedCardRow = draggedCard.currentCard.GetToRowName();
 
         if (draggedCardRow == this.name)
