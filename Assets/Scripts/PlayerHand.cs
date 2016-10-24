@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine.UI;
@@ -24,6 +23,7 @@ public class PlayerHand : MonoBehaviour
         foreach (Card card in this.CardsInHand)
         {
             InstanciateCardToHand(card);
+            Debug.Log(card);
         }
 
         UpdateHandLabel();

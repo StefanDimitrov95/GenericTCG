@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
 using System.Linq;
+using System;
 
 public class PlayerDeck : MonoBehaviour
 {
@@ -15,16 +15,28 @@ public class PlayerDeck : MonoBehaviour
 
     void Start()
     {
-        CardDatabase = GetComponent<CardDatabase>();
+        CardDatabase = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
+        ShuffleDeck(CardDatabase.Database);
         Deck = CardDatabase.Database.Take(drawAmount).ToList();
-        Deck.Sort((x, y) => Random.value < 0.5f ? -1 : 1);
-
-        UpdateDeckLabel();
     }
 
 
     public void UpdateDeckLabel()
     {
         this.GetComponent<Text>().text = Deck.Count.ToString();
+    }
+
+    private void ShuffleDeck(List<Card> toShuffle)
+    {
+        System.Random rnd = new System.Random(DateTime.Now.Millisecond);
+        int count = toShuffle.Count;
+        while (count > 1)
+        {
+            int randomDraw = rnd.Next(0, count);
+            Card tmp = toShuffle[randomDraw];
+            toShuffle[randomDraw] = toShuffle[count - 1];
+            toShuffle[count - 1] = tmp;
+            count--;
+        }
     }
 }
