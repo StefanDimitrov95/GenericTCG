@@ -6,7 +6,7 @@ using System.Text;
 
 namespace Assets.Scripts
 {
-    public class  MagicCard : Card, IMagic
+    public abstract class  MagicCard : Card, IMagic
     {
         public string Effect { get; set; }
 
@@ -19,11 +19,6 @@ namespace Assets.Scripts
         public override string ToString()
         {
             return base.ToString() + string.Format(", {0}", Effect);
-        }
-
-        public override void OnDropEffect()
-        {
-            throw new NotImplementedException();
-        }
+        }     
     }
 }

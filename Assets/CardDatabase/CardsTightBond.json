@@ -1,0 +1,66 @@
+[
+ {
+    "id":1,
+    "title":"Eskel",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"eskel",
+    "attackValue": 5,
+    "ability": "TightBond"
+  },
+  {
+    "id": 2,
+    "title": "Eskel",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 5,
+    "ability": "TightBond"
+  },
+  {
+    "id":3,
+    "title":"Ice Giant",
+    "type": "SiegeCombat",
+    "faction": "Neutral",
+    "slug":"ice_giant",
+    "attackValue":5,
+     "ability": "TightBond"
+  },
+  {
+    "id":4,
+    "title":"Eskel",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"lambert",
+    "attackValue":5,
+    "ability": "TightBond"
+  },
+  {
+    "id": 5,
+    "title": "Wyvern",
+    "type": "RangedCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 4,
+    "ability": "TightBond"
+  },
+  {
+    "id": 6,
+    "title": "Wyvern",
+    "type": "RangedCombat",
+    "faction": "Neutral",
+    "slug": "dandelion",
+    "attackValue": 4,
+    "ability": "TightBond"
+  },
+  {
+    "id": 7,
+    "title": "Wyvern",
+    "type": "RangedCombat",
+    "faction": "Neutral",
+    "slug": "dagon",
+    "attackValue": 4,
+    "ability": "TightBond"
+  }
+  
+]

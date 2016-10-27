@@ -19,6 +19,11 @@ public class DropZone : MonoBehaviour, IDropHandler
         animator = this.GetComponent<Animator>();
         animator.enabled = false;                          
     }
+
+    public List<Card> GetCardsByNameFromRow(string title)
+    {
+        return currentRow.GetCardsByNameFromRow(title);
+    }
    
     public void OnDrop(PointerEventData eventData)
     {

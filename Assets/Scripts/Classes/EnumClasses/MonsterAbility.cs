@@ -11,7 +11,7 @@ namespace Assets.Scripts.Classes.EnumClasses
         Spy,
         MoraleBoost,
         Medic,
-        TighBond,
+        TightBond,
         Hero,
         Agile,
         Muster

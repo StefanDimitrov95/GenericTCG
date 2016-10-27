@@ -21,7 +21,10 @@ namespace Assets.Scripts.Classes
             {
                 unitCard = new MoraleBoostUnit(id, title, type, faction, slug, attackValue);
             }
-
+            if (ability == MonsterAbility.TightBond)
+            {
+                unitCard = new TightBondUnit(id, title, type, faction, slug, attackValue);
+            }
             return unitCard;
         }
     }

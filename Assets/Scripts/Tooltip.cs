@@ -30,18 +30,19 @@ public class Tooltip : MonoBehaviour {
 
     public void ConstructDataString()
     {
-        if (card.Type != CardType.Special)
-        {
-            data = "<color=#acb939><b> \t\t\t\t" + card.Title + "</b></color>" +
-            "\n\nAttack Power: " + "<color=#e14c43><b>" + (card as UnitCard).AttackValue + "</b></color>" +
-            "\nType: " + "<color=#3770d2>" + (card as UnitCard).Type + "</color>" +
-            "\nAbility: " + "<color=#3770d2>" + (card as UnitCard).Ability + "</color>";
-        }
-        else
-        {
-            data = "<color=#acb939><b> \t\t\t\t" + card.Title + "</b></color>" +
-               "\n\nEffect: " + "<color=#e14c43><b>" + (card as MagicCard).Effect + "</color>";
-        }
+        data = card.ConstructCardData();
+        //if (card.Type != CardType.Special)
+        //{
+        //    data = "<color=#acb939><b> \t\t\t\t" + card.Title + "</b></color>" +
+        //    "\n\nAttack Power: " + "<color=#e14c43><b>" + (card as UnitCard).AttackValue + "</b></color>" +
+        //    "\nType: " + "<color=#3770d2>" + (card as UnitCard).Type + "</color>" +
+        //    "\nAbility: " + "<color=#3770d2>" + (card as UnitCard).Ability + "</color>";
+        //}
+        //else
+        //{
+        //    data = "<color=#acb939><b> \t\t\t\t" + card.Title + "</b></color>" +
+        //       "\n\nEffect: " + "<color=#e14c43><b>" + (card as MagicCard).Effect + "</color>";
+        //}
     }
 
     void DisplayData()

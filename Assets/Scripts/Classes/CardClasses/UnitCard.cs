@@ -11,9 +11,12 @@ namespace Assets.Scripts
 
         public MonsterAbility Ability { get; set; }
 
+        internal int originalAttack;
+
         public UnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue)
             : base(id, title, type, faction, slug)
         {
+            originalAttack = attackValue;
             this.AttackValue = attackValue;            
             //this.Ability = ability;
             FindToRowField();

@@ -82,6 +82,13 @@ namespace Assets.Scripts
             }
         }
 
+        public List<Card> GetCardsByNameFromRow(string title)
+        {
+            List<Card> cards = new List<Card>();
+            cards = CardsOnRow.FindAll(x => x.Title == title);
+            return cards;
+        }
+
         //public void UpdateAttackValueOfRow(Card draggedCard)
         //{
         //    if (draggedCard.Type != CardType.Special)

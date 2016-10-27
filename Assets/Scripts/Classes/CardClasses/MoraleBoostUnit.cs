@@ -14,6 +14,16 @@ namespace Assets.Scripts.Classes
             Ability = MonsterAbility.MoraleBoost;
         }
 
+        public override string ConstructCardData()
+        {
+            char modifiedAttack = this.AttackValue != originalAttack ? '*' : ' ';
+            string data= "<color=#acb939><b> \t\t\t\t" + this.Title + "</b></color>" +
+            "\n\nAttack Power: " + "<color=#e14c43><b>" + this.AttackValue + modifiedAttack + "</b></color>" +
+            "\nType: " + "<color=#3770d2>" + this.Type + "</color>" +
+            "\nAbility: " + "<color=#3770d2>" + this.Ability + "</color>";
+            return data;
+        }
+
         public override void OnDropEffect()
         {                                
             for (int i = 0; i < ToRow.currentRow.CardsOnRow.Count; i++)

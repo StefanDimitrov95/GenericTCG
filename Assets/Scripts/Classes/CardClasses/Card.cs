@@ -34,6 +34,8 @@ namespace Assets.Scripts
 
         public abstract void OnDropEffect();
 
+        public abstract string ConstructCardData();
+
         public string GetToRowName()
         {
             return ToRow.currentRow.CurrentRow.name;
