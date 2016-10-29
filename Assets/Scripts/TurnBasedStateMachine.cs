@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.BattleStatesLogic;
 using Assets.Scripts.Classes.EnumClasses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -12,10 +8,12 @@ namespace Assets.Scripts
     {
         private BattleState currentState;
         private GameObject playerHand;
+        private GameObject enemyHand;
 
         public void Start()
         {
             playerHand = GameObject.Find("Hand");
+            enemyHand = GameObject.Find("EnemyDeck");
             currentState = BattleState.Start;
         }
 
@@ -28,7 +26,7 @@ namespace Assets.Scripts
                     {
                         //Initialize enemy player deck, name, etc
                         //Decide who goes first
-                        currentState = BattleState.PlayerTurn;
+                        currentState = DecideWhoGoesFirst();
                         break;
                     }
                 case BattleState.PlayerTurn:
@@ -40,6 +38,7 @@ namespace Assets.Scripts
                 case BattleState.EnemyTurn:
                     {
                         //enemy turn logic
+                        EnemyTurn.Logic(ref enemyHand, ref currentState);
                         break;
                     }
                 case BattleState.CalculateTurn:
@@ -59,6 +58,12 @@ namespace Assets.Scripts
                 default:
                     break;
             }
+        }
+
+        private static BattleState DecideWhoGoesFirst()
+        {
+            System.Random rnd = new System.Random();
+            return rnd.NextDouble() >= 0.5 ? BattleState.PlayerTurn : BattleState.EnemyTurn;
         }
     }
 }

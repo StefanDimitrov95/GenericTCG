@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine.UI;
 using System.Linq;
+using System;
 
 public class EnemyHand : MonoBehaviour
 {
@@ -34,5 +35,26 @@ public class EnemyHand : MonoBehaviour
     {
         HandLabel = GameObject.Find("EnemyHandLabel").GetComponent<Text>();
         HandLabel.text = CardsInHand.Count.ToString();
+    }
+
+    public void PlayCard()
+    {
+        Card cardToBePlayed = this.CardsInHand[0];
+        if (cardToBePlayed is UnitCard)
+        {
+            InstantiateEnemyUnitCard((UnitCard)cardToBePlayed);
+        }
+        UpdateHandLabel();
+        EnemyDeck.UpdateDeckLabel();
+    }
+
+    private void InstantiateEnemyUnitCard(UnitCard card)
+    {
+        GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
+        cardObj.GetComponent<Image>().sprite = card.Sprite;
+        cardObj.transform.SetParent(card.MoveToRow());
+        cardObj.name = String.Format("{0},{1}", card.ID, card.Title);
+        cardObj.GetComponent<PointerHandler>().CurrentCard = card;
+        CardsInHand.Remove(card);
     }
 }

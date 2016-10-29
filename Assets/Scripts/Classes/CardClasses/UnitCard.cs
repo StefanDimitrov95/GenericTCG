@@ -53,5 +53,17 @@ namespace Assets.Scripts
         {
             this.AttackValue += ToRow.currentRow.AbilityEffectOnRow.Count;
         }
+
+        public virtual Transform MoveToRow()
+        {
+            string enemyRowName = "Enemy" + this.ToRow.name;
+            base.ToRow = GameObject.Find(enemyRowName).GetComponent<DropZone>();
+
+            UpdateAttackForMoraleBoost();
+            AddCardToRow(this);
+            base.ToRow.currentRow.SetAttackValueOfRow();
+
+            return (GameObject.Find(enemyRowName).transform);
+        }
     }
 }

@@ -47,5 +47,21 @@ namespace Assets.Scripts.Classes
             AddCardToRow(this);
             base.ToRow.currentRow.SetAttackValueOfRow();
         }
+
+        public override Transform MoveToRow()
+        {
+            EnemyHand ehnd = GameObject.Find("EnemyDeck").GetComponent<EnemyHand>();
+            ehnd.DrawExtraCards(2);
+
+            string spyRowName = this.ToRow.name.Substring(5);
+            GameObject enemySpyRow = GameObject.Find(spyRowName);
+            this.ToRow = enemySpyRow.GetComponent<DropZone>();
+
+            UpdateAttackForMoraleBoost();
+            AddCardToRow(this);
+            base.ToRow.currentRow.SetAttackValueOfRow();
+
+            return enemySpyRow.transform;
+        }
     }
 }
