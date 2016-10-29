@@ -9,21 +9,11 @@ namespace Assets.Scripts.Classes
 {
     public class MoraleBoostUnit : UnitCard
     {
-        public MoraleBoostUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue)
-            : base(id, title, type, faction, slug, attackValue)
+        public MoraleBoostUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
+            : base(id, title, type, faction, slug, attackValue, ability)
         {
-            Ability = MonsterAbility.MoraleBoost;
-        }
-
-        public override string ConstructCardData()
-        {
-            char modifiedAttack = this.AttackValue != originalAttack ? '*' : ' ';
-            string data= "<color=#acb939><b> \t\t\t\t" + this.Title + "</b></color>" +
-            "\n\nAttack Power: " + "<color=#e14c43><b>" + this.AttackValue + modifiedAttack + "</b></color>" +
-            "\nType: " + "<color=#3770d2>" + this.Type + "</color>" +
-            "\nAbility: " + "<color=#3770d2>" + this.Ability + "</color>";
-            return data;
-        }
+            
+        }   
 
         public override void OnDropEffect()
         {                                

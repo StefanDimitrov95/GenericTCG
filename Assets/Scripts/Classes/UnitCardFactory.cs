@@ -11,19 +11,19 @@ namespace Assets.Scripts.Classes
 
             if (ability == MonsterAbility.None)
             {
-                unitCard = new NormalUnit(id, title, type, faction, slug, attackValue);
+                unitCard = new NormalUnit(id, title, type, faction, slug, attackValue, ability);
             }
             if (ability == MonsterAbility.Spy)
             {
-                unitCard = new SpyUnit(id, title, type, faction, slug, attackValue);
+                unitCard = new SpyUnit(id, title, type, faction, slug, attackValue, ability);
             }
             if (ability == MonsterAbility.MoraleBoost)
             {
-                unitCard = new MoraleBoostUnit(id, title, type, faction, slug, attackValue);
+                unitCard = new MoraleBoostUnit(id, title, type, faction, slug, attackValue, ability);
             }
             if (ability == MonsterAbility.TightBond)
             {
-                unitCard = new TightBondUnit(id, title, type, faction, slug, attackValue);
+                unitCard = new TightBondUnit(id, title, type, faction, slug, attackValue, ability);
             }
             return unitCard;
         }

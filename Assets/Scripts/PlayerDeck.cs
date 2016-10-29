@@ -16,8 +16,8 @@ public class PlayerDeck : MonoBehaviour
     void Start()
     {
         CardDatabase = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
-        ShuffleDeck(CardDatabase.Database);
-        Deck = CardDatabase.Database.Take(drawAmount).ToList();
+        ShuffleDeck(CardDatabase.PlayerDatabase);
+        Deck = CardDatabase.PlayerDatabase.Take(drawAmount).ToList();
     }
 
 

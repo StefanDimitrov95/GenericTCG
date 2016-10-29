@@ -82,10 +82,10 @@ namespace Assets.Scripts
             }
         }
 
-        public List<Card> GetCardsByNameFromRow(string title)
+        public List<Card> GetCardsByNameFromRow(string title, MonsterAbility ability)
         {
             List<Card> cards = new List<Card>();
-            cards = CardsOnRow.FindAll(x => x.Title == title);
+            cards = CardsOnRow.FindAll(x => x.Title == title && (x as UnitCard).Ability == ability);
             return cards;
         }
 

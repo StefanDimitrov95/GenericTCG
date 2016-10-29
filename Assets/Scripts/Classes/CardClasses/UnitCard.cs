@@ -13,12 +13,12 @@ namespace Assets.Scripts
 
         internal int originalAttack;
 
-        public UnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue)
+        public UnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
             : base(id, title, type, faction, slug)
         {
             originalAttack = attackValue;
             this.AttackValue = attackValue;            
-            //this.Ability = ability;
+            this.Ability = ability;
             FindToRowField();
         }
 
@@ -41,6 +41,16 @@ namespace Assets.Scripts
             {
                 base.ToRow = GameObject.Find("SiegeRow").GetComponent<DropZone>();
             }
+        }
+
+        public override string ConstructCardData()
+        {
+            char modifiedAttack = this.AttackValue != originalAttack ? '*' : ' ';
+            string data = "<color=#acb939><b> \t\t\t\t" + this.Title + "</b></color>" +
+            "\n\nAttack Power: " + "<color=#e14c43><b>" + this.AttackValue + modifiedAttack + "</b></color>" +
+            "\nType: " + "<color=#3770d2>" + this.Type + "</color>" +
+            "\nAbility: " + "<color=#3770d2>" + this.Ability + "</color>";
+            return data;
         }
 
         protected void AddCardToRow(Card card)

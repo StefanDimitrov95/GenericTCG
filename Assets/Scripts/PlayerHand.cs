@@ -4,8 +4,9 @@ using Assets.Scripts;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using Assets.Scripts.Interfaces;
 
-public class PlayerHand : MonoBehaviour
+public class PlayerHand : MonoBehaviour, IHand
 {
     public List<Card> CardsInHand;
 

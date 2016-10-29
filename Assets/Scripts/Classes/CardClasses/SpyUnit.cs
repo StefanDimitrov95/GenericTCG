@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Classes.EnumClasses;
+using Assets.Scripts.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,9 @@ namespace Assets.Scripts.Classes
 {
     public class SpyUnit : UnitCard
     {
-        public SpyUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue)
-            : base(id, title, type, faction, slug, attackValue)
-        {
-            Ability = MonsterAbility.Spy;
-
+        public SpyUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
+            : base(id, title, type, faction, slug, attackValue, ability)
+        {          
             if (this.Type == CardType.CloseCombat)
             {
                 base.ToRow = GameObject.Find("EnemyMeleeRow").GetComponent<DropZone>();
@@ -27,40 +26,31 @@ namespace Assets.Scripts.Classes
                 base.ToRow = GameObject.Find("EnemySiegeRow").GetComponent<DropZone>();
             }
         }
-
-        public override string ConstructCardData()
-        {
-            char modifiedAttack = this.AttackValue != originalAttack ? '*' : ' ';
-            string data = "<color=#acb939><b> \t\t\t\t" + this.Title + "</b></color>" +
-            "\n\nAttack Power: " + "<color=#e14c43><b>" + this.AttackValue + modifiedAttack + "</b></color>" +
-            "\nType: " + "<color=#3770d2>" + this.Type + "</color>" +
-            "\nAbility: " + "<color=#3770d2>" + this.Ability + "</color>";
-            return data;
-        }
-
+        
         public override void OnDropEffect()
         {
-            PlayerHand hnd = GameObject.Find("Hand").GetComponent<PlayerHand>();
-            hnd.DrawExtraCards(2);
+            PlayerHand hand = GameObject.Find("Hand").GetComponent<PlayerHand>();
+            SpyEffect(hand);
+        }
+
+        public void SpyEffect(IHand hand)
+        {           
+            hand.DrawExtraCards(2);
 
             UpdateAttackForMoraleBoost();
             AddCardToRow(this);
             base.ToRow.currentRow.SetAttackValueOfRow();
         }
-
+     
         public override Transform MoveToRow()
-        {
-            EnemyHand ehnd = GameObject.Find("EnemyDeck").GetComponent<EnemyHand>();
-            ehnd.DrawExtraCards(2);
-
+        {      
             string spyRowName = this.ToRow.name.Substring(5);
             GameObject enemySpyRow = GameObject.Find(spyRowName);
             this.ToRow = enemySpyRow.GetComponent<DropZone>();
 
-            UpdateAttackForMoraleBoost();
-            AddCardToRow(this);
-            base.ToRow.currentRow.SetAttackValueOfRow();
-
+            EnemyHand ehnd = GameObject.Find("EnemyDeck").GetComponent<EnemyHand>();
+            SpyEffect(ehnd);
+            
             return enemySpyRow.transform;
         }
     }

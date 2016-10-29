@@ -6,6 +6,7 @@ using Assets.Scripts;
 using UnityEngine.UI;
 using System.Collections.Generic;
 using Assets.Scripts.Classes;
+using Assets.Scripts.Classes.EnumClasses;
 
 public class DropZone : MonoBehaviour, IDropHandler
 {
@@ -20,9 +21,9 @@ public class DropZone : MonoBehaviour, IDropHandler
         animator.enabled = false;                          
     }
 
-    public List<Card> GetCardsByNameFromRow(string title)
+    public List<Card> GetCardsByNameFromRow(string title, MonsterAbility ability)
     {
-        return currentRow.GetCardsByNameFromRow(title);
+        return currentRow.GetCardsByNameFromRow(title, ability);
     }
    
     public void OnDrop(PointerEventData eventData)

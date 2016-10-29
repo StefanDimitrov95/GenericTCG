@@ -4,18 +4,19 @@ using Assets.Scripts;
 using UnityEngine.UI;
 using System.Linq;
 using System;
+using Assets.Scripts.Interfaces;
 
-public class EnemyHand : MonoBehaviour
+public class EnemyHand : MonoBehaviour, IHand
 {
     public List<Card> CardsInHand;
 
-    private PlayerDeck EnemyDeck;
+    private EnemyDeck EnemyDeck;
     private Text HandLabel;
     const int AmountOfCardsToDraw = 7;
 
     void Start()
     {
-        EnemyDeck = GetComponent<PlayerDeck>();
+        EnemyDeck = GetComponent<EnemyDeck>();
         CardsInHand = EnemyDeck.Deck.Take(AmountOfCardsToDraw).ToList();
         EnemyDeck.Deck.RemoveAll(x => CardsInHand.Any(y => y.ID == x.ID));
         UpdateHandLabel();

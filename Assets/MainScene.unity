@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44692528, g: 0.4967872, b: 0.5750856, a: 1}
+  m_IndirectSpecularColor: {r: 0.44692534, g: 0.4967872, b: 0.57508564, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1262,6 +1262,7 @@ GameObject:
   - 222: {fileID: 840656399}
   - 114: {fileID: 840656398}
   - 114: {fileID: 840656403}
+  - 114: {fileID: 840656397}
   m_Layer: 0
   m_Name: EnemyDeck
   m_TagString: Untagged
@@ -1287,6 +1288,17 @@ RectTransform:
   m_AnchoredPosition: {x: 537.9, y: 277.44}
   m_SizeDelta: {x: 43, y: 65.8}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &840656397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840656395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f621e773948223a42ba7c5e04dac1043, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &840656398
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,7 +1373,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840656395}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bc195591879cc440a64e4cd663aaee5, type: 3}
   m_Name: 
