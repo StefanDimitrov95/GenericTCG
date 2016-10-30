@@ -14,6 +14,17 @@ namespace Assets.Scripts.BattleStatesLogic
         {
             EnableDraggableComponent(playerHand);
             HandlePassedTurn(ref playerHand, ref currentState);
+            if (playerHand.GetComponent<PlayerHand>().cardPlayed)
+            {
+                DisableDraggableComponent(playerHand);
+                currentState = BattleState.EnemyTurn;
+                playerHand.GetComponent<PlayerHand>().cardPlayed = false;
+            }
+        }
+
+        public static void HandlePlayedCard()
+        {
+
         }
 
         private static void EnableDraggableComponent(GameObject playerHand)

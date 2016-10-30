@@ -13,13 +13,11 @@
     <TargetFrameworkIdentifier>.NETFramework</TargetFrameworkIdentifier>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Unity Subset v3.5</TargetFrameworkProfile>
-    <CompilerResponseFile>
-    </CompilerResponseFile>
+    <CompilerResponseFile></CompilerResponseFile>
     <UnityProjectType>Game:1</UnityProjectType>
     <UnityBuildTarget>StandaloneWindows:5</UnityBuildTarget>
     <UnityVersion>5.4.1f1</UnityVersion>
-    <RootNamespace>
-    </RootNamespace>
+    <RootNamespace></RootNamespace>
     <LangVersion Condition=" '$(VisualStudioVersion)' != '10.0' ">4</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -68,7 +66,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\BattleStatesLogic\EnemyTurn.cs" />
     <Compile Include="Assets\Scripts\BattleStatesLogic\PlayerTurn.cs" />
+    <Compile Include="Assets\Scripts\Board.cs" />
     <Compile Include="Assets\Scripts\CardDatabase.cs" />
     <Compile Include="Assets\Scripts\CardScaling.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Card.cs" />
@@ -89,7 +89,6 @@
     <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\EnemyDeck.cs" />
     <Compile Include="Assets\Scripts\EnemyHand.cs" />
-    <Compile Include="Assets\Scripts\EnemyTurn.cs" />
     <Compile Include="Assets\Scripts\Interfaces\ICard.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IHand.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMagic.cs" />

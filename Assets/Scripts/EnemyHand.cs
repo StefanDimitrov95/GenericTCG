@@ -47,6 +47,7 @@ public class EnemyHand : MonoBehaviour, IHand
         }
         UpdateHandLabel();
         EnemyDeck.UpdateDeckLabel();
+        GameObject.Find("Board").GetComponent<Board>().UpdateAttackLabels();
     }
 
     private void InstantiateEnemyUnitCard(UnitCard card)

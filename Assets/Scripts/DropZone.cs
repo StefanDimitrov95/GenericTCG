@@ -35,7 +35,7 @@ public class DropZone : MonoBehaviour, IDropHandler
             return;
         }
         CardEffectOnDrop(draggedCard);
-        DestroyCard(draggedCard);
+        DestroyCard(draggedCard);        
     }
 
     void CardEffectOnDrop(Draggable draggedCard)
@@ -45,8 +45,9 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (draggedCardRow == this.name)
         {
             draggedCard.parentToReturnTo = this.transform;
-
+            
             draggedCard.currentCard.OnDropEffect();
+            GameObject.Find("Board").GetComponent<Board>().UpdateAttackLabels();
         }
         
     }
@@ -56,6 +57,7 @@ public class DropZone : MonoBehaviour, IDropHandler
         if (draggedCard.parentToReturnTo.gameObject != GameObject.Find("Hand").gameObject
             && draggedCard.parentToReturnTo.gameObject == GameObject.Find(this.name).gameObject)
         {
+            GameObject.Find("Hand").GetComponent<PlayerHand>().cardPlayed = true;
             draggedCard.cardPlayed = true;
         }
     }

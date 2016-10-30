@@ -9,6 +9,7 @@ using Assets.Scripts.Interfaces;
 public class PlayerHand : MonoBehaviour, IHand
 {
     public List<Card> CardsInHand;
+    public bool cardPlayed = false;
 
     private PlayerDeck PlayerDeck;
     private Text HandLabel;
@@ -55,6 +56,7 @@ public class PlayerHand : MonoBehaviour, IHand
         cardObj.GetComponent<Image>().sprite = cardToBeInstanciated.Sprite;
         cardObj.name = String.Format("{0},{1}", cardToBeInstanciated.ID, cardToBeInstanciated.Title);
         cardObj.GetComponent<Draggable>().currentCard = cardToBeInstanciated;
+        cardObj.GetComponent<Draggable>().enabled = true;
         cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;
     }
 
