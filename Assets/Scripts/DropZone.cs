@@ -21,11 +21,16 @@ public class DropZone : MonoBehaviour, IDropHandler
         animator.enabled = false;                          
     }
 
-    public List<Card> GetCardsByNameFromRow(string title, MonsterAbility ability)
+    public List<UnitCard> GetCardsByNameFromRow(string title, MonsterAbility ability)
     {
         return currentRow.GetCardsByNameFromRow(title, ability);
     }
-   
+
+    public List<UnitCard> GetStrongestUnitCards()
+    {
+        return currentRow.GetStrongestUnitCards();
+    }
+
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Dropped");

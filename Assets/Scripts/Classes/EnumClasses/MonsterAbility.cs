@@ -14,6 +14,7 @@ namespace Assets.Scripts.Classes.EnumClasses
         TightBond,
         Hero,
         Agile,
-        Muster
+        Muster,
+        Scorch
     }
 }

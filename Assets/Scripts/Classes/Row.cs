@@ -19,14 +19,14 @@ namespace Assets.Scripts
 
         public GameObject TextBoxOfRow { get; set; }
 
-        public List<Card> CardsOnRow { get; set; }
+        public List<UnitCard> CardsOnRow { get; set; }
 
         public List<MonsterAbility> AbilityEffectOnRow;
 
         public Row(string name)
         {
             AbilityEffectOnRow = new List<MonsterAbility>();
-            CardsOnRow = new List<Card>();
+            CardsOnRow = new List<UnitCard>();
             RowAttackValue = 0;
             switch (name)
             {
@@ -82,11 +82,17 @@ namespace Assets.Scripts
             }
         }
 
-        public List<Card> GetCardsByNameFromRow(string title, MonsterAbility ability)
+        public List<UnitCard> GetCardsByNameFromRow(string title, MonsterAbility ability)
         {
-            List<Card> cards = new List<Card>();
-            cards = CardsOnRow.FindAll(x => x.Title == title && (x as UnitCard).Ability == ability);
+            List<UnitCard> cards = new List<UnitCard>();
+            cards = CardsOnRow.FindAll(x => x.Title == title && x.Ability == ability);
             return cards;
+        }
+
+        public List<UnitCard> GetStrongestUnitCards()
+        {
+            IEnumerable<UnitCard> sortedByAttack = CardsOnRow.OrderByDescending(x => x.AttackValue);
+            return CardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
         }
 
         //public void UpdateAttackValueOfRow(Card draggedCard)

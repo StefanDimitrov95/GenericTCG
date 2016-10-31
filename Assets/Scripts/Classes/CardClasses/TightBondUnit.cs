@@ -5,7 +5,8 @@ using System;
 using Assets.Scripts.Classes;
 using UnityEngine;
 
-public class TightBondUnit : UnitCard {
+public class TightBondUnit : UnitCard
+{
 
     public TightBondUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
         :base(id, title, type, faction, slug, attackValue, ability)
@@ -33,7 +34,7 @@ public class TightBondUnit : UnitCard {
 
     private void UpdateAttackForTightBond()
     {
-        List<Card> foundCards = ToRow.GetCardsByNameFromRow(this.Title, this.Ability);
+        List<UnitCard> foundCards = ToRow.GetCardsByNameFromRow(this.Title, this.Ability);
         if (foundCards.Count > 1)
         {
             foreach (UnitCard card in foundCards)

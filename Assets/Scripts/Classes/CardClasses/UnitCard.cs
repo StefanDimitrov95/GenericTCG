@@ -53,7 +53,7 @@ namespace Assets.Scripts
             return data;
         }
 
-        protected void AddCardToRow(Card card)
+        protected void AddCardToRow(UnitCard card)
         {
             ToRow.currentRow.CardsOnRow.Add(card);
             Debug.Log(ToRow.currentRow.CurrentRow.name + " has " + ToRow.currentRow.CardsOnRow.Count + " cards");

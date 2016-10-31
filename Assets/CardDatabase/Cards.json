@@ -15,7 +15,7 @@
     "faction": "Neutral",
     "slug": "geralt",
     "attackValue": 15,
-    "ability": "None"
+    "ability": "Scorch"
   },
   {
     "id":3,
@@ -51,7 +51,7 @@
     "faction": "Neutral",
     "slug": "dandelion",
     "attackValue": 5,
-    "ability": "None"
+    "ability": "Scorch"
   },
   {
     "id": 7,
