@@ -15,7 +15,7 @@
     "faction": "Neutral",
     "slug": "geralt",
     "attackValue": 15,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
     "id":3,

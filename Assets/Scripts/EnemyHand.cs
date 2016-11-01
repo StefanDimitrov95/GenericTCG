@@ -54,7 +54,7 @@ public class EnemyHand : MonoBehaviour, IHand
     {
         GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
         cardObj.GetComponent<Image>().sprite = card.Sprite;
-        cardObj.transform.SetParent(card.MoveToRow());
+        cardObj.transform.SetParent(card.PlayEnemyUnitCard());
         cardObj.name = String.Format("{0},{1}", card.ID, card.Title);
         cardObj.GetComponent<PointerHandler>().CurrentCard = card;
         CardsInHand.Remove(card);

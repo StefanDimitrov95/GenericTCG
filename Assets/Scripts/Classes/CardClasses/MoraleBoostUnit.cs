@@ -1,9 +1,4 @@
 ﻿using Assets.Scripts.Classes.EnumClasses;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
 
 namespace Assets.Scripts.Classes
 {
@@ -26,16 +21,6 @@ namespace Assets.Scripts.Classes
             UpdateAttackForMoraleBoost();
             base.ToRow.currentRow.AddMoraleBoostToRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
-        }
-
-        public override Transform MoveToRow()
-        {
-            string enemyRowName = "Enemy" + this.ToRow.name;
-            base.ToRow = GameObject.Find(enemyRowName).GetComponent<DropZone>();
-
-            OnDropEffect();
-
-            return (GameObject.Find(enemyRowName).transform);
         }
     }
 }

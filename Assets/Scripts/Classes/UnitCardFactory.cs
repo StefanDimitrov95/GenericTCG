@@ -29,6 +29,10 @@ namespace Assets.Scripts.Classes
             {
                 unitCard = new ScorchUnit(id, title, type, faction, slug, attackValue, ability);
             }
+            if (ability == MonsterAbility.Medic)
+            {
+                unitCard = new MedicUnit(id, title, type, faction, slug, attackValue, ability);
+            }
             return unitCard;
         }
     }

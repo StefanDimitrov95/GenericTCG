@@ -75,6 +75,7 @@
     <Compile Include="Assets\Scripts\CardScaling.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Card.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\MagicCard.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\MedicUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\MoraleBoostUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\NormalUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\ScorchUnit.cs" />

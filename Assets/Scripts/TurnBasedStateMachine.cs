@@ -33,7 +33,7 @@ namespace Assets.Scripts
                 case BattleState.PlayerTurn:
                     {
                         //player plays a card  
-                        timer = 2;                      
+                        timer = 0;                      
                         PlayerTurn.Logic(ref playerHand, ref currentState);
                         break;
                     }

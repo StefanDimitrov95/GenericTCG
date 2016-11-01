@@ -1,9 +1,7 @@
 ﻿using Assets.Scripts.Classes;
 using Assets.Scripts.Classes.EnumClasses;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -93,6 +91,11 @@ namespace Assets.Scripts
         {
             IEnumerable<UnitCard> sortedByAttack = CardsOnRow.OrderByDescending(x => x.AttackValue);
             return CardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
+        }
+
+        public void AddToRow()
+        {
+            
         }
 
         //public void UpdateAttackValueOfRow(Card draggedCard)

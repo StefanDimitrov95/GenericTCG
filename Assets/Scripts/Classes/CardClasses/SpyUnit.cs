@@ -1,9 +1,5 @@
 ﻿using Assets.Scripts.Classes.EnumClasses;
 using Assets.Scripts.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using UnityEngine;
 
 namespace Assets.Scripts.Classes
@@ -42,7 +38,7 @@ namespace Assets.Scripts.Classes
             base.ToRow.currentRow.SetAttackValueOfRow();
         }
      
-        public override Transform MoveToRow()
+        public override Transform PlayEnemyUnitCard()
         {      
             string spyRowName = this.ToRow.name.Substring(5);
             GameObject enemySpyRow = GameObject.Find(spyRowName);

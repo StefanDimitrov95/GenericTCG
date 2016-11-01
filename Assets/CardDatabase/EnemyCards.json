@@ -15,7 +15,7 @@
     "faction": "Neutral",
     "slug": "geralt",
     "attackValue": 15,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
     "id":3,
@@ -24,7 +24,7 @@
     "faction": "Neutral",
     "slug":"ice_giant",
     "attackValue":5,
-     "ability": "None"
+     "ability": "Spy"
   },
   {
     "id":4,
@@ -33,7 +33,7 @@
     "faction": "Neutral",
     "slug":"lambert",
     "attackValue":5,
-    "ability": "None"
+    "ability": "Spy"
   },
   {
     "id": 5,
@@ -42,7 +42,7 @@
     "faction": "Neutral",
     "slug": "dijkstra",
     "attackValue": 5,
-    "ability": "None"
+    "ability": "Spy"
   },
   {
     "id": 6,
@@ -78,7 +78,7 @@
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
-    "ability": "None"
+    "ability": "Spy"
   },
   {
     "id": 10,
@@ -87,6 +87,6 @@
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
-    "ability": "None"
+    "ability": "MoraleBoost"
   }
 ]
