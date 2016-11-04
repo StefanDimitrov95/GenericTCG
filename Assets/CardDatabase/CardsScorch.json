@@ -1,0 +1,119 @@
+[
+ {
+    "id":1,
+    "title":"Eskel",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"eskel",
+    "attackValue": 15,
+    "ability": "MoraleBoost"
+  },
+  {
+    "id": 2,
+    "title": "Geralt",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 15,
+    "ability": "Medic"
+  },
+  {
+    "id":3,
+    "title":"Ice Giant",
+    "type": "SiegeCombat",
+    "faction": "Neutral",
+    "slug":"ice_giant",
+    "attackValue":5,
+     "ability": "Medic"
+  },
+  {
+    "id":4,
+    "title":"Lambert",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"lambert",
+    "attackValue":5,
+    "ability": "Medic"
+  },
+  {
+    "id": 5,
+    "title": "Dijkstra",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 5,
+    "ability": "Medic"
+  },
+  {
+    "id": 6,
+    "title": "Dandelion",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dandelion",
+    "attackValue": 5,
+    "ability": "Medic"
+  },
+  {
+    "id": 7,
+    "title": "Dagon",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dagon",
+    "attackValue": 15,
+    "ability": "MoraleBoost"
+  },
+  {
+    "id": 8,
+    "title": "Wyvern",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "Medic"
+  },
+  {
+    "id": 9,
+    "title": "Wyvern",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "Spy"
+  },
+  {
+    "id": 10,
+    "title": "Wyvern 2",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 13,
+    "ability": "MoraleBoost"
+  },
+  {
+    "id": 11,
+    "title": "Wyvern 2",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "MoraleBoost"
+  },
+  {
+    "id": 12,
+    "title": "Wyvern 2",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "MoraleBoost"
+  },
+   {
+    "id": 13,
+    "title": "Wyvern 2",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "MoraleBoost"
+  }
+]

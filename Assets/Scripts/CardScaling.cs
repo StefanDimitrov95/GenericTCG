@@ -13,11 +13,15 @@ namespace Assets.Scripts
         public static void UpscaleCard(MonoBehaviour monoBehaviour)
         {
             monoBehaviour.transform.localScale += cardPopUpScale;
+            Debug.Log("LOCAL SCALE:" + monoBehaviour.transform.localScale);
+            Debug.Log("LOSSY SCALE:" + monoBehaviour.transform.lossyScale);
         }
 
         public static void DownscaleCard(MonoBehaviour monoBehaviour)
         {
             monoBehaviour.transform.localScale -= cardPopUpScale;
+            Debug.Log("LOCAL SCALE:" + monoBehaviour.transform.localScale);
+            Debug.Log("LOSSY SCALE:" + monoBehaviour.transform.lossyScale);
         }
     }
 }

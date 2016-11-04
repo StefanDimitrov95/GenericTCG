@@ -8,18 +8,20 @@ namespace Assets.Scripts.Classes
             : base(id, title, type, faction, slug, attackValue, ability)
         {
             
-        }   
+        }
+
+        public override void OnDeath()
+        {
+            base.OnDeath();
+            ToRow.GetComponent<DropZone>().currentRow.RemoveEffectFromRow(MonsterAbility.MoraleBoost);
+            ToRow.GetComponent<DropZone>().currentRow.SetAttackValueOfRow();
+        }
 
         public override void OnDropEffect()
         {                                
-            for (int i = 0; i < ToRow.currentRow.CardsOnRow.Count; i++)
-            {
-               (ToRow.currentRow.CardsOnRow[i] as UnitCard).AttackValue++;
-            }
-
             AddCardToRow(this);
             UpdateAttackForMoraleBoost();
-            base.ToRow.currentRow.AddMoraleBoostToRow();
+            base.ToRow.currentRow.AddMoraleBoostToRow(this);
             base.ToRow.currentRow.SetAttackValueOfRow();
         }
     }

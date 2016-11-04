@@ -16,6 +16,7 @@ namespace Assets.Scripts.Classes
         public override void OnDropEffect()
         {
             AddCardToRow(this);
+            base.ToRow.currentRow.SetAttackValueOfRow();
             GameObject enemyRowObj;
             DiscardPile pile;
             if (this.ToRow.name.StartsWith("Enemy"))
@@ -39,9 +40,9 @@ namespace Assets.Scripts.Classes
             foreach (UnitCard card in strongestCards)
             {
                 pile.AddToDiscardPile(card, enemyRowObj);
-                enemyRow.currentRow.CardsOnRow.Remove(card);
+                enemyRow.currentRow.RemoveUnitCardFromRow(card);
             }
-
+            UpdateAttackForMoraleBoost();
             enemyRow.currentRow.SetAttackValueOfRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
         }

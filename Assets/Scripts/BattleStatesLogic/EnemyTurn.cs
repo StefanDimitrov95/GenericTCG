@@ -16,7 +16,7 @@ namespace Assets.Scripts.BattleStatesLogic
         {
             try
             {
-                enemyHand.GetComponent<EnemyHand>().PlayCard();
+                enemyHand.GetComponent<EnemyHand>().PlayCard();               
             }
             catch (System.ArgumentOutOfRangeException)
             {

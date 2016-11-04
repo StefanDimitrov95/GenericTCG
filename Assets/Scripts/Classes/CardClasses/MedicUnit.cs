@@ -16,6 +16,8 @@ namespace Assets.Scripts.Classes
         public override void OnDropEffect()
         {
             AddCardToRow(this);
+            UpdateAttackForMoraleBoost();
+            base.ToRow.currentRow.SetAttackValueOfRow();
             DiscardPile pile;
 
             if (this.ToRow.name.StartsWith("Enemy"))
@@ -36,8 +38,9 @@ namespace Assets.Scripts.Classes
 
             if (returnedCard.Key is UnitCard)
             {
-                returnedCard.Key.ToRow.currentRow.CardsOnRow.Add((UnitCard)returnedCard.Key);
-                returnedCard.Key.ToRow.currentRow.SetAttackValueOfRow();
+                //returnedCard.Key.ToRow.currentRow.AddUnitCardToRow((UnitCard)returnedCard.Key);
+                //returnedCard.Key.ToRow.currentRow.SetAttackValueOfRow();
+                returnedCard.Key.OnRessuruct();
                 returnedCard.Value.SetActive(true);
             }
 

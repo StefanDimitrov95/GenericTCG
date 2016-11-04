@@ -34,6 +34,10 @@ namespace Assets.Scripts
 
         public abstract void OnDropEffect();
 
+        public abstract void OnDeath();
+
+        public abstract void OnRessuruct();
+
         public abstract string ConstructCardData();
 
         public string GetToRowName()

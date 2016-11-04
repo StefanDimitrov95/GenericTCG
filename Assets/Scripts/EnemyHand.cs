@@ -48,6 +48,7 @@ public class EnemyHand : MonoBehaviour, IHand
         UpdateHandLabel();
         EnemyDeck.UpdateDeckLabel();
         GameObject.Find("Board").GetComponent<Board>().UpdateAttackLabels();
+        Debug.Log("ENEMY PLAYED: " + cardToBePlayed.ToString());
     }
 
     private void InstantiateEnemyUnitCard(UnitCard card)

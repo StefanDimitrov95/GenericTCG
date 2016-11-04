@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Classes;
 using Assets.Scripts.Classes.EnumClasses;
+using System;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -43,6 +44,14 @@ namespace Assets.Scripts
             }
         }
 
+        public override void OnDeath()
+        {
+            this.AttackValue = this.originalAttack;
+            GameObject unitCardObject = GameObject.Find(String.Format("{0},{1}", this.ID, this.Title));
+            unitCardObject.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
+            this.ToRow.GetComponent<DropZone>().currentRow.RemoveUnitCardFromRow(this);
+        }
+
         public override string ConstructCardData()
         {
             char modifiedAttack = this.AttackValue != originalAttack ? '*' : ' ';
@@ -53,10 +62,15 @@ namespace Assets.Scripts
             return data;
         }
 
+        public override void OnRessuruct()
+        {
+            OnDropEffect();
+        }
+
         protected void AddCardToRow(UnitCard card)
         {
-            ToRow.currentRow.CardsOnRow.Add(card);
-            Debug.Log(ToRow.currentRow.CurrentRow.name + " has " + ToRow.currentRow.CardsOnRow.Count + " cards");
+            ToRow.currentRow.AddUnitCardToRow(card);
+            Debug.Log(ToRow.currentRow.ToString());
         }
 
         protected void UpdateAttackForMoraleBoost()

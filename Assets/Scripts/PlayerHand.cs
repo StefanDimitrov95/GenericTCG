@@ -13,7 +13,7 @@ public class PlayerHand : MonoBehaviour, IHand
 
     private PlayerDeck PlayerDeck;
     private Text HandLabel;
-    const int AmountOfCardsToDraw = 7;
+    const int AmountOfCardsToDraw = 11;
 
     void Start()
     {
@@ -57,7 +57,7 @@ public class PlayerHand : MonoBehaviour, IHand
         cardObj.name = String.Format("{0},{1}", cardToBeInstanciated.ID, cardToBeInstanciated.Title);
         cardObj.GetComponent<Draggable>().currentCard = cardToBeInstanciated;
         cardObj.GetComponent<Draggable>().enabled = true;
-        cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;
+        cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;       
     }
 
     public void UpdateHandLabel()

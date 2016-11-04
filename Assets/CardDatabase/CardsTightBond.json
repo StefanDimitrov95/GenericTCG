@@ -61,6 +61,41 @@
     "slug": "dagon",
     "attackValue": 4,
     "ability": "TightBond"
+  },
+  {
+    "id":8,
+    "title":"Ice Giant",
+    "type": "SiegeCombat",
+    "faction": "Neutral",
+    "slug":"ice_giant",
+    "attackValue":5,
+     "ability": "Medic"
+  },
+  {
+    "id":9,
+    "title":"Lambert",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"lambert",
+    "attackValue":5,
+    "ability": "Medic"
+  },
+  {
+    "id": 10,
+    "title": "Dijkstra",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 5,
+    "ability": "Medic"
+  },
+  {
+    "id": 11,
+    "title": "Geralt",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 15,
+    "ability": "Medic"
   }
-  
 ]

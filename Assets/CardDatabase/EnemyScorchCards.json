@@ -1,0 +1,92 @@
+[
+ {
+    "id":12,
+    "title":"Eskel",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"eskel",
+    "attackValue": 5,
+    "ability": "Scorch"
+  },
+  {
+    "id": 13,
+    "title": "Geralt",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 15,
+    "ability": "Scorch"
+  },
+  {
+    "id":14,
+    "title":"Ice Giant",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"ice_giant",
+    "attackValue":5,
+     "ability": "Spy"
+  },
+  {
+    "id":15,
+    "title":"Lambert",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"lambert",
+    "attackValue":5,
+    "ability": "Scorch"
+  },
+  {
+    "id": 16,
+    "title": "Dijkstra",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 5,
+    "ability": "Spy"
+  },
+  {
+    "id": 17,
+    "title": "Dandelion",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dandelion",
+    "attackValue": 5,
+    "ability": "Scorch"
+  },
+  {
+    "id": 18,
+    "title": "Dagon",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dagon",
+    "attackValue": 5,
+    "ability": "Scorch"
+  },
+  {
+    "id": 19,
+    "title": "Wyvern",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "Scorch"
+  },
+  {
+    "id": 20,
+    "title": "Wyvern",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "Spy"
+  },
+  {
+    "id": 21,
+    "title": "Wyvern 2",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "Scorch"
+  }
+]

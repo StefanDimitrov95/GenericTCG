@@ -73,8 +73,10 @@
     <Compile Include="Assets\Scripts\CardScaling.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Card.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\MagicCard.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\MedicUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\MoraleBoostUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\NormalUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\ScorchUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\SpyUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\TightBondUnit.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\UnitCard.cs" />
@@ -85,6 +87,7 @@
     <Compile Include="Assets\Scripts\Classes\EnumClasses\Type.cs" />
     <Compile Include="Assets\Scripts\Classes\Row.cs" />
     <Compile Include="Assets\Scripts\Classes\UnitCardFactory.cs" />
+    <Compile Include="Assets\Scripts\DiscardPile.cs" />
     <Compile Include="Assets\Scripts\Draggable.cs" />
     <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\EnemyDeck.cs" />

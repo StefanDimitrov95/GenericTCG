@@ -8,8 +8,8 @@ using UnityEngine.UI;
 namespace Assets.Scripts
 {
     public class Row
-    {   
-        public GameObject CurrentRow { get; set; }   
+    {
+        public GameObject CurrentRow { get; set; }
 
         public RowClass Class { get; set; }
 
@@ -17,14 +17,14 @@ namespace Assets.Scripts
 
         public GameObject TextBoxOfRow { get; set; }
 
-        public List<UnitCard> CardsOnRow { get; set; }
+        private List<UnitCard> cardsOnRow;
 
         public List<MonsterAbility> AbilityEffectOnRow;
 
         public Row(string name)
         {
             AbilityEffectOnRow = new List<MonsterAbility>();
-            CardsOnRow = new List<UnitCard>();
+            cardsOnRow = new List<UnitCard>();
             RowAttackValue = 0;
             switch (name)
             {
@@ -32,7 +32,7 @@ namespace Assets.Scripts
                     {
                         Class = RowClass.Melee;
                         TextBoxOfRow = GameObject.Find("MeleeRowValue");
-                        CurrentRow = GameObject.Find("MeleeRow");                       
+                        CurrentRow = GameObject.Find("MeleeRow");
                         break;
                     }
                 case "RangedRow":
@@ -74,28 +74,38 @@ namespace Assets.Scripts
                     {
                         break;
                     }
-            
+
                 default:
                     break;
             }
         }
 
+        public void AddUnitCardToRow(UnitCard unit)
+        {
+            cardsOnRow.Add(unit);
+        }
+
+        public bool RemoveUnitCardFromRow(UnitCard unit)
+        {
+            return cardsOnRow.Remove(unit);
+        }
+
         public List<UnitCard> GetCardsByNameFromRow(string title, MonsterAbility ability)
         {
             List<UnitCard> cards = new List<UnitCard>();
-            cards = CardsOnRow.FindAll(x => x.Title == title && x.Ability == ability);
+            cards = cardsOnRow.FindAll(x => x.Title == title && x.Ability == ability);
             return cards;
         }
 
         public List<UnitCard> GetStrongestUnitCards()
         {
-            IEnumerable<UnitCard> sortedByAttack = CardsOnRow.OrderByDescending(x => x.AttackValue);
-            return CardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
+            IEnumerable<UnitCard> sortedByAttack = cardsOnRow.OrderByDescending(x => x.AttackValue);
+            return cardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
         }
 
         public void AddToRow()
         {
-            
+
         }
 
         //public void UpdateAttackValueOfRow(Card draggedCard)
@@ -119,7 +129,7 @@ namespace Assets.Scripts
         {
             int totalPowerOfRow = 0;
 
-            foreach (UnitCard unitCard in CardsOnRow)
+            foreach (UnitCard unitCard in cardsOnRow)
             {
                 totalPowerOfRow += unitCard.AttackValue;
             }
@@ -130,11 +140,32 @@ namespace Assets.Scripts
         private void UpdateTextOfRow()
         {
             TextBoxOfRow.GetComponent<Text>().text = RowAttackValue.ToString();
-        }     
-        
-        public void AddMoraleBoostToRow()
+        }
+
+        public void AddMoraleBoostToRow(UnitCard droppedCard)
         {
             AbilityEffectOnRow.Add(MonsterAbility.MoraleBoost);
-        }  
+            for (int i = 0; i < cardsOnRow.Count; i++)
+            {
+                if (cardsOnRow[i] != droppedCard)
+                {
+                    cardsOnRow[i].AttackValue++;
+                }
+            }
+        }
+
+        public override string ToString()
+        {
+            return CurrentRow.name + " has " + cardsOnRow.Count + " cards";
+        }
+
+        public bool RemoveEffectFromRow(MonsterAbility effect)
+        {
+            for (int i = 0; i < cardsOnRow.Count; i++)
+            {
+                cardsOnRow[i].AttackValue--;
+            }
+            return AbilityEffectOnRow.Remove(effect);
+        }
     }
 }
