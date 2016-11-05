@@ -15,11 +15,6 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     private GameObject placeholder;
     private PlayerHand hand;
 
-    void Start()
-    {
-        //Debug.Log(currentCard.ToString());
-    }
-
     public void ReturnCardToHand()
     {
         PointerEventData eventData = new PointerEventData(EventSystem.current);
@@ -92,7 +87,4 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.Play("OnEndDrag");
     }
-
-
-
 }

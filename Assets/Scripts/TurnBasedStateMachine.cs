@@ -42,7 +42,7 @@ namespace Assets.Scripts
                         //enemy turn logic
                         timer -= Time.deltaTime;
 
-                        if (timer <= 0)
+                        if (timer <= 2)
                         {
                             timer = 0;
                             EnemyTurn.Logic(ref enemyHand, ref currentState);

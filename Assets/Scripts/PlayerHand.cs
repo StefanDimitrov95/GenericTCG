@@ -5,10 +5,11 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using Assets.Scripts.Interfaces;
+using Assets.Scripts.Utils;
 
 public class PlayerHand : MonoBehaviour, IHand
 {
-    public List<Card> CardsInHand;
+    public List<Card> CardsInHand { get; set; }
     public bool cardPlayed = false;
 
     private PlayerDeck PlayerDeck;
@@ -49,7 +50,7 @@ public class PlayerHand : MonoBehaviour, IHand
     }
 
 
-    private static void InstanciateCardToHand(Card cardToBeInstanciated)
+    public static void InstanciateCardToHand(Card cardToBeInstanciated)
     {
         GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
         cardObj.transform.SetParent(GameObject.Find("Hand").transform);
@@ -58,6 +59,12 @@ public class PlayerHand : MonoBehaviour, IHand
         cardObj.GetComponent<Draggable>().currentCard = cardToBeInstanciated;
         cardObj.GetComponent<Draggable>().enabled = true;
         cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;       
+    }
+
+    public static void InstanciateCard(Card cardToBeInstanciated)
+    {
+        GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
+        Extensions.Instantiate(cardObj, cardToBeInstanciated, GameObject.Find("Hand").transform);
     }
 
     public void UpdateHandLabel()

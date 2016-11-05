@@ -29,14 +29,14 @@ namespace Assets.Scripts
             this.Type = type;
             this.CardFaction = faction;
             this.Slug = slug;
-            this.Sprite = Resources.Load<Sprite>("Sprites/Cards/" + slug);            
+            this.Sprite = Resources.Load<Sprite>("Sprites/Cards/" + slug);
         }
 
         public abstract void OnDropEffect();
 
         public abstract void OnDeath();
 
-        public abstract void OnRessuruct();
+        public abstract void OnResurrect();
 
         public abstract string ConstructCardData();
 

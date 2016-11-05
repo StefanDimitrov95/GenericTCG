@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using Assets.Scripts;
 using UnityEngine.UI;
 using System.Linq;
-using System;
+using Assets.Scripts.Utils;
+using Assets.Scripts.Interfaces;
 
-public class PlayerDeck : MonoBehaviour
+public class PlayerDeck : MonoBehaviour, IDeck
 {
 
     const int drawAmount = 20;
 
-    public List<Card> Deck;
+    public List<Card> Deck { get; set; }
     private CardDatabase CardDatabase;
 
     void Start()
     {
         CardDatabase = GameObject.Find("CardDatabase").GetComponent<CardDatabase>();
-        ShuffleDeck(CardDatabase.PlayerDatabase);
+        Extensions.Shuffle(CardDatabase.PlayerDatabase);
         Deck = CardDatabase.PlayerDatabase.Take(drawAmount).ToList();
     }
 
@@ -24,19 +25,5 @@ public class PlayerDeck : MonoBehaviour
     public void UpdateDeckLabel()
     {
         this.GetComponent<Text>().text = Deck.Count.ToString();
-    }
-
-    private void ShuffleDeck(List<Card> toShuffle)
-    {
-        System.Random rnd = new System.Random(DateTime.Now.Millisecond);
-        int count = toShuffle.Count;
-        while (count > 1)
-        {
-            int randomDraw = rnd.Next(0, count);
-            Card tmp = toShuffle[randomDraw];
-            toShuffle[randomDraw] = toShuffle[count - 1];
-            toShuffle[count - 1] = tmp;
-            count--;
-        }
     }
 }

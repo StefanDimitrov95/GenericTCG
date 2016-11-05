@@ -45,6 +45,7 @@ namespace Assets.Scripts.Classes
                     }
                 case MonsterAbility.Muster:
                     {
+                        unitCard = new MusterUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
                 case MonsterAbility.Scorch:

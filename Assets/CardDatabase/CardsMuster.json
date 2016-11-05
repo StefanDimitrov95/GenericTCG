@@ -1,21 +1,21 @@
 [
  {
     "id":1,
-    "title":"Eskel",
+    "title":"Witcher: Eskel",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug":"eskel",
     "attackValue": 5,
-    "ability": "None"
+    "ability": "Muster"
   },
   {
     "id": 2,
-    "title": "Geralt",
+    "title": "Witcher: Geralt",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "geralt",
     "attackValue": 15,
-    "ability": "Medic"
+    "ability": "Muster"
   },
   {
     "id":3,
@@ -28,12 +28,12 @@
   },
   {
     "id":4,
-    "title":"Lambert",
+    "title":"Witcher: Lambert",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug":"lambert",
     "attackValue":5,
-    "ability": "Spy"
+    "ability": "Muster"
   },
   {
     "id": 5,

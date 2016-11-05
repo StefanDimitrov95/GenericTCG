@@ -5,14 +5,15 @@ using UnityEngine.UI;
 using System.Linq;
 using System;
 using Assets.Scripts.Interfaces;
+using Assets.Scripts.Utils;
 
 public class EnemyHand : MonoBehaviour, IHand
 {
-    public List<Card> CardsInHand;
+    public List<Card> CardsInHand { get; set; }
 
     private EnemyDeck EnemyDeck;
     private Text HandLabel;
-    const int AmountOfCardsToDraw = 7;
+    const int AmountOfCardsToDraw = 5;
 
     void Start()
     {
@@ -54,10 +55,7 @@ public class EnemyHand : MonoBehaviour, IHand
     private void InstantiateEnemyUnitCard(UnitCard card)
     {
         GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
-        cardObj.GetComponent<Image>().sprite = card.Sprite;
-        cardObj.transform.SetParent(card.PlayEnemyUnitCard());
-        cardObj.name = String.Format("{0},{1}", card.ID, card.Title);
-        cardObj.GetComponent<PointerHandler>().CurrentCard = card;
+        Extensions.Instantiate(cardObj, card, card.PlayEnemyUnitCard());
         CardsInHand.Remove(card);
     }
 }

@@ -38,9 +38,7 @@ namespace Assets.Scripts.Classes
 
             if (returnedCard.Key is UnitCard)
             {
-                //returnedCard.Key.ToRow.currentRow.AddUnitCardToRow((UnitCard)returnedCard.Key);
-                //returnedCard.Key.ToRow.currentRow.SetAttackValueOfRow();
-                returnedCard.Key.OnRessuruct();
+                returnedCard.Key.OnResurrect();
                 returnedCard.Value.SetActive(true);
             }
 
