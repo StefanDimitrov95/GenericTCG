@@ -1,95 +1,5 @@
 [
  {
-    "id":1,
-    "title":"Witcher: Eskel",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"eskel",
-    "attackValue": 5,
-    "ability": "Muster"
-  },
-  {
-    "id": 2,
-    "title": "Witcher: Geralt",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "geralt",
-    "attackValue": 15,
-    "ability": "Muster"
-  },
-  {
-    "id":3,
-    "title":"Ice Giant",
-    "type": "SiegeCombat",
-    "faction": "Neutral",
-    "slug":"ice_giant",
-    "attackValue":5,
-     "ability": "Spy"
-  },
-  {
-    "id":4,
-    "title":"Witcher: Lambert",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"lambert",
-    "attackValue":5,
-    "ability": "Muster"
-  },
-  {
-    "id": 5,
-    "title": "Dijkstra",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "dijkstra",
-    "attackValue": 5,
-    "ability": "Spy"
-  },
-  {
-    "id": 6,
-    "title": "Dandelion",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "dandelion",
-    "attackValue": 5,
-    "ability": "Scorch"
-  },
-  {
-    "id": 7,
-    "title": "Dagon",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "dagon",
-    "attackValue": 5,
-    "ability": "MoraleBoost"
-  },
-  {
-    "id": 8,
-    "title": "Wyvern",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "None"
-  },
-  {
-    "id": 9,
-    "title": "Wyvern",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "Spy"
-  },
-  {
-    "id": 10,
-    "title": "Wyvern 2",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "MoraleBoost"
-  },
-   {
     "id":12,
     "title":"Eskel",
     "type": "CloseCombat",
@@ -259,5 +169,14 @@
     "slug": "wyvern",
     "attackValue": 13,
     "ability": "Spy"
+  },
+  {
+    "id": 31,
+    "title": "Wyvern 2",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 3,
+    "ability": "Scorch"
   }
 ]

@@ -14,7 +14,7 @@ public class PlayerHand : MonoBehaviour, IHand
 
     private PlayerDeck PlayerDeck;
     private Text HandLabel;
-    const int AmountOfCardsToDraw = 11;
+    const int AmountOfCardsToDraw = 5;
 
     void Start()
     {
@@ -51,17 +51,6 @@ public class PlayerHand : MonoBehaviour, IHand
 
 
     public static void InstanciateCardToHand(Card cardToBeInstanciated)
-    {
-        GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
-        cardObj.transform.SetParent(GameObject.Find("Hand").transform);
-        cardObj.GetComponent<Image>().sprite = cardToBeInstanciated.Sprite;
-        cardObj.name = String.Format("{0},{1}", cardToBeInstanciated.ID, cardToBeInstanciated.Title);
-        cardObj.GetComponent<Draggable>().currentCard = cardToBeInstanciated;
-        cardObj.GetComponent<Draggable>().enabled = true;
-        cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;       
-    }
-
-    public static void InstanciateCard(Card cardToBeInstanciated)
     {
         GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
         Extensions.Instantiate(cardObj, cardToBeInstanciated, GameObject.Find("Hand").transform);

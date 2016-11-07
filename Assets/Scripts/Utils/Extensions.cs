@@ -33,12 +33,22 @@ namespace Assets.Scripts.Utils
             cardObj.transform.SetParent(parent);
             cardObj.GetComponent<Image>().sprite = cardToBeInstanciated.Sprite;
             cardObj.name = string.Format("{0},{1}", cardToBeInstanciated.ID, cardToBeInstanciated.Title);
-            if (parent == GameObject.Find("Hand"))
+            if (parent.gameObject == GameObject.Find("Hand"))
             {
                 cardObj.GetComponent<Draggable>().currentCard = cardToBeInstanciated;
                 cardObj.GetComponent<Draggable>().enabled = true;
             }
             cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;
+        }
+
+        public static void InstantiateToDiscardPanel(GameObject cardObj, Card cardToBeInstanciated, Transform parent)
+        {
+            cardObj.transform.SetParent(parent);
+            cardObj.GetComponent<Image>().sprite = cardToBeInstanciated.Sprite;
+            cardObj.name = string.Format("{0},{1}", cardToBeInstanciated.ID, cardToBeInstanciated.Title);           
+            cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;
+            cardObj.GetComponent<PointerHandler>().enabled = false;
+            cardObj.GetComponent<PointerHandlerDiscardedCard>().discardedCard = cardToBeInstanciated;
         }
     }
 }

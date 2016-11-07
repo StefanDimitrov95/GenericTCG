@@ -1,24 +1,24 @@
 [
  {
-    "id": 30,
+    "id":12,
     "title":"Eskel",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug":"eskel",
     "attackValue": 5,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
-    "id": 31,
+    "id": 13,
     "title": "Geralt",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "geralt",
     "attackValue": 15,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
-    "id": 32,
+    "id":14,
     "title":"Ice Giant",
     "type": "CloseCombat",
     "faction": "Neutral",
@@ -27,52 +27,52 @@
      "ability": "Spy"
   },
   {
-    "id":33,
+    "id":15,
     "title":"Lambert",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug":"lambert",
     "attackValue":5,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
-    "id": 34,
+    "id": 16,
     "title": "Dijkstra",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dijkstra",
     "attackValue": 5,
-    "ability": "Spy"
+    "ability": "Medic"
   },
   {
-    "id": 35,
+    "id": 17,
     "title": "Dandelion",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dandelion",
     "attackValue": 5,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
-    "id": 36,
+    "id": 18,
     "title": "Dagon",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dagon",
     "attackValue": 5,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
-    "id": 37,
+    "id": 19,
     "title": "Wyvern",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
-    "ability": "Scorch"
+    "ability": "Medic"
   },
   {
-    "id": 38,
+    "id": 20,
     "title": "Wyvern",
     "type": "CloseCombat",
     "faction": "Neutral",
@@ -81,12 +81,12 @@
     "ability": "Spy"
   },
   {
-    "id": 39,
+    "id": 21,
     "title": "Wyvern 2",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
-    "ability": "Scorch"
+    "ability": "Medic"
   }
 ]

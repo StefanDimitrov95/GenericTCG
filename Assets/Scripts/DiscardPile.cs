@@ -4,27 +4,48 @@ using Assets.Scripts;
 using UnityEngine.UI;
 using System.Linq;
 using Assets.Scripts.Classes.EnumClasses;
+using Assets.Scripts.Utils;
 
 public class DiscardPile : MonoBehaviour
 {
     public List<KeyValuePair<Card, GameObject>> CardPile { get; set; }
+    public GameObject playerDiscardPanel;
+    public GameObject enemyPanel;
     private Image DiscardPileImage { get; set; }
-
+    
 
     void Start()
     {
         CardPile = new List<KeyValuePair<Card, GameObject>>();
     }
 
-    public void AddToDiscardPile(Card card, GameObject enemyRowObj)
+    public void OnMouseDown()
     {
+        if (enemyPanel.activeInHierarchy)
+        {
+            DeactivatePanel(enemyPanel);
+        }
+
+        if (!playerDiscardPanel.activeInHierarchy)
+        {
+            ActivatePanel();
+        }
+        else
+        {
+            DeactivatePanel(playerDiscardPanel);
+        }
+
+        Debug.Log("DiscardPile Was Clicked!!!");
+    }
+
+    public void AddToDiscardPile(Card card, GameObject enemyRowObj)
+    {        
         if (card != null)
         {
             card.OnDeath();
         }
 
-        GameObject cardPrefab = enemyRowObj.transform.FindChild(card.ID + "," + card.Title).gameObject;
-
+        GameObject cardPrefab = enemyRowObj.transform.FindChild(card.ID + "," + card.Title).gameObject;  
         DiscardPileImage = this.gameObject.GetComponent<Image>();
         cardPrefab.SetActive(false);
         this.CardPile.Add(new KeyValuePair<Card, GameObject>(card, cardPrefab));
@@ -39,6 +60,35 @@ public class DiscardPile : MonoBehaviour
         CardPile.Remove(randomCardKvPair);
         UpdateCardPileImage();
         return randomCardKvPair;       
+    }
+
+    private void ActivatePanel()
+    {
+        foreach (KeyValuePair<Card, GameObject> item in CardPile)
+        {
+            AddToDiscardPilePanel(item.Key);
+
+        }
+        playerDiscardPanel.SetActive(true);
+    }
+
+    private void DeactivatePanel(GameObject discardPanel)
+    {
+        GameObject scrollCardPanel = discardPanel.transform.GetChild(1).GetChild(0).gameObject;
+
+        foreach (Transform child in scrollCardPanel.transform)
+        {
+            child.gameObject.GetComponent<PointerHandlerDiscardedCard>().enabled = false;
+            Destroy(child.gameObject);
+        }
+        discardPanel.SetActive(false);
+    }
+
+    private void AddToDiscardPilePanel(Card card)
+    {
+        GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
+        Extensions.InstantiateToDiscardPanel(cardObj, card, playerDiscardPanel.transform.GetChild(1).GetChild(0).transform);
+        cardObj.GetComponent<PointerHandlerDiscardedCard>().enabled = true;
     }
 
     private void CheckIfSpyCard(KeyValuePair<Card, GameObject> ressuructPair)

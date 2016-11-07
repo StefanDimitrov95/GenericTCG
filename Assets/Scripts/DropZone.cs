@@ -34,6 +34,10 @@ public class DropZone : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         Debug.Log("Dropped");
+        if (eventData.pointerDrag.gameObject.GetComponent<Draggable>() == null)
+        {
+            return;
+        }
         Draggable draggedCard = eventData.pointerDrag.GetComponent<Draggable>();
         if (draggedCard.gameObject.transform.parent == GameObject.Find("Hand").transform)
         {

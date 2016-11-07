@@ -9,7 +9,7 @@ namespace Assets.Scripts
         private BattleState currentState;
         private GameObject playerHand;
         private GameObject enemyHand;
-        private float timer = 4;
+        private float timer = 0;
 
         public void Start()
         {
@@ -33,7 +33,7 @@ namespace Assets.Scripts
                 case BattleState.PlayerTurn:
                     {
                         //player plays a card  
-                        timer = 0;                      
+                        timer = 1;                      
                         PlayerTurn.Logic(ref playerHand, ref currentState);
                         break;
                     }
@@ -42,7 +42,7 @@ namespace Assets.Scripts
                         //enemy turn logic
                         timer -= Time.deltaTime;
 
-                        if (timer <= 2)
+                        if (timer <= 0)
                         {
                             timer = 0;
                             EnemyTurn.Logic(ref enemyHand, ref currentState);

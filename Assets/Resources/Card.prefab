@@ -27,6 +27,7 @@ GameObject:
   - 212: {fileID: 212000011636006304}
   - 114: {fileID: 114000012012747808}
   - 114: {fileID: 114000011158695884}
+  - 114: {fileID: 114000010885608314}
   m_Layer: 5
   m_Name: Card
   m_TagString: Untagged
@@ -34,6 +35,17 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &114000010885608314
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1000012227484250}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eece39cb3d0cd9f4b981f9af9f0a0a9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114000011158695884
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -73,7 +85,6 @@ MonoBehaviour:
   parentToReturnTo: {fileID: 0}
   cardPlayed: 0
   isBeingDragged: 0
-  isDraggable: 1
 --- !u!114 &114000012628401092
 MonoBehaviour:
   m_ObjectHideFlags: 1
