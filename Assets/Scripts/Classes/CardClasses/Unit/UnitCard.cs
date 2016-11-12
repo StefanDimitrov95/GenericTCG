@@ -10,11 +10,11 @@ namespace Assets.Scripts
     {
         public int AttackValue { get; set; }
 
-        public MonsterAbility Ability { get; set; }
+        public Ability Ability { get; set; }
 
         internal int originalAttack;
 
-        public UnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
+        public UnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue, Ability ability)
             : base(id, title, type, faction, slug)
         {
             originalAttack = attackValue;
@@ -44,7 +44,7 @@ namespace Assets.Scripts
             }
         }
 
-        public override void OnDeath()
+        public virtual void OnDeath()
         {
             this.AttackValue = this.originalAttack;
             GameObject unitCardObject = GameObject.Find(String.Format("{0},{1}", this.ID, this.Title));

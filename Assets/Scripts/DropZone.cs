@@ -21,7 +21,7 @@ public class DropZone : MonoBehaviour, IDropHandler
         animator.enabled = false;                          
     }
 
-    public List<UnitCard> GetCardsByNameFromRow(string title, MonsterAbility ability)
+    public List<UnitCard> GetCardsByNameFromRow(string title, Ability ability)
     {
         return currentRow.GetCardsByNameFromRow(title, ability);
     }
@@ -68,6 +68,7 @@ public class DropZone : MonoBehaviour, IDropHandler
         {
             GameObject.Find("Hand").GetComponent<PlayerHand>().cardPlayed = true;
             draggedCard.cardPlayed = true;
+            Debug.Log(draggedCard.cardPlayed);
         }
     }
     

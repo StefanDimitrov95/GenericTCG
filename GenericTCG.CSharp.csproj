@@ -74,22 +74,26 @@
     <Compile Include="Assets\Scripts\CardDatabase.cs" />
     <Compile Include="Assets\Scripts\CardScaling.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Card.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\MagicCard.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\MedicUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\MoraleBoostUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\MusterUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\NormalUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\ScorchUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\SpyUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\TightBondUnit.cs" />
-    <Compile Include="Assets\Scripts\Classes\CardClasses\UnitCard.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Magic\MagicCard.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Magic\Weather.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\MedicUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\MoraleBoostUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\MusterUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\NormalUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\ScorchUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\SpyUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\TightBondUnit.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\UnitCard.cs" />
     <Compile Include="Assets\Scripts\Classes\EnumClasses\BattleState.cs" />
     <Compile Include="Assets\Scripts\Classes\EnumClasses\Faction.cs" />
-    <Compile Include="Assets\Scripts\Classes\EnumClasses\MonsterAbility.cs" />
+    <Compile Include="Assets\Scripts\Classes\EnumClasses\AffectRow.cs" />
+    <Compile Include="Assets\Scripts\Classes\EnumClasses\Ability.cs" />
     <Compile Include="Assets\Scripts\Classes\EnumClasses\RowClass.cs" />
     <Compile Include="Assets\Scripts\Classes\EnumClasses\Type.cs" />
+    <Compile Include="Assets\Scripts\Classes\MagicCardFactory.cs" />
     <Compile Include="Assets\Scripts\Classes\Row.cs" />
     <Compile Include="Assets\Scripts\Classes\UnitCardFactory.cs" />
+    <Compile Include="Assets\Scripts\DiscardPile.cs" />
     <Compile Include="Assets\Scripts\Draggable.cs" />
     <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\EnemyDeck.cs" />
@@ -100,12 +104,13 @@
     <Compile Include="Assets\Scripts\Interfaces\IMagic.cs" />
     <Compile Include="Assets\Scripts\Interfaces\IMonster.cs" />
     <Compile Include="Assets\Scripts\PlayerDeck.cs" />
-    <Compile Include="Assets\Scripts\DiscardPile.cs" />
     <Compile Include="Assets\Scripts\PlayerHand.cs" />
     <Compile Include="Assets\Scripts\PointerHandler.cs" />
+    <Compile Include="Assets\Scripts\PointerHandlerDiscardedCard.cs" />
     <Compile Include="Assets\Scripts\Tooltip.cs" />
     <Compile Include="Assets\Scripts\TurnBasedStateMachine.cs" />
     <Compile Include="Assets\Scripts\Utils\Extensions.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>

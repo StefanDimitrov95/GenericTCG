@@ -17,13 +17,15 @@ namespace Assets.Scripts
 
         public GameObject TextBoxOfRow { get; set; }
 
-        private List<UnitCard> cardsOnRow;
+        public List<UnitCard> cardsOnRow { get; private set; }
 
-        public List<MonsterAbility> AbilityEffectOnRow;
+        public List<Ability> AbilityEffectOnRow;
+
+        private bool isDebuffed = false;
 
         public Row(string name)
         {
-            AbilityEffectOnRow = new List<MonsterAbility>();
+            AbilityEffectOnRow = new List<Ability>();
             cardsOnRow = new List<UnitCard>();
             RowAttackValue = 0;
             switch (name)
@@ -90,7 +92,7 @@ namespace Assets.Scripts
             return cardsOnRow.Remove(unit);
         }
 
-        public List<UnitCard> GetCardsByNameFromRow(string title, MonsterAbility ability)
+        public List<UnitCard> GetCardsByNameFromRow(string title, Ability ability)
         {
             List<UnitCard> cards = new List<UnitCard>();
             cards = cardsOnRow.FindAll(x => x.Title == title && x.Ability == ability);
@@ -101,11 +103,6 @@ namespace Assets.Scripts
         {
             IEnumerable<UnitCard> sortedByAttack = cardsOnRow.OrderByDescending(x => x.AttackValue);
             return cardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
-        }
-
-        public void AddToRow()
-        {
-
         }
 
         //public void UpdateAttackValueOfRow(Card draggedCard)
@@ -144,7 +141,7 @@ namespace Assets.Scripts
 
         public void AddMoraleBoostToRow(UnitCard droppedCard)
         {
-            AbilityEffectOnRow.Add(MonsterAbility.MoraleBoost);
+            AbilityEffectOnRow.Add(Ability.MoraleBoost);
             for (int i = 0; i < cardsOnRow.Count; i++)
             {
                 if (cardsOnRow[i] != droppedCard)
@@ -154,12 +151,18 @@ namespace Assets.Scripts
             }
         }
 
+        public void AddWeatherEffectToRow()
+        {
+            isDebuffed = true;
+            cardsOnRow.ForEach(card => card.AttackValue = 1);
+        }
+
         public override string ToString()
         {
             return CurrentRow.name + " has " + cardsOnRow.Count + " cards";
         }
 
-        public bool RemoveEffectFromRow(MonsterAbility effect)
+        public bool RemoveEffectFromRow(Ability effect)
         {
             for (int i = 0; i < cardsOnRow.Count; i++)
             {

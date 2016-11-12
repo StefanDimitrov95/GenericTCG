@@ -14,7 +14,7 @@ public class PlayerHand : MonoBehaviour, IHand
 
     private PlayerDeck PlayerDeck;
     private Text HandLabel;
-    const int AmountOfCardsToDraw = 5;
+    const int AmountOfCardsToDraw = 8;
 
     void Start()
     {

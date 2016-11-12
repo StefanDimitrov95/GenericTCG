@@ -5,50 +5,50 @@ namespace Assets.Scripts.Classes
 {
     public class UnitCardFactory
     {
-        public UnitCard CreateUnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
+        public UnitCard CreateUnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue, Ability ability)
         {
             UnitCard unitCard = null;
             switch (ability)
             {
-                case MonsterAbility.None:
+                case Ability.None:
                     {
                         unitCard = new NormalUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }                   
-                case MonsterAbility.Spy:
+                case Ability.Spy:
                     {
                         unitCard = new SpyUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
-                case MonsterAbility.MoraleBoost:
+                case Ability.MoraleBoost:
                     {
                         unitCard = new MoraleBoostUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
-                case MonsterAbility.Medic:
+                case Ability.Medic:
                     {
                         unitCard = new MedicUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
-                case MonsterAbility.TightBond:
+                case Ability.TightBond:
                     {
                         unitCard = new TightBondUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
-                case MonsterAbility.Hero:
+                case Ability.Hero:
                     {
                         break;
                     }
-                case MonsterAbility.Agile:
+                case Ability.Agile:
                     {
                         break;
                     }
-                case MonsterAbility.Muster:
+                case Ability.Muster:
                     {
                         unitCard = new MusterUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
-                case MonsterAbility.Scorch:
+                case Ability.Scorch:
                     {
                         unitCard = new ScorchUnit(id, title, type, faction, slug, attackValue, ability);
                         break;

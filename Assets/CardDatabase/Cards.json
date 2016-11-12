@@ -88,5 +88,24 @@
     "slug": "wyvern",
     "attackValue": 3,
     "ability": "MoraleBoost"
+  },
+  {
+    "id": 11,
+    "title": "Wyvern",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "wyvern",
+    "attackValue": 13,
+    "ability": "Spy"
+  },
+  {
+    "id": 12,
+    "title": "Biting Frost",
+    "type": "Special",
+    "faction": "Neutral",
+    "slug": "bitingfrost",
+    "ability": "Weather",
+    "affects": "Melee",
+	"desc": "Set the strength of all units on both Melee rows to 1."
   }
 ]

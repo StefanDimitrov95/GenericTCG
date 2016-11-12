@@ -40,16 +40,31 @@ public class DiscardPile : MonoBehaviour
 
     public void AddToDiscardPile(Card card, GameObject enemyRowObj)
     {        
-        if (card != null)
-        {
-            card.OnDeath();
-        }
-
-        GameObject cardPrefab = enemyRowObj.transform.FindChild(card.ID + "," + card.Title).gameObject;  
+        GameObject cardPrefab = enemyRowObj.transform.FindChild(card.ID + "," + card.Title).gameObject;
         DiscardPileImage = this.gameObject.GetComponent<Image>();
         cardPrefab.SetActive(false);
         this.CardPile.Add(new KeyValuePair<Card, GameObject>(card, cardPrefab));
         UpdateCardPileImage();
+    }
+
+    public void AddToDiscardPile(UnitCard unitCard, GameObject enemyRowObj)
+    {
+        if (unitCard != null)
+        {
+            unitCard.OnDeath();
+        }
+
+        AddToDiscardPile((Card)unitCard, enemyRowObj);
+    }
+
+    public void AddCurrentCard(Card card)
+    {
+        GameObject cardPrefab = GameObject.Find(card.ID + "," + card.Title); //finds the card is on the canvas, obviously broken af
+        DiscardPileImage = this.gameObject.GetComponent<Image>();
+        this.CardPile.Add(new KeyValuePair<Card, GameObject>(card, cardPrefab));
+        UpdateCardPileImage();
+        cardPrefab.SetActive(false);
+
     }
 
     public KeyValuePair<Card, GameObject> GetRandomCard()
@@ -93,7 +108,7 @@ public class DiscardPile : MonoBehaviour
 
     private void CheckIfSpyCard(KeyValuePair<Card, GameObject> ressuructPair)
     {
-        if (ressuructPair.Key is UnitCard && (ressuructPair.Key as UnitCard).Ability == MonsterAbility.Spy)
+        if (ressuructPair.Key is UnitCard && (ressuructPair.Key as UnitCard).Ability == Ability.Spy)
         {
             ChangeSpyUnitParrent(ressuructPair);
         }

@@ -1,5 +1,6 @@
 ﻿
 using Assets.Scripts.Classes;
+using Assets.Scripts.Classes.EnumClasses;
 using UnityEngine;
 
 namespace Assets.Scripts
@@ -33,8 +34,6 @@ namespace Assets.Scripts
         }
 
         public abstract void OnDropEffect();
-
-        public abstract void OnDeath();
 
         public abstract void OnResurrect();
 

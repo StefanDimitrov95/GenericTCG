@@ -9,7 +9,7 @@ namespace Assets.Scripts.Classes
 {
     public class NormalUnit : UnitCard
     {
-        public NormalUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
+        public NormalUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, Ability ability)
             : base(id, title, type, faction, slug, attackValue, ability)
         {
            

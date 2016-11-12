@@ -8,7 +8,7 @@ namespace Assets.Scripts.Classes
 {
     class MusterUnit : UnitCard
     {
-        public MusterUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, MonsterAbility ability)
+        public MusterUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, Ability ability)
             : base(id, title, type, faction, slug, attackValue, ability)
         {
         }

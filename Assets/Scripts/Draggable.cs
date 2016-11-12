@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.EventSystems;
-using System;
 using Assets.Scripts;
 using UnityEngine.UI;
 
@@ -71,16 +69,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
             hand.CardsInHand.Remove(currentCard);
             hand.UpdateHandLabel();
             Destroy(this);
+            if (currentCard is MagicCard)
+            {
+                (currentCard as MagicCard).OnPlay();
+            }
         }
     }
 
     private void AnimateRowOnBeginDrag()
     {
-        if (currentCard.Type != CardType.Special)
-        {
-            currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.enabled = true;
-            currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
-        }
+        currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.enabled = true;
+        currentCard.ToRow.currentRow.CurrentRow.GetComponent<DropZone>().animator.Play("OnBeginDrag");
     }
 
     private void AnimateRowOnEndDrag()

@@ -14,10 +14,11 @@ public class CardDatabase : MonoBehaviour {
     private JsonData PlayerCardData;
     private JsonData EnemyCardData;
     private UnitCardFactory UnitCardFactory;
+    private MagicCardFactory MagicCardFactory;
 
     void Start()
     {
-        PlayerCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/CardsMuster.json"));
+        PlayerCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/Cards.json"));
         EnemyCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/EnemyScorchCards.json"));
         PlayerDatabase = new List<Card>();
         EnemyDatabase = new List<Card>();
@@ -49,13 +50,17 @@ public class CardDatabase : MonoBehaviour {
 
             if (cardType == CardType.Special)
             {
+                Ability magicCardAbility = (Ability)System.Enum.Parse(typeof(Ability), CardData[i]["ability"].ToString(), true);
+                AffectRow rowToAffect = (AffectRow)System.Enum.Parse(typeof(AffectRow), CardData[i]["affects"].ToString(), true);
+                string description = CardData[i]["desc"].ToString();
+                MagicCardFactory = new MagicCardFactory();
                 //Add magic card to database
-                //database.Add(new MagicCard((int)cardData[i]["id"], cardData[i]["title"].ToString(), cardType, faction, cardData[i]["slug"].ToString(), cardData[i]["effect"].ToString()));
+                Database.Add(MagicCardFactory.CreateMagicCard(id, title, cardType, faction, slug, magicCardAbility, rowToAffect, description));
             }
             else 
             {
                 int attackValue = (int)CardData[i]["attackValue"];
-                MonsterAbility cardAbility = (MonsterAbility)System.Enum.Parse(typeof(MonsterAbility), CardData[i]["ability"].ToString(), true);
+                Ability cardAbility = (Ability)System.Enum.Parse(typeof(Ability), CardData[i]["ability"].ToString(), true);
                 UnitCardFactory = new UnitCardFactory();
                 //Add monster card to database
                 Database.Add(UnitCardFactory.CreateUnitCard(id, title, cardType, faction, slug, attackValue, cardAbility));
