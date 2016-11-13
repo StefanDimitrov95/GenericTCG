@@ -16,7 +16,7 @@ namespace Assets.Scripts.Classes.CardClasses.Magic
 
         public override void OnDropEffect()
         {
-            string enemyRowName = "Enemy" + this.ToRow.name;
+            string enemyRowName = this.ToRow.name.Contains("Enemy") ? this.ToRow.name.Substring(5) : "Enemy" + this.ToRow.name;
             DropZone enemyRow = GameObject.Find(enemyRowName).GetComponent<DropZone>();
             Debuff(this.ToRow);
             Debuff(enemyRow);
@@ -25,8 +25,9 @@ namespace Assets.Scripts.Classes.CardClasses.Magic
 
         public override void OnPlay()
         {
-            DiscardPile dp = GameObject.Find("PlayerDiscardPile").GetComponent<DiscardPile>();
-            dp.AddCurrentCard(this);
+            string discardPileName = this.ToRow.name.Contains("Enemy") ? "EnemyDiscardPile" : "PlayerDiscardPile";
+            DiscardPile dp = GameObject.Find(discardPileName).GetComponent<DiscardPile>();
+            dp.AddToDiscardPile(this, this.ToRow.gameObject);
         }
 
         private void Debuff(DropZone row)

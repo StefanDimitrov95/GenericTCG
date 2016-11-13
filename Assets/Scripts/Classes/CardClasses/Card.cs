@@ -44,6 +44,16 @@ namespace Assets.Scripts
             return ToRow.currentRow.CurrentRow.name;
         }
 
+        public virtual Transform PlayEnemyCard()
+        {
+            string enemyRowName = "Enemy" + this.ToRow.name;
+            this.ToRow = GameObject.Find(enemyRowName).GetComponent<DropZone>();
+
+            OnDropEffect();
+
+            return (GameObject.Find(enemyRowName).transform);
+        }
+
         public override string ToString()
         {
             return string.Format("{0} , {1} , {2}, {3}, {4}", ID, Title, Type, Slug, ToRow);

@@ -57,16 +57,6 @@ public class DiscardPile : MonoBehaviour
         AddToDiscardPile((Card)unitCard, enemyRowObj);
     }
 
-    public void AddCurrentCard(Card card)
-    {
-        GameObject cardPrefab = GameObject.Find(card.ID + "," + card.Title); //finds the card is on the canvas, obviously broken af
-        DiscardPileImage = this.gameObject.GetComponent<Image>();
-        this.CardPile.Add(new KeyValuePair<Card, GameObject>(card, cardPrefab));
-        UpdateCardPileImage();
-        cardPrefab.SetActive(false);
-
-    }
-
     public KeyValuePair<Card, GameObject> GetRandomCard()
     {
         System.Random rnd = new System.Random();

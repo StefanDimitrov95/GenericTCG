@@ -20,7 +20,7 @@ namespace Assets.Scripts.Classes
             base.ToRow.currentRow.SetAttackValueOfRow();
             DiscardPile pile;
 
-            if (this.ToRow.name.StartsWith("Enemy"))
+            if (this.ToRow.name.Contains("Enemy"))
             {
                 pile = GameObject.Find("EnemyDiscardPile").GetComponent<DiscardPile>();
             }

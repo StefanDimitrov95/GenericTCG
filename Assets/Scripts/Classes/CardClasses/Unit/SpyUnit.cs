@@ -37,7 +37,7 @@ namespace Assets.Scripts.Classes
             base.ToRow.currentRow.SetAttackValueOfRow();
         }
      
-        public override Transform PlayEnemyUnitCard()
+        public override Transform PlayEnemyCard()
         {      
             string spyRowName = this.ToRow.name.Substring(5);
             GameObject enemySpyRow = GameObject.Find(spyRowName);

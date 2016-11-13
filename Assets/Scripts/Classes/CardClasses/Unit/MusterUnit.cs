@@ -17,7 +17,7 @@ namespace Assets.Scripts.Classes
         {
             AddCardToRow(this);
             UpdateAttackForAbilitiesOnRow();
-            if (base.ToRow.name.StartsWith("Enemy"))
+            if (base.ToRow.name.Contains("Enemy"))
             {
                 MusterEffect(true);
             }

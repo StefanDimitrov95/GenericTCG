@@ -91,14 +91,5 @@ namespace Assets.Scripts
                 this.AttackValue = 1;
             }
         }
-        public virtual Transform PlayEnemyUnitCard()
-        {
-            string enemyRowName = "Enemy" + this.ToRow.name;
-            base.ToRow = GameObject.Find(enemyRowName).GetComponent<DropZone>();
-
-            OnDropEffect();
-
-            return (GameObject.Find(enemyRowName).transform);
-        }
     }
 }

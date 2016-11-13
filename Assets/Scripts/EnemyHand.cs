@@ -42,20 +42,23 @@ public class EnemyHand : MonoBehaviour, IHand
     public void PlayCard()
     {
         Card cardToBePlayed = this.CardsInHand[0];
-        if (cardToBePlayed is UnitCard)
-        {
-            InstantiateEnemyUnitCard((UnitCard)cardToBePlayed);
-        }
+        InstantiateEnemyCard(cardToBePlayed);
         UpdateHandLabel();
         EnemyDeck.UpdateDeckLabel();
         GameObject.Find("Board").GetComponent<Board>().UpdateAttackLabels();
+
+        if (cardToBePlayed is MagicCard)
+        {
+            (cardToBePlayed as MagicCard).OnPlay();
+        }
+
         Debug.Log("ENEMY PLAYED: " + cardToBePlayed.ToString());
     }
 
-    private void InstantiateEnemyUnitCard(UnitCard card)
+    private void InstantiateEnemyCard(Card card)
     {
         GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
-        Extensions.Instantiate(cardObj, card, card.PlayEnemyUnitCard());
+        Extensions.Instantiate(cardObj, card, card.PlayEnemyCard());
         CardsInHand.Remove(card);
     }
 }
