@@ -16,7 +16,7 @@ namespace Assets.Scripts.Classes
         public override void OnDropEffect()
         {
             AddCardToRow(this);
-
+            UpdateAttackForAbilitiesOnRow();
             if (base.ToRow.name.StartsWith("Enemy"))
             {
                 MusterEffect(true);
@@ -39,7 +39,7 @@ namespace Assets.Scripts.Classes
                 foreach (UnitCard card in namesakes)
                 {
                     Board.Instantiate(card, GameObject.Find("Enemy" + card.ToRow.name).transform);
-                    AddCardToRow(card);
+                    card.OnDropEffect();
                 }
             }
 
@@ -48,7 +48,7 @@ namespace Assets.Scripts.Classes
                 foreach (UnitCard card in namesakes)
                 {
                     Board.Instantiate(card, card.ToRow.transform);
-                    AddCardToRow(card);
+                    card.OnDropEffect();
                 }
             }
         }

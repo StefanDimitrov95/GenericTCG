@@ -17,15 +17,7 @@
     "attackValue": 15,
     "ability": "Scorch"
   },
-  {
-    "id": 32,
-    "title":"Ice Giant",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"ice_giant",
-    "attackValue":5,
-     "ability": "Spy"
-  },
+
   {
     "id":33,
     "title":"Lambert",
@@ -35,15 +27,7 @@
     "attackValue":5,
     "ability": "Scorch"
   },
-  {
-    "id": 34,
-    "title": "Dijkstra",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dijkstra",
-    "attackValue": 5,
-    "ability": "Spy"
-  },
+
   {
     "id": 35,
     "title": "Dandelion",
@@ -71,15 +55,7 @@
     "attackValue": 3,
     "ability": "Scorch"
   },
-  {
-    "id": 38,
-    "title": "Wyvern",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "Spy"
-  },
+
   {
     "id": 39,
     "title": "Wyvern 2",

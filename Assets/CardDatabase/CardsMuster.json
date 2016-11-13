@@ -18,6 +18,24 @@
     "ability": "Muster"
   },
   {
+    "id":11,
+    "title":"Witcher: Eskel",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug":"eskel",
+    "attackValue": 5,
+    "ability": "Muster"
+  },
+  {
+    "id": 21,
+    "title": "Witcher: Geralt",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 15,
+    "ability": "Muster"
+  },
+  {
     "id":3,
     "title":"Ice Giant",
     "type": "SiegeCombat",
@@ -27,237 +45,49 @@
      "ability": "Spy"
   },
   {
-    "id":4,
-    "title":"Witcher: Lambert",
+    "id": 4,
+    "title": "Witcher: Lambert",
     "type": "CloseCombat",
     "faction": "Neutral",
-    "slug":"lambert",
-    "attackValue":5,
+    "slug": "lambert",
+    "attackValue": 5,
     "ability": "Muster"
-  },
-  {
-    "id": 5,
-    "title": "Dijkstra",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "dijkstra",
-    "attackValue": 5,
-    "ability": "Spy"
-  },
-  {
-    "id": 6,
-    "title": "Dandelion",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "dandelion",
-    "attackValue": 5,
-    "ability": "Scorch"
   },
   {
     "id": 7,
     "title": "Dagon",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dagon",
     "attackValue": 5,
     "ability": "MoraleBoost"
-  },
-  {
-    "id": 8,
-    "title": "Wyvern",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "None"
-  },
-  {
-    "id": 9,
-    "title": "Wyvern",
-    "type": "RangedCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "Spy"
   },
   {
     "id": 10,
     "title": "Wyvern 2",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
     "ability": "MoraleBoost"
   },
-   {
-    "id":12,
-    "title":"Eskel",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"eskel",
-    "attackValue": 5,
-    "ability": "Medic"
-  },
-  {
-    "id": 13,
-    "title": "Geralt",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "geralt",
-    "attackValue": 15,
-    "ability": "Medic"
-  },
-  {
-    "id":14,
-    "title":"Ice Giant",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"ice_giant",
-    "attackValue":15,
-     "ability": "Spy"
-  },
-  {
-    "id":15,
-    "title":"Lambert",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"lambert",
-    "attackValue":5,
-    "ability": "Medic"
-  },
-  {
-    "id": 16,
-    "title": "Dijkstra",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dijkstra",
-    "attackValue": 5,
-    "ability": "Medic"
-  },
-  {
-    "id": 17,
-    "title": "Dandelion",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dandelion",
-    "attackValue": 5,
-    "ability": "Medic"
-  },
-  {
-    "id": 18,
-    "title": "Dagon",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dagon",
-    "attackValue": 5,
-    "ability": "Medic"
-  },
-  {
-    "id": 19,
-    "title": "Wyvern",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "Medic"
-  },
-  {
+    {
     "id": 20,
-    "title": "Wyvern",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 13,
-    "ability": "Spy"
-  },
-  {
-    "id": 21,
     "title": "Wyvern 2",
     "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
-    "ability": "Medic"
-  },
- {
-    "id":22,
-    "title":"Eskel",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"eskel",
-    "attackValue": 5,
-    "ability": "Scorch"
+    "ability": "MoraleBoost"
   },
   {
-    "id": 23,
-    "title": "Geralt",
-    "type": "CloseCombat",
+    "id": 12,
+    "title": "Biting Frost",
+    "type": "Special",
     "faction": "Neutral",
-    "slug": "geralt",
-    "attackValue": 15,
-    "ability": "Scorch"
-  },
-  {
-    "id":24,
-    "title":"Ice Giant",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"ice_giant",
-    "attackValue":15,
-     "ability": "Spy"
-  },
-  {
-    "id":25,
-    "title":"Lambert",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug":"lambert",
-    "attackValue":5,
-    "ability": "Scorch"
-  },
-  {
-    "id": 26,
-    "title": "Dijkstra",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dijkstra",
-    "attackValue": 15,
-    "ability": "Spy"
-  },
-  {
-    "id": 27,
-    "title": "Dandelion",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dandelion",
-    "attackValue": 5,
-    "ability": "Scorch"
-  },
-  {
-    "id": 28,
-    "title": "Dagon",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "dagon",
-    "attackValue": 5,
-    "ability": "Scorch"
-  },
-  {
-    "id": 29,
-    "title": "Wyvern",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 3,
-    "ability": "Scorch"
-  },
-  {
-    "id": 30,
-    "title": "Wyvern",
-    "type": "CloseCombat",
-    "faction": "Neutral",
-    "slug": "wyvern",
-    "attackValue": 13,
-    "ability": "Spy"
+    "slug": "bitingfrost",
+    "ability": "Weather",
+    "affects": "Melee",
+	"desc": "Set the strength of all units on both Melee rows to 1."
   }
 ]

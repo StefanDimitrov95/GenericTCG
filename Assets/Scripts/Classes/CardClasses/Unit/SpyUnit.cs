@@ -32,8 +32,7 @@ namespace Assets.Scripts.Classes
         public void SpyEffect(IHand hand)
         {           
             hand.DrawExtraCards(2);
-
-            UpdateAttackForMoraleBoost();
+            UpdateAttackForAbilitiesOnRow();
             AddCardToRow(this);
             base.ToRow.currentRow.SetAttackValueOfRow();
         }

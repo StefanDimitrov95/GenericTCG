@@ -20,6 +20,7 @@ namespace Assets.Scripts.Classes.CardClasses.Magic
             DropZone enemyRow = GameObject.Find(enemyRowName).GetComponent<DropZone>();
             Debuff(this.ToRow);
             Debuff(enemyRow);
+            ToRow.currentRow.AddWeatherEffectToRow();
         }
 
         public override void OnPlay()
@@ -30,7 +31,7 @@ namespace Assets.Scripts.Classes.CardClasses.Magic
 
         private void Debuff(DropZone row)
         {
-            row.currentRow.cardsOnRow.ForEach(card => card.AttackValue = 1); //obviously shouldn't be like that
+            row.currentRow.AddWeatherEffectToRow();
             row.currentRow.SetAttackValueOfRow();
         }
     }

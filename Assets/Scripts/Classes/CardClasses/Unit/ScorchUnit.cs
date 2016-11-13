@@ -16,6 +16,7 @@ namespace Assets.Scripts.Classes
         public override void OnDropEffect()
         {
             AddCardToRow(this);
+            UpdateAttackForAbilitiesOnRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
             GameObject enemyRowObj;
             DiscardPile pile;
@@ -42,7 +43,7 @@ namespace Assets.Scripts.Classes
                 pile.AddToDiscardPile(card, enemyRowObj);
                 enemyRow.currentRow.RemoveUnitCardFromRow(card);
             }
-            UpdateAttackForMoraleBoost();
+            
             enemyRow.currentRow.SetAttackValueOfRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
         }

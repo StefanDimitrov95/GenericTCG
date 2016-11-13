@@ -67,6 +67,12 @@ namespace Assets.Scripts
             OnDropEffect();
         }
 
+        public virtual void UpdateAttackForAbilitiesOnRow()
+        {
+            UpdateAttackForWeatherEffect();
+            UpdateAttackForMoraleBoost();
+        }
+
         protected void AddCardToRow(UnitCard card)
         {
             ToRow.currentRow.AddUnitCardToRow(card);
@@ -78,6 +84,13 @@ namespace Assets.Scripts
             this.AttackValue += ToRow.currentRow.AbilityEffectOnRow.Count;
         }
 
+        protected void UpdateAttackForWeatherEffect()
+        {
+            if (ToRow.currentRow.IsWeatherEffectOnRow())
+            {
+                this.AttackValue = 1;
+            }
+        }
         public virtual Transform PlayEnemyUnitCard()
         {
             string enemyRowName = "Enemy" + this.ToRow.name;

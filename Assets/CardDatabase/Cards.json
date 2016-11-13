@@ -20,7 +20,7 @@
   {
     "id":3,
     "title":"Ice Giant",
-    "type": "SiegeCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug":"ice_giant",
     "attackValue":5,
@@ -33,21 +33,21 @@
     "faction": "Neutral",
     "slug":"lambert",
     "attackValue":5,
-    "ability": "Spy"
+    "ability": "Medic"
   },
   {
     "id": 5,
     "title": "Dijkstra",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dijkstra",
     "attackValue": 5,
-    "ability": "Spy"
+    "ability": "Medic"
   },
   {
     "id": 6,
     "title": "Dandelion",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dandelion",
     "attackValue": 5,
@@ -56,7 +56,7 @@
   {
     "id": 7,
     "title": "Dagon",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "dagon",
     "attackValue": 5,
@@ -65,7 +65,7 @@
   {
     "id": 8,
     "title": "Wyvern",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
@@ -74,7 +74,7 @@
   {
     "id": 9,
     "title": "Wyvern",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,
@@ -83,7 +83,7 @@
   {
     "id": 10,
     "title": "Wyvern 2",
-    "type": "RangedCombat",
+    "type": "CloseCombat",
     "faction": "Neutral",
     "slug": "wyvern",
     "attackValue": 3,

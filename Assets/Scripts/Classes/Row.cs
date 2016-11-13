@@ -150,11 +150,19 @@ namespace Assets.Scripts
                 }
             }
         }
+        public bool IsWeatherEffectOnRow()
+        {
+            if (isDebuffed)
+            {
+                return true;
+            }
+            return false;
+        }
 
         public void AddWeatherEffectToRow()
         {
             isDebuffed = true;
-            cardsOnRow.ForEach(card => card.AttackValue = 1);
+            cardsOnRow.ForEach(card => card.UpdateAttackForAbilitiesOnRow());
         }
 
         public override string ToString()

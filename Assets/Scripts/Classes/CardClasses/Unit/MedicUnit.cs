@@ -16,7 +16,7 @@ namespace Assets.Scripts.Classes
         public override void OnDropEffect()
         {
             AddCardToRow(this);
-            UpdateAttackForMoraleBoost();
+            UpdateAttackForAbilitiesOnRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
             DiscardPile pile;
 
