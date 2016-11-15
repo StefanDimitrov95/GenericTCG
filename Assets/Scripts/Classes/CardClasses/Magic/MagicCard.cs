@@ -26,7 +26,7 @@ namespace Assets.Scripts
         public override string ConstructCardData()
         {
             string data = "<color=#acb939><b> \t\t" + this.Title + "</b></color>" +
-            "\n\n<color=#33ccff>" + this.Description + "</color>";
+            "\n<color=#33ccff>" + this.Description + "</color>";
             return data;
         }
 

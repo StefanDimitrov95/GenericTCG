@@ -5,26 +5,24 @@ using Assets.Scripts;
 
 public class PointerHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-	public Card CurrentCard;
+    public Card CurrentCard;
+    private Tooltip tooltip;
 
-	private Tooltip Tooltip;
-	
-	
-	void Start () {
-		Tooltip = GameObject.Find("Deck").GetComponent<Tooltip>();
-	}
-	
-	public void OnPointerEnter(PointerEventData eventData)
-	{
-		CardScaling.UpscaleCard(this);
-		Tooltip.Activate(CurrentCard);
-	}
+    void Start()
+    {
+        tooltip = GameObject.Find("Deck").GetComponent<Tooltip>();
+    }
 
-	public void OnPointerExit(PointerEventData eventData)
-	{
-		CardScaling.DownscaleCard(this);
-		Tooltip.Deactivate();
-	}
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        CardScaling.UpscaleCard(this);
+        tooltip.ConstructTooltip(CurrentCard);
+        tooltip.Activate();
+    }
 
-	
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        CardScaling.DownscaleCard(this);
+        tooltip.Deactivate();
+    }
 }

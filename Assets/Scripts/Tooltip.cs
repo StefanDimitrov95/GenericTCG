@@ -3,50 +3,55 @@ using System.Collections;
 using Assets.Scripts;
 using UnityEngine.UI;
 
-public class Tooltip : MonoBehaviour {
+public class Tooltip : MonoBehaviour
+{
 
     private Card card;
     private GameObject tooltip;
+    private Animator anim;
     private string data;
 
-	// Use this for initialization
-	void Start () {
-        tooltip = GameObject.Find("Tooltip");
-        tooltip.SetActive(false);
-	}
-	
-	public void Activate(Card card)
+    void Start()
     {
-        this.card = card;
-        ConstructDataString();
-        DisplayData();
+        tooltip = GameObject.Find("TooltipPanel");
+        anim = tooltip.GetComponent<Animator>();
+        tooltip.SetActive(false);
+    }
+
+    public void Activate()
+    {
         tooltip.SetActive(true);
+        tooltip.transform.GetChild(1).gameObject.SetActive(true);
+        anim.ResetTrigger("isHoverEnded");
+        anim.SetTrigger("isHover");
     }
 
     public void Deactivate()
     {
-        tooltip.SetActive(false);
+        anim.ResetTrigger("isHover");
+        anim.SetTrigger("isHoverEnded");
+        tooltip.transform.GetChild(1).gameObject.SetActive(false);
     }
 
     public void ConstructDataString()
     {
         data = card.ConstructCardData();
-        //if (card.Type != CardType.Special)
-        //{
-        //    data = "<color=#acb939><b> \t\t\t\t" + card.Title + "</b></color>" +
-        //    "\n\nAttack Power: " + "<color=#e14c43><b>" + (card as UnitCard).AttackValue + "</b></color>" +
-        //    "\nType: " + "<color=#3770d2>" + (card as UnitCard).Type + "</color>" +
-        //    "\nAbility: " + "<color=#3770d2>" + (card as UnitCard).Ability + "</color>";
-        //}
-        //else
-        //{
-        //    data = "<color=#acb939><b> \t\t\t\t" + card.Title + "</b></color>" +
-        //       "\n\nEffect: " + "<color=#e14c43><b>" + (card as MagicCard).Effect + "</color>";
-        //}
     }
 
+    public void ConstructTooltip(Card card)
+    {
+        this.card = card;
+        ConstructDataString();
+        SetImageOfTooltip(card);
+        DisplayData();
+    }
     void DisplayData()
     {
-        tooltip.transform.GetChild(0).GetComponent<Text>().text = data;
+        tooltip.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = data;
+    }
+
+    private void SetImageOfTooltip(Card card)
+    {
+        tooltip.transform.GetChild(0).GetComponent<Image>().sprite = card.Sprite;
     }
 }
