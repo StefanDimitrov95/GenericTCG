@@ -14,10 +14,20 @@ public class Board : MonoBehaviour
 	public GameObject enemySiegeRow;
 	public GameObject playerAttackLabel;
 	public GameObject enemyAttackLabel;
+    public GameObject playerTurnsLeftText;
+    public GameObject enemyTurnsLeftText;
+    public GameObject playerPassedTurnPanel;
+    public GameObject enemyPassedTurnPanel;
+
+    [HideInInspector]
+    public byte playerTurnsLeft;
+    [HideInInspector]
+    public byte enemyTurnsLeft;
 
 	void Start ()
 	{
-	  
+        playerTurnsLeft = 2;
+        enemyTurnsLeft = 2;
 	}
 	
 	public void UpdateAttackLabels()
@@ -25,6 +35,16 @@ public class Board : MonoBehaviour
 		UpdatePlayerAttackLabel();
 		UpdateEnemyAttackLabel();
 	}
+
+    public int GetPlayerTotalAttack()
+    {
+        return int.Parse(playerAttackLabel.GetComponent<Text>().text);
+    }
+
+    public int GetEnemyTotalAttack()
+    {
+        return int.Parse(enemyAttackLabel.GetComponent<Text>().text);
+    }
 
 	private void UpdatePlayerAttackLabel()
 	{
@@ -63,4 +83,34 @@ public class Board : MonoBehaviour
 		GameObject cardObj = Instantiate(Resources.Load("Card", typeof(GameObject))) as GameObject;
 		Extensions.Instantiate(cardObj, cardToBeInstanciated, rowToInstantiateOn);
 	}
+
+    public void UpdatePlayerTurnsText()
+    {
+        playerTurnsLeftText.GetComponent<Text>().text = string.Format("{0}/2", playerTurnsLeft.ToString());
+    }
+
+    public void UpdateEnemyTurnsText()
+    {
+        enemyTurnsLeftText.GetComponent<Text>().text = string.Format("{0}/2", enemyTurnsLeft.ToString());
+    }
+
+    public void ActivatePlayerPassPanel()
+    {
+        playerPassedTurnPanel.SetActive(true);
+    }
+
+    public void DeactivatePlayerPassPanel()
+    {
+        playerPassedTurnPanel.SetActive(false);
+    }
+
+    public void ActivateComputerPassPanel()
+    {
+        enemyPassedTurnPanel.SetActive(true);
+    }
+
+    public void DeactivateComputerPassPanel()
+    {
+        enemyPassedTurnPanel.SetActive(false);
+    }
 }

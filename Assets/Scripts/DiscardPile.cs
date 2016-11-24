@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System.Linq;
 using Assets.Scripts.Classes.EnumClasses;
 using Assets.Scripts.Utils;
+using Assets.Scripts.Classes;
 
 public class DiscardPile : MonoBehaviour
 {
@@ -59,12 +60,63 @@ public class DiscardPile : MonoBehaviour
 
     public KeyValuePair<Card, GameObject> GetRandomCard()
     {
-        System.Random rnd = new System.Random();
-        KeyValuePair<Card, GameObject> randomCardKvPair = CardPile[rnd.Next(0, CardPile.Count)];
+        //System.Random rnd = new System.Random();
+        KeyValuePair<Card, GameObject> randomCardKvPair = ChooseUnitCard();
         CheckIfSpyCard(randomCardKvPair);
         CardPile.Remove(randomCardKvPair);
         UpdateCardPileImage();
         return randomCardKvPair;       
+    }
+
+    public bool IsContainingMedic()
+    {
+        if (CardPile.Any(k => k.Key is MedicUnit))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsContainingSpy()
+    {
+        if (CardPile.Any(k => k.Key is SpyUnit))
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public bool IsContainingUnit()
+    {
+        if (CardPile.Any(k => (k.Key is UnitCard)))
+        {
+            return true;
+        }
+        return true;
+    }
+
+    private KeyValuePair<Card, GameObject> ChooseUnitCard()
+    {
+        KeyValuePair<Card, GameObject> chosenCard = new KeyValuePair<Card, GameObject>();
+
+        if (IsContainingMedic())
+        {
+            chosenCard = CardPile.Where(c => c.Key is MedicUnit).First();
+            return chosenCard;
+        }
+
+        if (CardPile.Any(k=> k.Key is SpyUnit))
+        {
+            chosenCard = CardPile.Where(c => c.Key is SpyUnit).First();
+            return chosenCard;
+        }
+
+        if (IsContainingUnit())
+        {
+            chosenCard = CardPile.OrderByDescending(c => (c.Key as UnitCard).AttackValue).First();
+        }
+
+        return chosenCard;
     }
 
     private void ActivatePanel()

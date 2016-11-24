@@ -4,9 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts
 {
-    class TurnBasedStateMachine : MonoBehaviour
+    public class TurnBasedStateMachine : MonoBehaviour
     {
-        private BattleState currentState;
+        public BattleState currentState;
         private GameObject playerHand;
         private GameObject enemyHand;
         private float timer = 0;
@@ -31,29 +31,41 @@ namespace Assets.Scripts
                         break;
                     }
                 case BattleState.PlayerTurn:
-                    {
+                    {                      
                         //player plays a card  
                         timer = 1;                      
                         PlayerTurn.Logic(ref playerHand, ref currentState);
+                        Debug.Log("Is turn passed: " + PlayerTurn.IsTurnPassed);
                         break;
                     }
                 case BattleState.EnemyTurn:
                     {
                         //enemy turn logic
                         timer -= Time.deltaTime;
-
                         if (timer <= 0)
                         {
                             timer = 0;
-                            EnemyTurn.Logic(ref enemyHand, ref currentState);
+                            //EnemyTurn.Logic(ref enemyHand, ref currentState,null);
+                        }
+                        if (EnemyTurn.IsTurnPassed)
+                        {
+                            currentState = BattleState.PlayerTurn;
+                            if (PlayerTurn.IsTurnPassed)
+                            {
+                                currentState = BattleState.CalculateTurn;
+                            }
                         }
                         
                         break;
                     }
                 case BattleState.CalculateTurn:
                     {
+                        ResetTurn();
+                        Debug.Log("Ending turn... Setting passedTurns to default " + PlayerTurn.IsTurnPassed + " " + EnemyTurn.IsTurnPassed);
+                        // only if both players have passed or have nothing to play
                         //Check if round is over
                         //If round is over check if player has won or lost
+                        //reset passed condition
                         break;
                     }
                 case BattleState.Win:
@@ -67,6 +79,12 @@ namespace Assets.Scripts
                 default:
                     break;
             }
+        }
+
+        private void ResetTurn()
+        {
+            PlayerTurn.ResetTurn();
+            EnemyTurn.ResetTurn();
         }
 
         private static BattleState DecideWhoGoesFirst()

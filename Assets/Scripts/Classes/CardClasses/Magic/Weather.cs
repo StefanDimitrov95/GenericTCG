@@ -7,7 +7,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Classes.CardClasses.Magic
 {
-    class Weather : MagicCard
+    public class Weather : MagicCard
     {
         public Weather(int id, string title, CardType type, Faction faction, string slug, Ability ability, AffectRow rowToAffect, string description)
             : base(id, title, type, faction, slug, ability, rowToAffect, description)

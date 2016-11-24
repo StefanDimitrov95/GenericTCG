@@ -22,7 +22,23 @@ namespace Assets.Scripts.Classes
                 base.ToRow = GameObject.Find("EnemySiegeRow").GetComponent<DropZone>();
             }
         }
-        
+
+        public override void OnResurrect()
+        {
+            IHand hand;
+            if (this.ToRow.name.StartsWith("Enemy"))
+            {
+                PlayerHand playerHand = GameObject.Find("Hand").GetComponent<PlayerHand>();
+                hand = playerHand;
+            }
+            else
+            {
+                EnemyHand enemyHand = GameObject.Find("EnemyDeck").GetComponent<EnemyHand>();
+                hand = enemyHand;
+            }
+            SpyEffect(hand);
+        }
+
         public override void OnDropEffect()
         {
             PlayerHand hand = GameObject.Find("Hand").GetComponent<PlayerHand>();

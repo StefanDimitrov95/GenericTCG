@@ -68,7 +68,6 @@ public class DropZone : MonoBehaviour, IDropHandler
         {
             GameObject.Find("Hand").GetComponent<PlayerHand>().cardPlayed = true;
             draggedCard.cardPlayed = true;
-            Debug.Log(draggedCard.cardPlayed);
         }
     }
     
