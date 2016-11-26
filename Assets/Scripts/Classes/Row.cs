@@ -105,17 +105,6 @@ namespace Assets.Scripts
             return cardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
         }
 
-        //public void UpdateAttackValueOfRow(Card draggedCard)
-        //{
-        //    if (draggedCard.Type != CardType.Special)
-        //    {
-        //        int draggedCardAttackValue = (draggedCard as UnitCard).AttackValue;
-        //        RowAttackValue += draggedCardAttackValue;
-        //        UpdateTextOfRow();
-        //        Debug.Log(TextBoxOfRow.GetComponent<Text>().text);
-        //    }
-        //}
-
         public void SetAttackValueOfRow()
         {
             UpdateRowAttackValue();

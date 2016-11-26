@@ -39,6 +39,7 @@ namespace Assets.Scripts.Utils
                 cardObj.GetComponent<Draggable>().enabled = true;
             }
             cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;
+            cardObj.transform.GetChild(0).GetComponent<UpdateCardAttackValue>().CurrentCard = cardToBeInstanciated;
         }
 
         public static void InstantiateToDiscardPanel(GameObject cardObj, Card cardToBeInstanciated, Transform parent)
@@ -49,6 +50,7 @@ namespace Assets.Scripts.Utils
             cardObj.GetComponent<PointerHandler>().CurrentCard = cardToBeInstanciated;
             cardObj.GetComponent<PointerHandler>().enabled = false;
             cardObj.GetComponent<PointerHandlerDiscardedCard>().discardedCard = cardToBeInstanciated;
+            cardObj.transform.GetChild(0).GetComponent<UpdateCardAttackValue>().CurrentCard = cardToBeInstanciated;
         }
     }
 }

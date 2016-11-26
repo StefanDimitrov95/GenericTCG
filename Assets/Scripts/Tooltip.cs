@@ -38,13 +38,15 @@ public class Tooltip : MonoBehaviour
         data = card.ConstructCardData();
     }
 
-    public void ConstructTooltip(Card card)
+    public void ConstructTooltip(Card card, GameObject cardObj)
     {
         this.card = card;
         ConstructDataString();
         SetImageOfTooltip(card);
+        SetAttackTextField(cardObj);
         DisplayData();
     }
+
     void DisplayData()
     {
         tooltip.transform.GetChild(1).GetChild(0).GetComponent<Text>().text = data;
@@ -53,5 +55,11 @@ public class Tooltip : MonoBehaviour
     private void SetImageOfTooltip(Card card)
     {
         tooltip.transform.GetChild(0).GetComponent<Image>().sprite = card.Sprite;
+    }
+
+    private void SetAttackTextField(GameObject cardObj)
+    {
+        tooltip.transform.GetChild(0).GetChild(0).GetComponent<Text>().text = cardObj.transform.GetChild(0).GetComponent<Text>().text;
+        tooltip.transform.GetChild(0).GetChild(0).GetComponent<Text>().color = cardObj.transform.GetChild(0).GetComponent<Text>().color;
     }
 }

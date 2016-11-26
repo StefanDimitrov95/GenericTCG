@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.EventSystems;
 using Assets.Scripts;
+using UnityEngine.UI;
 
 public class PointerHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,13 +11,14 @@ public class PointerHandler : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     void Start()
     {
-        tooltip = GameObject.Find("Deck").GetComponent<Tooltip>();
+        tooltip = GameObject.Find("Board").GetComponent<Tooltip>();
     }
+
 
     public void OnPointerEnter(PointerEventData eventData)
     {
         CardScaling.UpscaleCard(this);
-        tooltip.ConstructTooltip(CurrentCard);
+        tooltip.ConstructTooltip(CurrentCard, this.gameObject);
         tooltip.Activate();
     }
 

@@ -12,6 +12,7 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
 
     private GameObject placeholder;
     private PlayerHand hand;
+    private Text attackValue;
 
     public void ReturnCardToHand()
     {

@@ -61,6 +61,11 @@ namespace Assets.Scripts
             "\nAbility: " + "<color=#3770d2>" + this.Ability + "</color>";
             return data;
         }
+        
+        public int AttackChanged()
+        {
+            return this.AttackValue.CompareTo(this.originalAttack);
+        }
 
         public override void OnResurrect()
         {
