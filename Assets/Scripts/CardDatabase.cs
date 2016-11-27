@@ -18,8 +18,8 @@ public class CardDatabase : MonoBehaviour {
 
     void Start()
     {
-        PlayerCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/PlayerTestSpyRessurect.json"));
-        EnemyCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/EnemyScorchCards.json"));
+        PlayerCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/Cards.json"));
+        EnemyCardData = JsonMapper.ToObject(File.ReadAllText(Application.dataPath + "/CardDatabase/EnemyCards.json"));
         PlayerDatabase = new List<Card>();
         EnemyDatabase = new List<Card>();
         ConstructPlayerCardDatabase(PlayerCardData, PlayerDatabase);

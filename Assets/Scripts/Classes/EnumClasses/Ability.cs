@@ -11,6 +11,7 @@
         Agile,
         Muster,
         Scorch,
-        Weather
+        Weather,
+        ClearSkies
     }
 }

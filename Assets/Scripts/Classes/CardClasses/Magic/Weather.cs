@@ -23,13 +23,6 @@ namespace Assets.Scripts.Classes.CardClasses.Magic
             ToRow.currentRow.AddWeatherEffectToRow();
         }
 
-        public override void OnPlay()
-        {
-            string discardPileName = this.ToRow.name.Contains("Enemy") ? "EnemyDiscardPile" : "PlayerDiscardPile";
-            DiscardPile dp = GameObject.Find(discardPileName).GetComponent<DiscardPile>();
-            dp.AddToDiscardPile(this, this.ToRow.gameObject);
-        }
-
         private void Debuff(DropZone row)
         {
             row.currentRow.AddWeatherEffectToRow();

@@ -107,5 +107,15 @@
     "ability": "Weather",
     "affects": "Melee",
 	"desc": "Set the strength of all units on both Melee rows to 1."
+  },
+  {
+	"id": 13,
+	"title": "Clear Skies",
+    "type": "Special",
+    "faction": "Neutral",
+    "slug": "clearskies",
+    "ability": "ClearSkies",
+    "affects": "None",
+	"desc": "Remove ALL weather effects."
   }
 ]

@@ -14,6 +14,9 @@ namespace Assets.Scripts.Classes
                 case Ability.Weather:
                     magicCard = new Weather(id, title, type, faction, slug, ability, rowToAffect, description);
                     break;
+                case Ability.ClearSkies:
+                    magicCard = new ClearSkies(id, title, type, faction, slug, ability, rowToAffect, description);
+                    break;
                 default:
                     break;
             }

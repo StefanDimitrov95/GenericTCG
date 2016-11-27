@@ -35,7 +35,12 @@ namespace Assets.Scripts
             OnDropEffect();
         }
 
-        public abstract void OnPlay();
+        public virtual void OnPlay()
+        {
+            string discardPileName = this.ToRow.name.Contains("Enemy") ? "EnemyDiscardPile" : "PlayerDiscardPile";
+            DiscardPile dp = GameObject.Find(discardPileName).GetComponent<DiscardPile>();
+            dp.AddToDiscardPile(this, this.ToRow.gameObject);
+        }
 
         public override string ToString()
         {
@@ -54,6 +59,9 @@ namespace Assets.Scripts
                     break;
                 case AffectRow.Siege:
                     base.ToRow = GameObject.Find("SiegeRow").GetComponent<DropZone>();
+                    break;
+                case AffectRow.None:
+                    base.ToRow = GameObject.Find("MeleeRow").GetComponent<DropZone>();
                     break;
                 default:
                     break;

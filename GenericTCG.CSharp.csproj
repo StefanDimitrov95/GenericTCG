@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\CardDatabase.cs" />
     <Compile Include="Assets\Scripts\CardScaling.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Card.cs" />
+    <Compile Include="Assets\Scripts\Classes\CardClasses\Magic\ClearSkies.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Magic\MagicCard.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Magic\Weather.cs" />
     <Compile Include="Assets\Scripts\Classes\CardClasses\Unit\MedicUnit.cs" />

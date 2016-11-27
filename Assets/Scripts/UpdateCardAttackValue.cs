@@ -28,5 +28,9 @@ public class UpdateCardAttackValue : MonoBehaviour
         {
             AttackComponent.color = Color.green;
         }
+        else
+        {
+            AttackComponent.color = Color.white;
+        }
     }
 }

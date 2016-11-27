@@ -1,5 +1,4 @@
-﻿using Assets.Scripts.Classes;
-using Assets.Scripts.Classes.EnumClasses;
+﻿using Assets.Scripts.Classes.EnumClasses;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -146,6 +145,17 @@ namespace Assets.Scripts
                 return true;
             }
             return false;
+        }
+
+        public void RemoveWeatherEffectFromRow()
+        {
+            if (!isDebuffed)
+            {
+                return;
+            }
+            isDebuffed = false;
+            cardsOnRow.ForEach(card => card.ResetAttackAfterClearWeather());
+            SetAttackValueOfRow();
         }
 
         public void AddWeatherEffectToRow()

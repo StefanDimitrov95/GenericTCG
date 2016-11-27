@@ -12,7 +12,7 @@ namespace Assets.Scripts
 
         public Ability Ability { get; set; }
 
-        internal int originalAttack;
+        internal readonly int originalAttack;
 
         public UnitCard(int id, string title, CardType type, Faction faction, string slug, int attackValue, Ability ability)
             : base(id, title, type, faction, slug)
@@ -95,6 +95,11 @@ namespace Assets.Scripts
             {
                 this.AttackValue = 1;
             }
+        }
+        
+        public void ResetAttackAfterClearWeather()
+        {
+            this.AttackValue = originalAttack + AttackValue - 1;
         }
     }
 }
