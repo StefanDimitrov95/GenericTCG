@@ -60,7 +60,6 @@ public class DiscardPile : MonoBehaviour
 
     public KeyValuePair<Card, GameObject> GetRandomCard()
     {
-        //System.Random rnd = new System.Random();
         KeyValuePair<Card, GameObject> randomCardKvPair = ChooseUnitCard();
         CheckIfSpyCard(randomCardKvPair);
         CardPile.Remove(randomCardKvPair);

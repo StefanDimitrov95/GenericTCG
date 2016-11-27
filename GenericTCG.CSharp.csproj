@@ -98,6 +98,7 @@
     <Compile Include="Assets\Scripts\Classes\Row.cs" />
     <Compile Include="Assets\Scripts\Classes\UnitCardFactory.cs" />
     <Compile Include="Assets\Scripts\DiscardPile.cs" />
+    <Compile Include="Assets\Scripts\DiscardPileTooltip.cs" />
     <Compile Include="Assets\Scripts\Draggable.cs" />
     <Compile Include="Assets\Scripts\DropZone.cs" />
     <Compile Include="Assets\Scripts\EnemyDeck.cs" />
