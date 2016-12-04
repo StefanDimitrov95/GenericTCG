@@ -21,10 +21,12 @@ public class EnemyHand : MonoBehaviour, IHand
     private List<MedicUnit> medicCards;
     private List<NormalUnit> normalUnitCards;
     private List<Weather> weatherMagicCards;
+    private List<HeroUnit> heroCards;
+    private List<ClearSkies> clearSkiesCards;
 
     private EnemyDeck EnemyDeck;
     private Text HandLabel;
-    const int AmountOfCardsToDraw = 5;
+    const int AmountOfCardsToDraw = 10;
 
     void Start()
     {
@@ -43,6 +45,8 @@ public class EnemyHand : MonoBehaviour, IHand
         medicCards = new List<MedicUnit>();
         normalUnitCards = new List<NormalUnit>();
         weatherMagicCards = new List<Weather>();
+        heroCards = new List<HeroUnit>();
+        clearSkiesCards = new List<ClearSkies>();
 
         RefreshMemory();
     }
@@ -87,24 +91,25 @@ public class EnemyHand : MonoBehaviour, IHand
     }
 
     private void RefreshMemory()
-    {
-        List<Card> cardsInHand = GameObject.Find("EnemyDeck").GetComponent<EnemyHand>().CardsInHand;
-
-        scorchUnitCards = cardsInHand.OfType<ScorchUnit>().ToList();
-        spyCards = cardsInHand.OfType<SpyUnit>().ToList();
-        moraleBoostCards = cardsInHand.OfType<MoraleBoostUnit>().ToList();
-        tightBondCards = cardsInHand.OfType<TightBondUnit>().ToList();
-        musterCards = cardsInHand.OfType<MusterUnit>().ToList();
-        medicCards = cardsInHand.OfType<MedicUnit>().ToList();
-        normalUnitCards = cardsInHand.OfType<NormalUnit>().ToList();
-        weatherMagicCards = cardsInHand.OfType<Weather>().ToList();
+    {     
+        scorchUnitCards = CardsInHand.OfType<ScorchUnit>().ToList();
+        spyCards = CardsInHand.OfType<SpyUnit>().ToList();
+        moraleBoostCards = CardsInHand.OfType<MoraleBoostUnit>().ToList();
+        tightBondCards = CardsInHand.OfType<TightBondUnit>().ToList();
+        musterCards = CardsInHand.OfType<MusterUnit>().ToList();
+        medicCards = CardsInHand.OfType<MedicUnit>().ToList();
+        normalUnitCards = CardsInHand.OfType<NormalUnit>().ToList();
+        weatherMagicCards = CardsInHand.OfType<Weather>().ToList();
+        heroCards = CardsInHand.OfType<HeroUnit>().ToList();
+        clearSkiesCards = CardsInHand.OfType<ClearSkies>().ToList();
     }
 
     public UnitCard GetLowestCard()
     {
+        List<UnitCard> unitsInHand = CardsInHand.FindAll(c => (c is UnitCard)).Cast<UnitCard>().ToList();
         UnitCard lowestCard = null;
         int lowestValue = int.MaxValue;
-        foreach (UnitCard card in CardsInHand)
+        foreach (UnitCard card in unitsInHand)
         {
             if (card.AttackValue < lowestValue)
             {
@@ -150,9 +155,54 @@ public class EnemyHand : MonoBehaviour, IHand
         return normalUnitCards.Any();
     }
 
-    public bool IsAnyWeatherUnitInHand()
+    public bool IsAnyWeatherInHand()
     {
         return weatherMagicCards.Any();
+    }
+
+    public bool IsAnyWeakNormalUnitInHand()
+    {
+        return normalUnitCards.Any(c => c.AttackValue < 8);
+    }
+
+    public bool IsAnyHeroUnitInHand()
+    {
+        return heroCards.Any();
+    }
+
+    public bool IsAnyClearSkiesInHand()
+    {
+        return clearSkiesCards.Any();
+    }
+
+    public ClearSkies GetClearSkiesCard()
+    {
+        ClearSkies cardToGive = clearSkiesCards.First();
+        clearSkiesCards.Remove(cardToGive);
+        return cardToGive;
+    }
+
+    public HeroUnit GetHeroCard()
+    {
+        HeroUnit cardToGive = heroCards.First();
+        heroCards.Remove(cardToGive);
+        return cardToGive;
+    }
+
+    public UnitCard GetWeakestNormalUnit()
+    {
+        List<NormalUnit> weakCards = normalUnitCards.FindAll(c => c.AttackValue < 8);
+        UnitCard lowestCard = null;
+        int lowestValue = int.MaxValue;
+        foreach (UnitCard card in weakCards)
+        {
+            if (card.AttackValue < lowestValue)
+            {
+                lowestValue = card.AttackValue;
+                lowestCard = card;
+            }
+        }
+        return lowestCard;
     }
 
     public SpyUnit GetSpyUnit()
@@ -162,10 +212,82 @@ public class EnemyHand : MonoBehaviour, IHand
         return cardToGive;
     }
 
+    public ScorchUnit DecideWhichScorchToPlay(List<UnitCard> units)
+    {
+        foreach (ScorchUnit scorch in scorchUnitCards)
+        {
+            for (int i = 0; i < units.Count; i++)
+            {
+                if (scorch.CanDestroyUnit(units[i]))
+                {
+                    scorchUnitCards.Remove(scorch);
+                    return scorch;
+                }
+            }
+        }
+        return null;
+    }
+
+    public Weather DecideWhichWeatherToPlay(List<UnitCard> units)
+    {
+        foreach (Weather weather in weatherMagicCards)
+        {
+            for (int i = 0; i < units.Count; i++)
+            {
+                if (weather.CanAffectUnit(units[i]))
+                {
+                    weatherMagicCards.Remove(weather);
+                    return weather;
+                }
+            }
+        }
+        return null;
+    }
+
     public MedicUnit GetMedicUnit()
     {
         MedicUnit cardToGive = medicCards.First();
         medicCards.Remove(cardToGive);
         return cardToGive;
+    }
+
+    public MusterUnit GetMusterUnit()
+    {
+        MusterUnit musterCard = musterCards.First();
+        musterCards.Remove(musterCard);
+        return musterCard;
+    }
+
+    public bool AreTighBondCardsSame()
+    {
+        var tightBondGroups = tightBondCards.GroupBy(c => c.Title);
+        foreach (var tightBondGroup in tightBondGroups)
+        {
+            if (tightBondGroup.Count() > 1)
+            {
+                //tightBondGroup.ToList().ForEach(c => Debug.Log(c.ToString()));
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public TightBondUnit GetTightBondUnit(string name)
+    {
+        TightBondUnit tightBondUnit = null;
+        var tightBondGroups = tightBondCards.GroupBy(c => c.Title);
+        foreach (var tightBondGroup in tightBondGroups)
+        {
+            if (tightBondGroup.Key == name)
+            {
+                tightBondUnit = tightBondGroup.First();
+            }
+        }
+        if (tightBondUnit == null)
+        {
+            tightBondUnit = tightBondCards.First();
+        }
+        tightBondCards.Remove(tightBondUnit);
+        return tightBondUnit;
     }
 }

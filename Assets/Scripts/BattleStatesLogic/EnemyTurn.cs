@@ -18,6 +18,12 @@ namespace Assets.Scripts.BattleStatesLogic
         {
             try
             {
+                if (cardToBePlayed == null)
+                {
+                    PassTurn();
+                    Debug.Log("I AM STUCK SO ME GONNA PASS");
+                    return;
+                }
                 enemyHand.GetComponent<EnemyHand>().PlayCard(cardToBePlayed);               
             }
             catch (System.ArgumentOutOfRangeException)
@@ -29,7 +35,7 @@ namespace Assets.Scripts.BattleStatesLogic
         {
             isTurnPassed = true;
             GameObject.Find("Board").GetComponent<Board>().ActivateComputerPassPanel();
-            GameObject.Find("Board").GetComponent<Board>().enemyTurnsLeft--;
+           //GameObject.Find("Board").GetComponent<Board>().enemyTurnsLeft--;
             GameObject.Find("Board").GetComponent<Board>().UpdateEnemyTurnsText();
         }
 

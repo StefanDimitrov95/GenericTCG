@@ -39,7 +39,7 @@ namespace Assets.Scripts
         {
             string discardPileName = this.ToRow.name.Contains("Enemy") ? "EnemyDiscardPile" : "PlayerDiscardPile";
             DiscardPile dp = GameObject.Find(discardPileName).GetComponent<DiscardPile>();
-            dp.AddToDiscardPile(this, this.ToRow.gameObject);
+            dp.AddToDiscardPile(this);
         }
 
         public override string ToString()

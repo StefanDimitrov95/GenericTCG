@@ -19,6 +19,12 @@ public class TightBondUnit : UnitCard
         UpdateAttackForMoraleBoost();
     }
 
+    public override void ResetAttackAfterClearWeather()
+    {
+        base.ResetAttackAfterClearWeather();
+        UpdateAttackForTightBond();
+    }
+
     public override void OnDropEffect()
     {
         AddCardToRow(this);
@@ -33,13 +39,16 @@ public class TightBondUnit : UnitCard
         {
             foreach (UnitCard card in foundCards)
             {
-                if (card.Ability == Ability.TightBond && ToRow.currentRow.IsWeatherEffectOnRow())
+                if (ToRow.currentRow.IsWeatherEffectOnRow())
                 {
                     card.AttackValue = foundCards.Count * 1;
                 }
-                else if (card.Ability == Ability.TightBond)
+                else 
                 {
+                    //Needs to be tested
+                    //int buffedAttack = card.AttackValue - card.originalAttack;
                     card.AttackValue = (foundCards.Count) * card.originalAttack;
+                    //card.AttackValue += buffedAttack;
                 }
             }
         }

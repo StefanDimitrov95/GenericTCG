@@ -49,7 +49,6 @@ namespace Assets.Scripts
             this.AttackValue = this.originalAttack;
             GameObject unitCardObject = GameObject.Find(String.Format("{0},{1}", this.ID, this.Title));
             unitCardObject.transform.localScale = new Vector3(0.8f, 0.8f, 1.0f);
-            this.ToRow.GetComponent<DropZone>().currentRow.RemoveUnitCardFromRow(this);
         }
 
         public override string ConstructCardData()
@@ -74,8 +73,11 @@ namespace Assets.Scripts
 
         public virtual void UpdateAttackForAbilitiesOnRow()
         {
-            UpdateAttackForWeatherEffect();
-            UpdateAttackForMoraleBoost();
+            if (!(this is HeroUnit))
+            {
+                UpdateAttackForWeatherEffect();
+                UpdateAttackForMoraleBoost();
+            }
         }
 
         protected void AddCardToRow(UnitCard card)
@@ -97,9 +99,12 @@ namespace Assets.Scripts
             }
         }
         
-        public void ResetAttackAfterClearWeather()
+        public virtual void ResetAttackAfterClearWeather()
         {
-            this.AttackValue = originalAttack + AttackValue - 1;
+            if (!(this is HeroUnit))
+            {
+                this.AttackValue = originalAttack + AttackValue - 1;
+            }
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using Assets.Scripts.Classes.EnumClasses;
+﻿using Assets.Scripts.Classes;
+using Assets.Scripts.Classes.EnumClasses;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -132,12 +133,13 @@ namespace Assets.Scripts
             AbilityEffectOnRow.Add(Ability.MoraleBoost);
             for (int i = 0; i < cardsOnRow.Count; i++)
             {
-                if (cardsOnRow[i] != droppedCard)
+                if (cardsOnRow[i] != droppedCard && !(cardsOnRow[i] is HeroUnit))
                 {
                     cardsOnRow[i].AttackValue++;
                 }
             }
         }
+
         public bool IsWeatherEffectOnRow()
         {
             if (isDebuffed)
@@ -173,7 +175,10 @@ namespace Assets.Scripts
         {
             for (int i = 0; i < cardsOnRow.Count; i++)
             {
-                cardsOnRow[i].AttackValue--;
+                if (cardsOnRow[i].AttackValue > cardsOnRow[i].originalAttack)
+                {
+                    cardsOnRow[i].AttackValue--;
+                }
             }
             return AbilityEffectOnRow.Remove(effect);
         }

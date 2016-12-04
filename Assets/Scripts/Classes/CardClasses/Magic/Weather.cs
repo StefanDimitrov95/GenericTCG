@@ -14,6 +14,16 @@ namespace Assets.Scripts.Classes.CardClasses.Magic
         {
         }
 
+        public bool CanAffectUnit(UnitCard unit)
+        {
+            Debug.Log("ENEMY ROW OBJECT:" + this.ToRow.name + "UNIT TO ROW NAME: " + unit.ToRow.name);
+            if (this.ToRow.name == unit.ToRow.name && !(unit is HeroUnit))
+            {
+                return true;
+            }
+            return false;
+        }
+
         public override void OnDropEffect()
         {
             string enemyRowName = this.ToRow.name.Contains("Enemy") ? this.ToRow.name.Substring(5) : "Enemy" + this.ToRow.name;

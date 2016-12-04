@@ -60,8 +60,6 @@ namespace Assets.Scripts.BattleStatesLogic
             {
                 isTurnPassed = true;
                 ShowPassTurnPanel();
-                GameObject.Find("Board").GetComponent<Board>().playerTurnsLeft--;
-                GameObject.Find("Board").GetComponent<Board>().UpdatePlayerTurnsText();
                 ReturnCardsInHand(ref playerHand);
                 DisableDraggableComponent(playerHand);
                 currentState = BattleState.EnemyTurn;

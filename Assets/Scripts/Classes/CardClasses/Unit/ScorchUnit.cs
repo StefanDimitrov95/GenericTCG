@@ -10,7 +10,6 @@ namespace Assets.Scripts.Classes
         public ScorchUnit(int id, string title, CardType type, Faction faction, string slug, int attackValue, Ability ability)
             : base(id, title, type, faction, slug, attackValue, ability)
         {
-
         }
 
         public override void OnDropEffect()
@@ -18,6 +17,7 @@ namespace Assets.Scripts.Classes
             AddCardToRow(this);
             UpdateAttackForAbilitiesOnRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
+
             GameObject enemyRowObj;
             DiscardPile pile;
             if (this.ToRow.name.Contains("Enemy"))
@@ -30,6 +30,7 @@ namespace Assets.Scripts.Classes
                 enemyRowObj = GameObject.Find("Enemy" + this.ToRow.name);
                 pile = GameObject.Find("EnemyDiscardPile").GetComponent<DiscardPile>();
             }
+
             DropZone enemyRow = enemyRowObj.GetComponent<DropZone>();
             List<UnitCard> strongestCards = enemyRow.GetStrongestUnitCards();
 
@@ -40,12 +41,22 @@ namespace Assets.Scripts.Classes
 
             foreach (UnitCard card in strongestCards)
             {
-                pile.AddToDiscardPile(card, enemyRowObj);
+                pile.AddToDiscardPile(card);
                 enemyRow.currentRow.RemoveUnitCardFromRow(card);
             }
             
             enemyRow.currentRow.SetAttackValueOfRow();
             base.ToRow.currentRow.SetAttackValueOfRow();
+        }
+
+        public bool CanDestroyUnit(UnitCard unit)
+        {
+            Debug.Log("ENEMY ROW OBJECT:" + this.ToRow.name.Substring(5) + "UNIT TO ROW NAME: " + unit.ToRow.name);
+            if (this.ToRow.name == unit.ToRow.name && !(unit is HeroUnit))
+            {
+                return true;
+            }
+            return false;
         }
     }
 }

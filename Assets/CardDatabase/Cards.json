@@ -109,13 +109,49 @@
 	"desc": "Set the strength of all units on both Melee rows to 1."
   },
   {
-	"id": 13,
-	"title": "Clear Skies",
+    "id": 13,
+    "title": "Clear Skies",
     "type": "Special",
     "faction": "Neutral",
     "slug": "clearskies",
     "ability": "ClearSkies",
     "affects": "None",
-	"desc": "Remove ALL weather effects."
+    "desc": "Remove ALL weather effects."
+  },
+   {
+    "id": 14,
+    "title": "HERO CARD",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 13,
+    "ability": "Hero"
+  },
+  {
+    "id": 15,
+    "title": "HERO CARD",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 13,
+    "ability": "Hero"
+  },
+   {
+    "id": 16,
+    "title": "HERO CARD",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 13,
+    "ability": "Hero"
+  }, 
+  {
+    "id": 17,
+    "title": "HERO CARD",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 13,
+    "ability": "Hero"
   }
 ]

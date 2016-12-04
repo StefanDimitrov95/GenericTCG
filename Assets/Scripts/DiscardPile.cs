@@ -39,23 +39,29 @@ public class DiscardPile : MonoBehaviour
         Debug.Log("DiscardPile Was Clicked!!!");
     }
 
-    public void AddToDiscardPile(Card card, GameObject enemyRowObj)
-    {        
-        GameObject cardPrefab = enemyRowObj.transform.FindChild(card.ID + "," + card.Title).gameObject;
+    public void AddToDiscardPile(Card card)
+    {
+        Card discardedCard = card;
+        if (discardedCard == null)
+        {
+            Debug.Log("CARD IS NULL");
+            return;
+        }
+        GameObject cardPrefab = GameObject.Find(discardedCard.ID + "," + discardedCard.Title);
         DiscardPileImage = this.gameObject.GetComponent<Image>();
         cardPrefab.SetActive(false);
-        this.CardPile.Add(new KeyValuePair<Card, GameObject>(card, cardPrefab));
+        this.CardPile.Add(new KeyValuePair<Card, GameObject>(discardedCard, cardPrefab));
         UpdateCardPileImage();
     }
 
-    public void AddToDiscardPile(UnitCard unitCard, GameObject enemyRowObj)
+    public void AddToDiscardPile(UnitCard unitCard)
     {
         if (unitCard != null)
         {
             unitCard.OnDeath();
         }
 
-        AddToDiscardPile((Card)unitCard, enemyRowObj);
+        AddToDiscardPile((Card)unitCard);
     }
 
     public KeyValuePair<Card, GameObject> GetRandomCard()
@@ -64,7 +70,7 @@ public class DiscardPile : MonoBehaviour
         CheckIfSpyCard(randomCardKvPair);
         CardPile.Remove(randomCardKvPair);
         UpdateCardPileImage();
-        return randomCardKvPair;       
+        return randomCardKvPair;
     }
 
     public bool IsContainingMedic()
@@ -87,32 +93,43 @@ public class DiscardPile : MonoBehaviour
 
     public bool IsContainingUnit()
     {
-        if (CardPile.Any(k => (k.Key is UnitCard)))
+        if (CardPile.Any(k => (k.Key is UnitCard) && !(k.Key is HeroUnit)))
         {
             return true;
         }
         return true;
     }
 
+    public bool IsContainingStrongUnit()
+    {
+        if (CardPile.Any(k => (k.Key is UnitCard) && (k.Key as UnitCard).AttackValue >= 5 && !(k.Key is HeroUnit)))
+        {
+            return true;
+        }
+        return false;
+    }
+
     private KeyValuePair<Card, GameObject> ChooseUnitCard()
     {
         KeyValuePair<Card, GameObject> chosenCard = new KeyValuePair<Card, GameObject>();
 
-        if (IsContainingMedic())
+        foreach (KeyValuePair<Card, GameObject> cardPair in CardPile)
         {
-            chosenCard = CardPile.Where(c => c.Key is MedicUnit).First();
-            return chosenCard;
-        }
-
-        if (CardPile.Any(k=> k.Key is SpyUnit))
-        {
-            chosenCard = CardPile.Where(c => c.Key is SpyUnit).First();
-            return chosenCard;
-        }
-
-        if (IsContainingUnit())
-        {
-            chosenCard = CardPile.OrderByDescending(c => (c.Key as UnitCard).AttackValue).First();
+            if (cardPair.Key is MedicUnit)
+            {
+                chosenCard = cardPair;
+                break;
+            }
+            else if (cardPair.Key is SpyUnit)
+            {
+                chosenCard = cardPair;
+                break;
+            }
+            else if (cardPair.Key is UnitCard && !(cardPair.Key is HeroUnit))
+            {
+                chosenCard = cardPair;
+                break;
+            }
         }
 
         return chosenCard;

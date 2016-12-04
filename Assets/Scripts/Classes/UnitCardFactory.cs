@@ -37,6 +37,7 @@ namespace Assets.Scripts.Classes
                     }
                 case Ability.Hero:
                     {
+                        unitCard = new HeroUnit(id, title, type, faction, slug, attackValue, ability);
                         break;
                     }
                 case Ability.Agile:

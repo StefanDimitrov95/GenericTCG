@@ -1,0 +1,211 @@
+[
+  {
+    "id": -1,
+    "title": "Geralt of Rivia",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 15,
+    "ability": "Hero"
+  },
+  {
+    "id": -2,
+    "title": "Ciri",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "geralt",
+    "attackValue": 15,
+    "ability": "Hero"
+  },
+  {
+    "id": -3,
+    "title": "Balista",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "balista",
+    "attackValue": 6,
+    "ability": "None"
+  },
+  {
+    "id": -4,
+    "title": "Siege Tower",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "siege_tower",
+    "attackValue": 6,
+    "ability": "None"
+  },
+  {
+    "id": -5,
+    "title": "Ves",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "ves",
+    "attackValue": 4,
+    "ability": "None"
+  },
+  {
+    "id": -6,
+    "title": "Reaver Scout",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "reaver_scout",
+    "attackValue": 4,
+    "ability": "Spy"
+  },
+  {
+    "id": -7,
+    "title": "Reaver Scout",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "reaver_scout",
+    "attackValue": 4,
+    "ability": "Spy"
+  },
+  {
+    "id": -8,
+    "title": "Nenneke",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "nenneke",
+    "attackValue": 4,
+    "ability": "Medic"
+  },
+  {
+    "id": -9,
+    "title": "Nenneke",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "nenneke",
+    "attackValue": 4,
+    "ability": "Medic"
+  },
+  {
+    "id": -10,
+    "title": "Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "redanian_elite",
+    "attackValue": 4,
+    "ability": "TightBond"
+  },
+  {
+    "id": -11,
+    "title": "Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "redanian_elite",
+    "attackValue": 4,
+    "ability": "TightBond"
+  },
+  {
+    "id": -12,
+    "title": "Other Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "redanian_elite",
+    "attackValue": 4,
+    "ability": "TightBond"
+  },
+   {
+    "id": -13,
+    "title": "Other Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "redanian_elite",
+    "attackValue": 4,
+    "ability": "TightBond"
+  },
+  {
+    "id": -14,
+    "title": "Keadweni Siege Support",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "keadweni_siege_support",
+    "attackValue": 2,
+    "ability": "MoraleBoost"
+  },
+  {
+    "id": -15,
+    "title": "Biting Frost",
+    "type": "Special",
+    "faction": "Neutral",
+    "slug": "bitingfrost",
+    "ability": "Weather",
+    "affects": "Melee",
+    "desc": "Set the strength of all units on both Melee rows to 1."
+  },
+  {
+    "id": -16,
+    "title": "Dijkstra CC",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 2,
+    "ability": "Scorch"
+  },
+  {
+    "id": -17,
+    "title": "Dijkstra RC",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 2,
+    "ability": "Scorch"
+  },
+  {
+    "id": -18,
+    "title": "Redanian: Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 6,
+    "ability": "Muster"
+  },
+  {
+    "id": -19,
+    "title": "Redanian: Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 6,
+    "ability": "Muster"
+  },
+  {
+    "id": -20,
+    "title": "Redanian: Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 6,
+    "ability": "Muster"
+  },
+  {
+    "id": -21,
+    "title": "Redanian: Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 6,
+    "ability": "Muster"
+  },
+  {
+    "id": -22,
+    "title": "Redanian: Redanian Elite",
+    "type": "CloseCombat",
+    "faction": "Neutral",
+    "slug": "dijkstra",
+    "attackValue": 6,
+    "ability": "Muster"
+  },
+  {
+	"id": -23,
+	"title": "Clear Skies",
+    "type": "Special",
+    "faction": "Neutral",
+    "slug": "clearskies",
+    "ability": "ClearSkies",
+    "affects": "None",
+	"desc": "Remove ALL weather effects."
+  }
+]

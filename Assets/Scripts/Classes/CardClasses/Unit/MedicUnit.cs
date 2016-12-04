@@ -36,7 +36,7 @@ namespace Assets.Scripts.Classes
 
             KeyValuePair<Card, GameObject> returnedCard = pile.GetRandomCard();
 
-            if (returnedCard.Key is UnitCard)
+            if (!returnedCard.Equals(default(KeyValuePair<Card, GameObject>)) && returnedCard.Key is UnitCard)
             {
                 returnedCard.Key.OnResurrect();
                 returnedCard.Value.SetActive(true);

@@ -8,13 +8,12 @@ namespace Assets.Scripts
     {
         public BattleState currentState;
         private GameObject playerHand;
-        private GameObject enemyHand;
-        private float timer = 0;
+        private GameObject board;
 
         public void Start()
         {
             playerHand = GameObject.Find("Hand");
-            enemyHand = GameObject.Find("EnemyDeck");
+            board = GameObject.Find("Board");
             currentState = BattleState.Start;
         }
 
@@ -31,22 +30,14 @@ namespace Assets.Scripts
                         break;
                     }
                 case BattleState.PlayerTurn:
-                    {                      
-                        //player plays a card  
-                        timer = 1;                      
+                    {
+                        //player plays a card                   
                         PlayerTurn.Logic(ref playerHand, ref currentState);
                         Debug.Log("Is turn passed: " + PlayerTurn.IsTurnPassed);
                         break;
                     }
                 case BattleState.EnemyTurn:
                     {
-                        //enemy turn logic
-                        timer -= Time.deltaTime;
-                        if (timer <= 0)
-                        {
-                            timer = 0;
-                            //EnemyTurn.Logic(ref enemyHand, ref currentState,null);
-                        }
                         if (EnemyTurn.IsTurnPassed)
                         {
                             currentState = BattleState.PlayerTurn;
@@ -55,25 +46,44 @@ namespace Assets.Scripts
                                 currentState = BattleState.CalculateTurn;
                             }
                         }
-                        
+
                         break;
                     }
                 case BattleState.CalculateTurn:
                     {
-                        ResetTurn();
-                        Debug.Log("Ending turn... Setting passedTurns to default " + PlayerTurn.IsTurnPassed + " " + EnemyTurn.IsTurnPassed);
                         // only if both players have passed or have nothing to play
                         //Check if round is over
                         //If round is over check if player has won or lost
                         //reset passed condition
+                        int playerTotal = board.GetComponent<Board>().GetPlayerTotalAttack();
+                        int enemyTotal = board.GetComponent<Board>().GetEnemyTotalAttack();
+                        if (playerTotal > enemyTotal)
+                        {
+                            currentState = BattleState.Win;
+                        }
+                        else
+                        {
+                            currentState = BattleState.Lose;
+                        }
+                        ResetTurn();
+                        Debug.Log("Ending turn... Setting passedTurns to default " + PlayerTurn.IsTurnPassed + " " + EnemyTurn.IsTurnPassed);
+                        board.GetComponent<Board>().ResetCardsOnBoard();
                         break;
                     }
                 case BattleState.Win:
                     {
+                        Debug.Log(" YOU HAVE WON !!!!!");
+                        currentState = BattleState.Start;
+                        board.GetComponent<Board>().enemyTurnsLeft--;
+                        board.GetComponent<Board>().UpdateEnemyTurnsText();
                         break;
                     }
                 case BattleState.Lose:
                     {
+                        Debug.Log(" YOU HAVE LOST !!!!!");
+                        board.GetComponent<Board>().playerTurnsLeft--;
+                        board.GetComponent<Board>().UpdatePlayerTurnsText();
+                        currentState = BattleState.Start;
                         break;
                     }
                 default:

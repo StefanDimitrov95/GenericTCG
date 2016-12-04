@@ -10,17 +10,19 @@ namespace Assets.Scripts.BattleStatesLogic.AIBrain
     {
         public Board board;
         public TurnBasedStateMachine turnState;
-        private DiscardPile discardPile;
+        public DiscardPile discardPile;
 
         public PlayerHand playerHand;
         public EnemyHand computerHand;
         public GameObject enemyHand;
         public IGameProgress gameProgress;
         public EnemyStartGameProgress startGame;
+        public EnemyEndGameProgress endGame;
 
         void Awake()
         {
-            startGame = new EnemyStartGameProgress(this);          
+            startGame = new EnemyStartGameProgress(this);
+            endGame = new EnemyEndGameProgress(this);  
         }
 
         void Start()
@@ -41,9 +43,13 @@ namespace Assets.Scripts.BattleStatesLogic.AIBrain
             {
                 return;
             }
+            if (computerHand.CardsInHand.Count == 0)
+            {
+                Debug.Log("Computer hand is empty");
+                EnemyTurn.PassTurn();
+                return;
+            }
             gameProgress.DecideTurn();         
-        }
-
-       
+        }       
     }
 }

@@ -21,6 +21,11 @@ public class DropZone : MonoBehaviour, IDropHandler
         animator.enabled = false;                          
     }
 
+    public void ResetRow()
+    {
+        currentRow = new Row(this.name);
+    }
+
     public List<UnitCard> GetCardsByNameFromRow(string title, Ability ability)
     {
         return currentRow.GetCardsByNameFromRow(title, ability);
@@ -58,7 +63,6 @@ public class DropZone : MonoBehaviour, IDropHandler
             draggedCard.currentCard.OnDropEffect();
             GameObject.Find("Board").GetComponent<Board>().UpdateAttackLabels();
         }
-        
     }
 
     void DestroyCard(Draggable draggedCard)
@@ -69,6 +73,5 @@ public class DropZone : MonoBehaviour, IDropHandler
             GameObject.Find("Hand").GetComponent<PlayerHand>().cardPlayed = true;
             draggedCard.cardPlayed = true;
         }
-    }
-    
+    } 
 }

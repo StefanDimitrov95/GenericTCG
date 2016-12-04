@@ -39,7 +39,7 @@ namespace Assets.Scripts.Classes
                 foreach (UnitCard card in namesakes)
                 {
                     Board.Instantiate(card, GameObject.Find("Enemy" + card.ToRow.name).transform);
-                    card.OnDropEffect();
+                    card.PlayEnemyCard();
                 }
             }
 

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Assets.Scripts.BattleStatesLogic.AIBrain
 {
@@ -17,27 +13,40 @@ namespace Assets.Scripts.BattleStatesLogic.AIBrain
 
         public void DecideTurn()
         {
-            if (stateMachine.computerHand.IsAnySpyInHand())
+            try
             {
-                // Debug.Log("Playing Spy");
-                PlayTurn(stateMachine.enemyHand, stateMachine.computerHand.GetSpyUnit());
-                return;
-            }
-            if (PlayerTurn.IsTurnPassed)
-            {
-                DecideBasedOnComputerTotal();
-            }
-            else
-            {
-                if (IsComputerHandBigger())
+                if (stateMachine.board.playerTurnsLeft != 2 || stateMachine.board.enemyTurnsLeft != 2)
                 {
-                    //Play lowest value card State
-                    PlayTurn(stateMachine.enemyHand, stateMachine.computerHand.GetLowestCard());
+                    stateMachine.gameProgress = stateMachine.endGame;
+                    return;
                 }
-                else
+                if (stateMachine.computerHand.IsAnySpyInHand())
+                {
+                    // Debug.Log("Playing Spy");
+                    PlayTurn(stateMachine.enemyHand, stateMachine.computerHand.GetSpyUnit());
+                    return;
+                }
+                if (PlayerTurn.IsTurnPassed)
                 {
                     DecideBasedOnComputerTotal();
                 }
+                else
+                {
+                    if (IsComputerHandBigger())
+                    {
+                        //Play lowest value card State
+                        PlayTurn(stateMachine.enemyHand, stateMachine.computerHand.GetLowestCard());
+                    }
+                    else
+                    {
+                        DecideBasedOnComputerTotal();
+                    }
+                }
+            }
+            catch (System.NullReferenceException)
+            {
+
+                return;
             }
         }
 
