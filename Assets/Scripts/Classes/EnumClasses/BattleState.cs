@@ -12,6 +12,8 @@ namespace Assets.Scripts.Classes.EnumClasses
         EnemyTurn,
         CalculateTurn,
         Win,
-        Lose
+        Lose,
+        Draw,
+        End
     }
 }

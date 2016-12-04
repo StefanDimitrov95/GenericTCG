@@ -101,7 +101,8 @@ namespace Assets.Scripts
 
         public List<UnitCard> GetStrongestUnitCards()
         {
-            IEnumerable<UnitCard> sortedByAttack = cardsOnRow.OrderByDescending(x => x.AttackValue);
+            List<UnitCard> sortedByAttack = cardsOnRow.OrderByDescending(x => x.AttackValue).ToList();
+            //sortedByAttack.RemoveAll(uc => uc is HeroUnit);
             return cardsOnRow.OrderByDescending(x => x.AttackValue).Where(x => (sortedByAttack.FirstOrDefault().AttackValue == x.AttackValue)).ToList();
         }
 

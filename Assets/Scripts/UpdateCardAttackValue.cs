@@ -9,15 +9,21 @@ public class UpdateCardAttackValue : MonoBehaviour
 
     void Start()
     {
-        AttackComponent = GetComponent<Text>();
         if (!(CurrentCard is UnitCard))
         {
-            this.enabled = false;
+            Destroy(this.gameObject);
+            return;
         }
+        AttackComponent = GetComponent<Text>();
     }
 
     void Update()
     {
+        if (!(CurrentCard is UnitCard))
+        {
+            return;
+        }
+
         AttackComponent.text = ((UnitCard)CurrentCard).AttackValue.ToString();
 
         if (((UnitCard)CurrentCard).AttackChanged() < 0)
