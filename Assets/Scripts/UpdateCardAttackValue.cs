@@ -11,7 +11,8 @@ public class UpdateCardAttackValue : MonoBehaviour
     {
         if (!(CurrentCard is UnitCard))
         {
-            Destroy(this.gameObject);
+            this.enabled = false;
+            this.gameObject.SetActive(false);
             return;
         }
         AttackComponent = GetComponent<Text>();
